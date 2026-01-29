@@ -227,6 +227,22 @@
         "section_padding": "both"
       }
     },
+    "image_with_text_gKnTji": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Jewelry with Meaning",
+        "iwt_text": "<p>At Barik Jewelry, every piece is thoughtfully crafted to celebrate moments that matter. Rooted in craftsmanship and refined by modern design, our creations are made to be timeless, personal, and enduring.<br/><br/>From carefully chosen stones to polished finishes, each design is created to be worn, cherished, and remembered.</p>",
+        "iwt_button": "More About Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "2",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
       "type": "featured-collection",
       "settings": {
@@ -530,6 +546,7 @@
     "marquee_9im86a",
     "collection_list_wHky6C",
     "1642541933e9708a47",
+    "image_with_text_gKnTji",
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "featured_collection_6mKR8x",
     "featured_collection_q9b7d4",
