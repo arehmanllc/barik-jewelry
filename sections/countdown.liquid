@@ -1,0 +1,781 @@
+{% comment %} Countdown Section Assets {% endcomment %}
+{{ 'section-countdown.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% comment %}Countdown Section Logic {% endcomment %}
+{%- liquid
+
+  assign section_padding = ''
+  if section.settings.section_padding == 'top'
+    assign section_padding = 'pb0'
+  elsif section.settings.section_padding == 'bottom'
+    assign section_padding = 'mt0'
+  elsif section.settings.section_padding == 'none'
+    assign section_padding = 'mt0 pb0'
+  endif
+
+  if section.settings.full_width
+    assign full_width =  'edge'
+  endif
+
+  assign layout = 'center'
+  if section.settings.layout == 'split'
+    assign layout = 'space-between'
+  endif
+
+  assign has_image = false
+  if section.settings.image != blank
+    assign has_image = true
+    assign image_position = section.settings.image_position
+    assign layout = 'center'
+  endif
+
+  assign sm_render = '100vw'
+  assign md_render = 'calc(100vw / 2)'
+  assign lg_render = 'calc(1600px / 2)'
+
+  for block in section.blocks
+    case block.type
+
+      when 'countdown'
+
+        assign year = block.settings.year
+        assign month = block.settings.month
+        assign day = block.settings.day
+        assign hour = block.settings.hour
+        assign minute = block.settings.minute
+
+        assign date_now = "now" | date: "%s"
+        assign countdown_date = month | append: ' ' | append: day | append: ',' | append: ' ' | append: year | append: ' ' | append: hour | append: ':' | append: minute | append: ':' | append: '00'
+        assign sale_date = countdown_date | date: "%s"
+
+        assign timestamp = sale_date
+
+        assign on_sale = false
+        assign after_countdown_message = block.settings.after_countdown_message
+
+        if sale_date > date_now
+          assign on_sale = true
+        endif
+
+      when 'text'
+
+        assign rich_text = block.settings.countdown_text
+
+      when 'button'
+
+        assign button_text = block.settings.countdown_button | escape
+        assign link = block.settings.countdown_link
+
+    endcase
+  endfor
+
+assign image_opacity = section.settings.overlay_opacity | plus: 0 | divided_by: 100.0
+
+-%}
+
+{% style %}
+#shopify-section-{{ section.id }} {
+  --background: {{ section.settings.background_color }};
+  --text-color: {{ section.settings.text_color }};
+  --section-overlay-color: {{ section.settings.image_overlay_color | color_modify: 'alpha', image_opacity }};
+  --section-height: {{ section.settings.image_height }}px;
+  --section-height-mobile: {{ section.settings.image_height_mobile }}px;
+}
+{% endstyle %}
+
+{% comment %} Countdown Section Template {% endcomment %}
+<div class="global__section countdown--section {{ section_padding }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="countdown"
+  data-section-loaded="false"
+  data-base-url="{{ shop.url}}{{ routes.root_url }}"
+  data-asset-url="{{ 'countdown.js' | asset_url }}"
+  data-launch-date="{{ timestamp }}">
+
+  {% if has_image %}
+    {% capture image %}
+      <div class="countdown--section_image">
+        {% render 'helper-image',
+          type: section.settings.image,
+          sm_render: sm_render,
+          md_render: md_render,
+          lg_render: lg_render,
+          width: 1000
+         %}
+      </div>
+    {% endcapture %}
+  {% endif %}
+
+  <div class="row grid__wrapper gr0 {{ full_width }}">
+    <div id="countdownWrapper" class="countdown--content_wrapper span-12 auto{% if has_image %} has--image image--{{ image_position }}{% endif %}">
+      {{ image }}
+      <div class="countdown__grid l-{{ layout }}">
+
+        {% for block in section.blocks %}
+
+          {% if block.type == 'countdown' %}
+            <div class="countdown__time-container" {{ block.shopify_attributes }}>
+              {% if on_sale %}
+                <div class="countdown__time--wrapper a-center animate--text">
+                  <p class="countdown__time mb0" data-launch-days>00</p>
+                  <p class="countdown__time-label mb0">{{ 'sections.countdown.days' | t }}</p>
+                  <span class="countdown__colon-divider">:</span>
+                </div>
+                <div class="countdown__time--wrapper a-center animate--text">
+                  <p class="countdown__time mb0" data-launch-hours>00</p>
+                  <p class="countdown__time-label mb0">{{ 'sections.countdown.hours' | t }}</p>
+                  <span class="countdown__colon-divider">:</span>
+                </div>
+                <div class="countdown__time--wrapper a-center animate--text">
+                  <p class="countdown__time mb0" data-launch-mins>00</p>
+                  <p class="countdown__time-label mb0">{{ 'sections.countdown.mins' | t }}</p>
+                  <span class="countdown__colon-divider">:</span>
+                </div>
+                <div class="countdown__time--wrapper a-center animate--text">
+                  <p class="countdown__time mb0" data-launch-secs>00</p>
+                  <p class="countdown__time-label mb0">{{ 'sections.countdown.secs' | t }}</p>
+                </div>
+              {% else %}
+                  <p class="mb0">{{ after_countdown_message }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if block.type == 'text' %}
+            <div class="countdown__heading block-{{ block.id }} animate--text" {{ block.shopify_attributes }}>
+                {% if rich_text != blank %}
+                  {{ rich_text }}
+                {% endif %}
+            </div>
+          {% endif %}
+          {% if block.type == 'button' %}
+            <div class="countdown__button block-{{ block.id }} animate--text" {{ block.shopify_attributes }}>
+              <div class="countdown__button-wrapper">
+                <a class="button mb0" href="{{ link }}">{{ button_text }}</a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <style>
+    {% if on_sale == false %}
+      {% for block in section.blocks %}
+        {% if block.settings.hide_after_countdown %}
+          .block-{{ block.id }} {
+            display: none;
+          }
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </style>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown",
+  "tag": "section",
+  "class": "dynamic-section",
+  "limit":1,
+  "settings": [
+  {
+    "type": "paragraph",
+    "content": "Show a countdown time with optional text and a button"
+  },
+  {
+    "type": "checkbox",
+    "id": "full_width",
+    "label": "Enable full width",
+    "default":true
+  },
+  {
+    "type": "header",
+    "content": "Image"
+  },
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image",
+    "info": "We recommend a 16:10 image width to height ratio for best results"
+  },
+  {
+    "type": "range",
+    "id": "image_height",
+    "min": 200,
+    "max": 1000,
+    "step": 100,
+    "unit": "px",
+    "label": "Image height",
+    "default": 600,
+    "visible_if": "{{ section.settings.image != blank }}"
+  },
+  {
+    "type": "range",
+    "id": "image_height_mobile",
+    "min": 200,
+    "max": 1000,
+    "step": 100,
+    "unit": "px",
+    "label": "Image height",
+    "default": 600,
+    "visible_if": "{{ section.settings.image != blank }}"
+  },
+  {
+    "type": "radio",
+    "id": "image_position",
+    "label": "Image position",
+    "default":"left",
+    "info":"Image will show first on mobile, unless behind text is selected",
+    "options": [
+      {
+        "value": "behind_text",
+        "label": "Behind text"
+      },
+      {
+        "value": "left",
+        "label": "Left"
+      },
+      {
+        "value": "right",
+        "label": "Right"
+      }
+    ],
+    "visible_if": "{{ section.settings.image != blank }}"
+  },
+  {
+    "type": "radio",
+    "id": "layout",
+    "label": "Layout",
+    "options": [
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "split",
+        "label": "Split"
+      }
+    ],
+    "default": "center",
+    "info":"When an image is present, the layout will automatically center the content"
+  },
+  {
+    "type": "select",
+    "id": "section_padding",
+    "label": "Section spacing",
+    "options": [
+      {
+        "value": "top",
+        "label": "Top"
+      },
+      {
+        "value": "bottom",
+        "label": "Bottom"
+      },
+      {
+        "value": "both",
+        "label": "Both"
+      },
+      {
+        "value": "none",
+        "label": "None"
+      }
+    ],
+    "default": "bottom",
+    "visible_if": "{{ settings.section_padding > 0 }}"
+  },
+  {
+    "type": "color",
+    "id": "background_color",
+    "label": "Background",
+    "default": "#000000"
+  },
+  {
+    "type": "color",
+    "id": "text_color",
+    "label": "Text color",
+    "default": "#ffffff"
+  },
+  {
+    "type": "color",
+    "id": "image_overlay_color",
+    "label": "Image overlay",
+    "default": "#333333"
+  },
+  {
+    "type": "range",
+    "id": "overlay_opacity",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "%",
+    "label": "Image overlay opacity",
+    "default": 0
+  }
+  ],
+  "blocks": [
+    {
+      "name": "Timer",
+      "limit":1,
+      "type":"countdown",
+      "settings": [
+        {
+          "type": "select",
+          "id": "year",
+          "label": "Year",
+          "options": [
+            {
+              "value": "2024",
+              "label": "2024"
+            },
+            {
+              "value": "2025",
+              "label": "2025"
+            },
+            {
+              "value": "2026",
+              "label": "2026"
+            }
+          ],
+          "default": "2024"
+        },
+        {
+          "type": "select",
+          "id": "month",
+          "label": "Month",
+          "options": [
+            {
+              "value": "january",
+              "label": "January"
+            },
+            {
+              "value": "february",
+              "label": "February"
+            },
+            {
+              "value": "march",
+              "label": "March"
+            },
+            {
+              "value": "april",
+              "label": "April"
+            },
+            {
+              "value": "may",
+              "label": "May"
+            },
+            {
+              "value": "june",
+              "label": "June"
+            },
+            {
+              "value": "july",
+              "label": "July"
+            },
+            {
+              "value": "august",
+              "label": "August"
+            },
+            {
+              "value": "september",
+              "label": "September"
+            },
+            {
+              "value": "october",
+              "label": "October"
+            },
+            {
+              "value": "november",
+              "label": "November"
+            },
+            {
+              "value": "december",
+              "label": "December"
+            }
+          ],
+          "default": "december"
+        },
+        {
+          "type": "select",
+          "id": "day",
+          "label": "Day",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            },
+            {
+              "value": "6",
+              "label": "6"
+            },
+            {
+              "value": "7",
+              "label": "7"
+            },
+            {
+              "value": "8",
+              "label": "8"
+            },
+            {
+              "value": "9",
+              "label": "9"
+            },
+            {
+              "value": "10",
+              "label": "10"
+            },
+            {
+              "value": "11",
+              "label": "11"
+            },
+            {
+              "value": "12",
+              "label": "12"
+            },
+            {
+              "value": "13",
+              "label": "13"
+            },
+            {
+              "value": "14",
+              "label": "14"
+            },
+            {
+              "value": "15",
+              "label": "15"
+            },
+            {
+              "value": "16",
+              "label": "16"
+            },
+            {
+              "value": "17",
+              "label": "17"
+            },
+            {
+              "value": "18",
+              "label": "18"
+            },
+            {
+              "value": "19",
+              "label": "19"
+            },
+            {
+              "value": "20",
+              "label": "20"
+            },
+            {
+              "value": "21",
+              "label": "21"
+            },
+            {
+              "value": "22",
+              "label": "22"
+            },
+            {
+              "value": "23",
+              "label": "23"
+            },
+            {
+              "value": "24",
+              "label": "24"
+            },
+            {
+              "value": "25",
+              "label": "25"
+            },
+            {
+              "value": "26",
+              "label": "26"
+            },
+            {
+              "value": "27",
+              "label": "27"
+            },
+            {
+              "value": "28",
+              "label": "28"
+            },
+            {
+              "value": "29",
+              "label": "29"
+            },
+            {
+              "value": "30",
+              "label": "30"
+            },
+            {
+              "value": "31",
+              "label": "31"
+            }
+          ],
+          "default": "31"
+        },
+        {
+          "type": "select",
+          "id": "hour",
+          "label": "Hour",
+          "options": [
+            {
+              "value": "0",
+              "label": "12 AM"
+            },
+            {
+              "value": "01",
+              "label": "01 AM"
+            },
+            {
+              "value": "02",
+              "label": "02 AM"
+            },
+            {
+              "value": "03",
+              "label": "03 AM"
+            },
+            {
+              "value": "04",
+              "label": "04 AM"
+            },
+            {
+              "value": "05",
+              "label": "05 AM"
+            },
+            {
+              "value": "06",
+              "label": "06 AM"
+            },
+            {
+              "value": "07",
+              "label": "07 AM"
+            },
+            {
+              "value": "08",
+              "label": "08 AM"
+            },
+            {
+              "value": "09",
+              "label": "09 AM"
+            },
+            {
+              "value": "10",
+              "label": "10 AM"
+            },
+            {
+              "value": "11",
+              "label": "11 AM"
+            },
+            {
+              "value": "12",
+              "label": "12 PM"
+            },
+            {
+              "value": "13",
+              "label": "1 PM"
+            },
+            {
+              "value": "14",
+              "label": "2 PM"
+            },
+            {
+              "value": "15",
+              "label": "3 PM"
+            },
+            {
+              "value": "16",
+              "label": "4 PM"
+            },
+            {
+              "value": "17",
+              "label": "5 PM"
+            },
+            {
+              "value": "18",
+              "label": "6 PM"
+            },
+            {
+              "value": "19",
+              "label": "7 PM"
+            },
+            {
+              "value": "20",
+              "label": "8 PM"
+            },
+            {
+              "value": "21",
+              "label": "9 PM"
+            },
+            {
+              "value": "22",
+              "label": "10 PM"
+            },
+            {
+              "value": "23",
+              "label": "11 PM"
+            }
+          ],
+          "default": "12"
+        },
+        {
+          "type": "select",
+          "id": "minute",
+          "label": "minute",
+          "options": [
+            {
+              "value": "0",
+              "label": "0"
+            },
+            {
+              "value": "05",
+              "label": "5"
+            },
+            {
+              "value": "10",
+              "label": "10"
+            },
+            {
+              "value": "15",
+              "label": "15"
+            },
+            {
+              "value": "20",
+              "label": "20"
+            },
+            {
+              "value": "25",
+              "label": "25"
+            },
+            {
+              "value": "30",
+              "label": "30"
+            },
+            {
+              "value": "35",
+              "label": "35"
+            },
+            {
+              "value": "40",
+              "label": "40"
+            },
+            {
+              "value": "45",
+              "label": "45"
+            },
+            {
+              "value": "50",
+              "label": "50"
+            },
+            {
+              "value": "55",
+              "label": "55"
+            }
+          ],
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "after_countdown_message",
+          "label": "After countdown message",
+          "default": "Countdown has ended",
+          "info":"Replaces timer when countdown has ended"
+        }
+      ]
+    },
+    {
+      "name": "Text",
+      "type":"text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "countdown_text",
+          "label": "Text",
+          "default": "<p>Add urgency to a store event</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_after_countdown",
+          "label": "Hide when countdown ends",
+          "default":true
+        }
+      ]
+    },
+    {
+      "name": "Button",
+      "type":"button",
+      "limit": 1,
+      "settings": [
+         {
+          "type": "text",
+          "id": "countdown_button",
+          "label": "Button",
+          "default": "Shop now"
+         },
+         {
+          "type": "url",
+          "id": "countdown_link",
+          "label": "Link"
+         },
+         {
+          "type": "checkbox",
+          "id": "hide_after_countdown",
+          "label": "Hide when countdown ends",
+          "default":true
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Countdown",
+    "blocks": [{
+        "type": "text",
+        "settings": {
+          "countdown_text": "<p>Add urgency to a store event<\/p>",
+          "hide_after_countdown": true
+        }
+      },
+      {
+        "type": "countdown",
+        "settings": {
+          "year": "2023",
+          "month": "december",
+          "day": "31",
+          "hour": "12",
+          "minute": "0",
+          "after_countdown_message": "Countdown has ended"
+        }
+      },
+      {
+        "type": "button",
+        "settings": {
+          "countdown_button": "Shop now",
+          "countdown_link": "",
+          "hide_after_countdown": true
+        }
+      }
+    ]
+  }],
+  "enabled_on": {
+    "templates": ["404", "article", "blog", "cart", "collection", "list-collections", "index", "page", "product", "search"],
+    "groups": [
+      "footer"
+    ]
+  }
+}
+{% endschema %}

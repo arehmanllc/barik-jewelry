@@ -1,0 +1,6 @@
+{% comment %}
+  This snippet is used to render a skip link to the main content of the page.
+  Usage:
+    {% render 'snip-skip-link' %}
+{% endcomment %}
+{{ 'accessibility.skip_to_text' | t | link_to: '#main-content', class: 'skip-link button visually-hidden' }}

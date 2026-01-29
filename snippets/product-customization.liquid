@@ -1,0 +1,73 @@
+{% comment %}
+  Renders a product customization block
+
+  Accepts:
+  - block: {Object} The block object from the product customization section.
+  - form_id: {String} The form ID for the product form.
+  - forloop: {Object} The forloop object from the product customization section.
+
+  Usage:
+  {% render 'product-customization', block: block, form_id: form_id, forloop: forloop %}
+{% endcomment %}
+<div
+  class="product-form__lineitem-properties product__line-item animate--text delay--{{ forloop.index }}"
+  {{ block.shopify_attributes }}
+>
+  {% case block.settings.property_type %}
+    {% when 'text' %}
+      <p class="line-item-property__field sm relative pt2 mb2">
+        <label for="{{ block.settings.title | handleize }}">{{ block.settings.title }}</label>
+        {%- if block.settings.required -%}
+          <small class="property--required absolute t0 r0">*{{ 'products.product.required' | t -}}</small>
+        {%- endif -%}
+        <input
+          id="{{ block.settings.title | handleize }}"
+          type="text"
+          {% if block.settings.required %}
+            required
+          {% endif %}
+          data-product-property
+          form="{{ form_id }}"
+          name="properties[{{ block.settings.title }}]"
+          data-property-id="{{ block.id }}"
+          value=""
+        >
+      </p>
+    {% when 'multi_line_text' %}
+      <p class="line-item-property__field sm relative pt2 mb2">
+        <label for="{{ block.settings.title | handleize }}">{{ block.settings.title }}</label>
+        {%- if block.settings.required -%}
+          <small class="property--required absolute t0 r0">*{{ 'products.product.required' | t }}</small>
+        {%- endif -%}
+        <textarea
+          id="{{ block.settings.title | handleize }}"
+          {% if block.settings.required %}
+            required
+          {% endif %}
+          data-product-property
+          form="{{ form_id }}"
+          name="properties[{{ block.settings.title }}]"
+          data-property-id="{{ block.id }}"
+        ></textarea>
+      </p>
+    {% when 'image' %}
+      <p class="line-item-property__field sm relative pt2 mb2">
+        <label for="{{ block.settings.title | handleize }}">{{ block.settings.title }}</label>
+        {%- if block.settings.required -%}
+          <small class="property--required absolute t0 r0">*{{ 'products.product.required' | t -}}</small>
+        {%- endif -%}
+        <input
+          id="{{ block.settings.title | handleize }}"
+          type="file"
+          {% if block.settings.required %}
+            required
+          {% endif %}
+          data-product-property
+          name="properties[{{ block.settings.title }}]"
+          data-property-id="{{ block.id }}"
+          value=""
+          form="{{ form_id }}"
+        >
+      </p>
+  {% endcase %}
+</div>

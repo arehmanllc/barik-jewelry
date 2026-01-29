@@ -1,0 +1,750 @@
+{%- liquid
+  assign text_color = 'var(--scheme-' | append: section.settings.mobile_nav_scheme | append: '-text)'
+  assign bg_color = 'var(--scheme-' | append: section.settings.mobile_nav_scheme | append: '-bg)'
+  assign hover_color = 'var(--scheme-' | append: section.settings.mobile_nav_scheme | append: '-hover)'
+
+  if section.settings.enable_sticky
+    assign sticky = 'stickynav'
+    assign sticky_js = 'js-stickynav'
+  endif
+
+  if section.settings.header_layout == 'logo_left'
+    assign mob_lay = 'left'
+  else
+    assign mob_lay = 'right'
+  endif
+
+  assign has_language = section.settings.show_locale_selector
+  assign has_currency = section.settings.show_country_selector
+
+-%}
+
+{% comment %} Mobile Header Assets {% endcomment %}
+{{ 'section-mobile-navigation.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-accordions.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-slideouts.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-modals.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% comment %} Mobile Header {% endcomment %}
+<section
+  class="section-header__mobile mobile-nav__mobile-header {{ sticky }} lg-hide l0 z5 pt2 pb2 js-mobile-header relative"
+  data-section-id="{{ section.id }}"
+  data-asset-url="{{ 'section-mobile-navigation.js' | asset_url }}"
+  data-asset-preload="true"
+  data-section-type="mobile-header"
+>
+  {%- capture mobile_cart_link -%}
+     <li class="mobile-header__cart-links--cart cart-link relative">
+        {% if settings.cart_type == 'page_only' %}
+          <a class="{% if mob_lay == 'left' %}mr2{% endif %}" aria-label="{{ 'general.header.cart' | t }}" href="{{ routes.cart_url }}">
+            <span class="js-cart-count">{{ cart.item_count }}</span>
+          </a>
+        {%- else -%}
+          {%- liquid
+            if settings.cart_type == 'drawer'
+              assign cart_classes = 'js-slideout-open'
+              assign cart_settings = 'data-wau-slideout-target="ajax-cart" data-slideout-direction="right"'
+            elsif settings.cart_type == 'modal_cart'
+              assign cart_classes = 'js-modal-open'
+              assign cart_settings = 'data-wau-modal-target="ajax-cart"'
+            endif
+          -%}
+          <div class="slideout__trigger--open lh0">
+            <a class="js-mini-cart-trigger {{ cart_classes }} {% if mob_lay == 'left' %}mr2{% endif %}"
+              {{ cart_settings }}
+              aria-label="Open cart"
+              href="{{ routes.cart_url }}">
+                <span class="js-cart-count">{{ cart.item_count }}</span>
+            </a>
+          </div>
+        {%- endif -%}
+      </li>
+   {%- endcapture -%}
+  {%- capture mobile_nav_link -%}
+    <li class="mobile-header__cart-links--nav relative">
+      <div class="slideout__trigger--open mobile-header--open">
+        <button
+          class="slideout__trigger-mobile-menu js-slideout-open btn-as-link"
+          data-wau-slideout-target="mobile-navigation"
+          data-slideout-direction="top"
+          aria-label="Open navigation"
+          tabindex="0"
+          type="button"
+          name="button"
+          popovertarget="mobile-slideout"
+          popovertargetaction="show"
+        >
+          {% render 'snip-icons',
+             wrapper: '.section-header__mobile',
+             type: 'theme',
+             icon: 'menu-bars',
+             size: '32px',
+             classes: 'mt0 mr0 mb0 ml0',
+             fill: 'var(--header-text)',
+             hover: 'var(--header-hover)' %}
+        </button>
+      </div>
+    </li>
+  {%- endcapture -%}
+  <article id="mobile-menu" class="grid__wrapper narrow mb1 pt1 pb1">
+    {%- if section.settings.header_layout == 'logo_left' -%}
+      <div class="site-logo mobile-nav__logo-wrapper span-8 md-span-8 sm-span-8 auto a-left v-center shrink-wrap">
+        {% if section.settings.logo != blank %}
+          <a class="mobile-nav__img-logo inline-block lh0 mb0 shrink-wrap" href="{{ routes.root_url }}">
+            {{- section.settings.logo | image_url: width: 800 | image_tag: loading: 'eager', fetchpriority: 'high' -}}
+          </a>
+        {% else %}
+          <a class="mobile-nav__text-logo inline-block v-center m0" href="{{ routes.root_url }}">{{ shop.name }}</a>
+        {% endif %}
+      </div>
+      <ul class="span-4 md-span-4 sm-span-4 auto a-right v-center list-style-none mb0 inline-block">
+        {{ mobile_cart_link }}
+        {{ mobile_nav_link }}
+      </ul>
+    {%- else -%}
+      <ul class="span-4 md-span-4 sm-span-4 auto a-left v-center list-style-none mb0 inline-block">
+        {{ mobile_nav_link }}
+      </ul>
+      <div class="site-logo mobile-nav__logo-wrapper span-4 md-span-4 sm-span-4 auto a-center v-center shrink-wrap">
+        {% if section.settings.logo != blank %}
+          <a class="mobile-nav__img-logo inline-block lh0 mb0 shrink-wrap" href="{{ routes.root_url }}">
+            {{- section.settings.logo | image_url: width: 800 | image_tag: loading: 'eager', fetchpriority: 'high' -}}
+          </a>
+        {% else %}
+          <a class="mobile-nav__text-logo inline-block v-center m0" href="{{ routes.root_url }}">{{ shop.name }}</a>
+        {% endif %}
+      </div>
+      <ul class="span-4 md-span-4 sm-span-4 auto a-right v-center list-style-none mb0 inline-block">
+        {{ mobile_cart_link }}
+      </ul>
+    {%- endif -%}
+
+    {% style %}
+      .mobile-nav__mobile-header .mobile-nav__logo-wrapper a.mobile-nav__text-logo {
+        font-size: {{ section.settings.logo_size }}px !important;
+        word-break: break-word;
+        font-family:  var(--heading-family);
+        font-weight:  var(--heading-weight);
+      }
+      .mobile-nav__mobile-header .mobile-nav__logo-wrapper a.mobile-nav__img-logo {
+        max-width: {{ section.settings.logo_max_width }}% !important;
+      }
+      #mobile-slideout {
+        background-color: {{ bg_color }};
+        z-index: 15;
+      }
+    {% endstyle %}
+  </article>
+</section>
+<div class="clear js-clear-element"></div>
+
+{% comment %} Mobile Search {% endcomment %}
+{%- if section.settings.show_searchbox -%}
+  {%- unless template contains 'search' -%}
+    <section id="mobile-search" class="grid__wrapper narrow lg-hide py3 relative">
+      <form class="section-header__mobile_search--form span-12 auto" action="{{ routes.search_url }}" method="get">
+        <label class="visually-hidden" for="q">{{ 'general.search.placeholder' | t }}</label>
+        <input
+          class="section-header__mobile_search--input mb0 no-bg-color"
+          type="text"
+          name="q"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+        >
+        <button
+          type="submit"
+          class="button btn-as-link section-header__mobile_search--submit"
+          aria-label="{{ 'general.search.placeholder' | t }}"
+        >
+          {% render 'snip-icons',
+            wrapper: '.section-header__mobile_search--submit',
+            type: 'theme',
+            icon: 'search',
+            size: '16px',
+            classes: 'mr0',
+            fill: text_color,
+            hover: hover_color
+          %}
+        </button>
+      </form>
+    </section>
+  {%- endunless -%}
+{%- endif -%}
+
+{% comment %} Mobile Navigation Slideout {% endcomment %}
+<aside
+  popover="auto"
+  id="mobile-slideout"
+  class="slideout slideout__drawer-left"
+  data-wau-overlay="false"
+  data-wau-slideout="mobile-navigation"
+>
+  <div class="slideout__trigger--close mobile-header--close">
+    <button
+      class="slideout__trigger-mobile-navigation js-slideout-close btn-as-link"
+      data-slideout-direction="top"
+      aria-label="Close navigation"
+      tabindex="0"
+      type="button"
+      name="button"
+      popovertarget="mobile-slideout"
+      popovertargetaction="hide"
+    >
+      {% render 'snip-icons',
+        wrapper: '.section-header__mobile',
+        type: 'theme',
+        icon: 'close',
+        size: '18px',
+        classes: 'mt0 mr0 mb0 ml0',
+        fill: 'var(--header-text)',
+        hover: 'var(--header-hover)'
+      %}
+    </button>
+  </div>
+  <div
+    class="mobile-nav__wrapper no-section-animation"
+  >
+    <div class="mobile-nav__menu-blocks pt0">
+      {% if section.settings.main_nav != blank %}
+        <div class="mobile-nav__mobile-menu-wrapper px6">
+
+          <div class="mobile-menu__block mobile-menu__{{ block.type }}">
+            {% liquid
+              assign menu = linklists[section.settings.main_nav]
+              assign allow_multiple_open = true
+            %}
+            {% comment %} TODO: Remove WAU Accordion {% endcomment %}
+            <ul class="menu__list">
+              {% if menu.links.size > 0 %}
+                {% for link in menu.links %}
+                  {% if forloop.first %}
+                    {% assign level_one = 'level--' | append: forloop.index %}
+                  {% endif %}
+                  {% if link.links.size > 0 %}
+                    <li class="menu__item">
+                      <details
+                        class="details"
+                        {% unless allow_multiple_open %}
+                          name="{{ level_one }}"
+                        {% endunless %}
+                      >
+                        <summary class="details__summary">
+                          <a class="details__link" href="{{ link.url }}">{{ link.title }}</a>
+                          <div class="details__icon">
+                            {% render 'snip-icons',
+                              wrapper: '',
+                              type: 'apollo',
+                              icon: 'down-carrot',
+                              classes: 'details__svg vib-center',
+                              size: '6px',
+                              fill: 'var(--accordion-color)',
+                              hover: 'var(--accordion-color)'
+                            %}
+                          </div>
+                        </summary>
+                        <div class="details__content details__content--padding-left">
+                          <ul class="menu__list">
+                            {% for sub_link in link.links %}
+                              {% if forloop.first %}
+                                {% assign level_two = level_one | append: '--' | append: forloop.parentloop.index %}
+                              {% endif %}
+                              {% if sub_link.links.size > 0 %}
+                                <li class="menu__item">
+                                  <details
+                                    class="details"
+                                    {% unless allow_multiple_open %}
+                                      name="{{ level_two }}"
+                                    {% endunless %}
+                                  >
+                                    <summary class="details__summary">
+                                      <a class="details__link" href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                                      <div class="details__icon">
+                                        {% render 'snip-icons',
+                                          wrapper: '',
+                                          type: 'apollo',
+                                          icon: 'down-carrot',
+                                          classes: 'details__svg vib-center',
+                                          size: '5px',
+                                          fill: 'var(--accordion-color)',
+                                          hover: 'var(--accordion-color)'
+                                        %}
+                                      </div>
+                                    </summary>
+                                    <div class="details__content details__content--padding-left">
+                                      <ul class="menu__list">
+                                        {% for sub_sub_link in sub_link.links %}
+                                          <li class="menu__item">
+                                            <a class="menu__link" href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                                          </li>
+                                        {% endfor %}
+                                      </ul>
+                                    </div>
+                                  </details>
+                                </li>
+                              {% else %}
+                                <li class="menu__item">
+                                  <a class="menu__link" href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                                </li>
+                              {% endif %}
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </details>
+                    </li>
+                  {% else %}
+                    <li class="menu__item">
+                      <a class="menu__link" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if shop.customer_accounts_enabled %}
+                <li>
+                  <hr class="links--divider mt4 mb4">
+                </li>
+                {% if customer %}
+                  <li class="menu__item" class="c-accordion__top-level">
+                    <a class="menu__link" href="{{ routes.account_url }}">
+                      {{ 'general.header.account' | t }}
+                    </a>
+                  </li>
+                  <li class="menu__item" class="c-accordion__top-level">
+                    <a class="menu__link" href="{{ routes.account_logout_url }}">
+                      {{ 'general.header.logout' | t }}
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="menu__item" class="c-accordion__top-level">
+                    <a class="menu__link" href="{{ routes.account_login_url }}">
+                      {{- 'general.header.login' | t -}}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+              {%- if has_language -%}
+                {%- if localization.available_languages.size > 1 -%}
+                  <li class="menu__item">
+                    <noscript>
+                      {%- form 'localization', id: 'MobileNavLanguageFormNoScript', class: 'localization-form' -%}
+                        <div class="localization-form__select inline-block w60 v-center">
+                          <h2 class="visually-hidden" id="MobileNavLanguageLabelNoScript">{{ 'localization.language_label' | t }}</h2>
+                          <select class="localization-selector link" name="locale_code" aria-labelledby="MobileNavLanguageLabelNoScript">
+                            <option value="" disabled>{{ 'general.language.dropdown_label' | t }}</option>
+                            {%- for language in localization.available_languages -%}
+                              <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {%- if language.iso_code == localization.language.iso_code %} selected{% endif %}>
+                                {{ language.endonym_name | capitalize }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                        </div>
+                        <button class="localization-form__noscript-btn button mb0 btn-as-link inline-block v-center">
+                          {% render 'snip-icons',
+                              wrapper: '.section-top-bar__lang',
+                              type: 'theme',
+                              icon: 'checkmark',
+                              size: '12px',
+                              fill: 'var(--text-color)',
+                              hover: 'var(--text-color)' %}
+                        </button>
+                      {%- endform -%}
+                    </noscript>
+                    <div data-localization-form>
+                      {%- form 'localization', id: 'MobileNavLanguageForm', class: 'localization-form' -%}
+                        <div class="no-js-hidden">
+                          <h2 class="visually-hidden" id="MobileNavLanguageLabel">{{ 'general.language.dropdown_label' | t }}</h2>
+                          <div class="disclosure">
+                            <button type="button" class="disclosure__button btn-as-link localization-form__select" aria-expanded="false" aria-controls="MobileNavLanguageList" aria-describedby="MobileNavLanguageLabel">
+                              {{ localization.language.iso_code }}
+                            </button>
+                            <span class="dropdown-arrow" aria-label="{{ localization.language.iso_code }}">
+                              {% render 'snip-icons',
+                                wrapper: '.js-accordion-header',
+                                type: 'apollo',
+                                icon: 'down-carrot',
+                                size: '6px',
+                                classes: 'inactive-arrow mt0 mr0 mb0 ml0',
+                                fill: text_color,
+                                hover: hover_color %}
+                              </span>
+                            <div id="MobileNavLanguageList" class="disclosure__list" hidden>
+                              <ul role="list" class="mobile--disclosure_list">
+                                {%- for language in localization.available_languages -%}
+                                  <li class="disclosure__item" tabindex="-1">
+                                    <a class="disclosure__link {% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %}" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                                      {{ language.endonym_name | capitalize }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </div>
+                          </div>
+                          <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+                        </div>
+                      {%- endform -%}
+                    </div>
+                  </li>
+                {%- endif -%}
+              {%- endif -%}
+              {%- if has_currency -%}
+                {%- if localization.available_countries.size > 1 -%}
+                  <li class="menu__item">
+                    <noscript>
+                      {%- form 'localization', id: 'MobileNavCountryFormNoScript', class: 'localization-form' -%}
+                        <div class="localization-form__select inline-block w50 v-center">
+                          <h2 class="visually-hidden" id="MobileNavCountryLabelNoScript">{{ 'general.currency.dropdown_label' | t }}</h2>
+                          <select class="localization-selector link" name="country_code" aria-labelledby="MobileNavCountryLabelNoScript">
+                            <option value="" disabled>{{ 'general.currency.dropdown_label' | t }}</option>
+                            {%- for country in localization.available_countries -%}
+                              <option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+                                {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                        </div>
+                        <button class="localization-form__noscript-btn button mb0 btn-as-link inline-block v-center">
+                          {% render 'snip-icons',
+                              wrapper: '.section-top-bar__lang',
+                              type: 'theme',
+                              icon: 'checkmark',
+                              size: '12px',
+                              fill: 'var(--text-color)',
+                              hover: 'var(--text-color)' %}
+                        </button>
+                      {%- endform -%}
+                    </noscript>
+                    <div data-localization-form>
+                      {%- form 'localization', id: 'MobileNavCountryForm', class: 'localization-form' -%}
+                        <div class="no-js-hidden">
+                          <h2 class="visually-hidden" id="MobileNavCountryLabel">{{ 'general.currency.dropdown_label' | t }}</h2>
+                          <div class="disclosure">
+                            <button type="button" class="disclosure__button btn-as-link localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="MobileNavCountryList" aria-describedby="MobileNavCountryLabel">
+                              {% if section.settings.show_flag %}
+                                <span class="country--flag">
+                                  {{ localization.country | image_url: width: 32 | image_tag: class: 'disclosure__toggle__flag', loading: 'eager', fetchpriority: 'high', image_alt: country.name }}
+                                </span>
+                              {% endif %}
+                              {{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }}
+                            </button>
+                            <span class="dropdown-arrow" aria-label="{{ localization.language.iso_code }}">
+                              {% render 'snip-icons',
+                                wrapper: '.js-accordion-header',
+                                type: 'apollo',
+                                icon: 'down-carrot',
+                                size: '6px',
+                                classes: 'inactive-arrow mt0 mr0 mb0 ml0',
+                                fill: text_color,
+                                hover: hover_color %}
+                              </span>
+                            <div id="MobileNavCountryList" class="disclosure__list" hidden>
+                              <ul role="list" class="mobile--disclosure_list list-unstyled">
+                                {%- for country in localization.available_countries -%}
+                                  <li class="disclosure__item" tabindex="-1">
+                                    <a class="disclosure__link {% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %}" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+                                      {% if section.settings.show_flag %}
+                                        <span class="country--flag">
+                                          {{ country | image_url: width: 32 | image_tag: class: 'disclosure__toggle__flag', loading: 'eager', fetchpriority: 'high', image_alt: country.name }}
+                                        </span>
+                                      {% endif %}
+                                      {{ country.name }}
+                                      <span class="localization-form__currency small">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </div>
+                          </div>
+                          <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                        </div>
+                      {%- endform -%}
+                    </div>
+                  </li>
+                {%- endif -%}
+              {%- endif -%}
+              {% comment %}
+                esthetic-ignore
+
+              {% if shop.customer_accounts_enabled and block.settings.customer_account_links %}
+                {% if customer %}
+                  <li class="mobile-menu__item menu__item">
+                    <a class="menu__link" href="{{ routes.account_url }}">
+                      {% render 'snip-icons',
+                        wrapper: '.mobile-menu__item',
+                        type: 'vantage-theme',
+                        icon: 'user',
+                        classes: 'mobile-menu__item--icon vib-center',
+                        size: '14px',
+                        fill: section.settings.link_color,
+                        hover: section.settings.link_color
+                      %}
+                      <span class="vib-center">{{ 'general.mobile_nav.account' | t }}</span>
+                    </a>
+                    <a class="menu__link" href="{{ routes.account_logout_url }}">
+                      {% render 'snip-icons',
+                        wrapper: '.mobile-menu__item',
+                        type: 'vantage-theme',
+                        icon: 'user-logout',
+                        classes: 'mobile-menu__item--icon vib-center',
+                        size: '14px',
+                        fill: section.settings.link_color,
+                        hover: section.settings.link_color
+                      %}
+                      <span class="vib-center">{{ 'general.mobile_nav.logout' | t }}</span>
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="mobile-menu__item menu__item">
+                    <a class="menu__link" href="{{ routes.account_login_url }}">
+                      {% render 'snip-icons',
+                        wrapper: '.mobile-menu__item',
+                        type: 'vantage-theme',
+                        icon: 'user',
+                        classes: 'mobile-menu__item--icon vib-center',
+                        size: '14px',
+                        fill: section.settings.link_color,
+                        hover: section.settings.link_color
+                      %}
+                      <span class="vib-center">{{ 'general.mobile_nav.login' | t }}</span>
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+              {% endcomment %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+      {% if section.settings.menu_image != blank %}
+        <div class="grid__wrapper narrow py8">
+          <div class="mobile-nav__img-wrapper span-12 auto relative">
+            {%- if section.settings.menu_image_url -%}<a href="{{ section.settings.menu_image_url }}">{%- endif -%}
+            {% render 'helper-image',
+              type: section.settings.menu_image,
+              sm_render: '360px',
+              md_render: '360px',
+              lg_render: '360px'
+            %}
+            {%- if section.settings.menu_image_text -%}
+              <p class="h2 absolute-center">{{ section.settings.menu_image_text }}</p>
+            {%- endif -%}
+            {%- if section.settings.menu_image_url -%}</a>{%- endif -%}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% style %}
+      #slideout-mobile-navigation,
+      #mobile-slideout {
+        --accordion-border-color: {{text_color}};
+        --accordion-color: {{text_color}};
+        --accordion-background-color: {{ bg_color }};
+        --accordion-border-bottom: none;
+      }
+      #slideout-mobile-navigation,
+      #slideout-mobile-navigation .mobile-nav__mobile-header,
+      .mobile-nav__wrapper .c-accordion__second-level-wrapper {
+        background-color: {{ bg_color }} !important;
+      }
+      body.slideout-mobile-navigation--open .section-header__mobile,
+      body.slideout-mobile-navigation--open #mobile-search {
+        background-color: {{ bg_color }} !important;
+      }
+      #slideout-mobile-navigation .mobile-nav__mobile-header svg .hover-fill,
+      .slideout-mobile-navigation--open #shopify-section-mobile-header .section-header__mobile svg .hover-fill,
+      .slideout-mobile-navigation--open #shopify-section-mobile-header .section-header__mobile_search--form svg .hover-fill,
+      .slideout-mobile-navigation--open #shopify-section-mobile-header .mobile-nav__mobile-header svg .hover-fill {
+        fill: {{ text_color }} !important;
+      }
+      .section-header__mobile_search--form {
+        border-color: {{ text_color }} !important;
+      }
+      #slideout-mobile-navigation .mobile-nav__mobile-header svg:hover .hover-fill,
+      .slideout-mobile-navigation--open #shopify-section-mobile-header .section-header__mobile svg:hover .hover-fill,
+      .slideout-mobile-navigation--open #shopify-section-mobile-header .mobile-nav__mobile-header svg:hover .hover-fill {
+        fill: {{ hover_color }} !important;
+      }
+      .mobile-nav__wrapper input::placeholder,
+      .slideout-mobile-navigation--open .section-header__mobile_search--input::placeholder  {
+        color: {{ text_color }} !important;
+        opacity: 1;
+      }
+      .mobile-nav__wrapper input:-ms-input-placeholder {
+        color: {{ text_color }} !important;
+        opacity: 1;
+      }
+      .mobile-nav__wrapper input::-ms-input-placeholder {
+        color: {{ text_color }} !important;
+        opacity: 1;
+      }
+
+      .mobile-nav__wrapper .mobile-nav__logo-wrapper a,
+      .mobile-nav__wrapper .c-accordion__link,
+      .slideout-mobile-navigation--open .mobile-nav__mobile-header .mobile-nav__logo-wrapper a.mobile-nav__text-logo,
+      .slideout-mobile-navigation--open .section-header__mobile_search--input,
+      .mobile-nav__wrapper .disclosure__button,
+      .mobile-nav__wrapper .disclosure__item a.disclosure__link {
+        color: {{ text_color }} !important;
+      }
+      .slideout-mobile-navigation--open .mobile-header__cart-links--cart a {
+        background-color: {{ text_color }} !important;
+        color: {{ bg_color }} !important;
+      }
+      .mobile-nav__wrapper .c-accordion__top-level  {
+        border-bottom: 0.8px solid {{ text_color }} !important;
+      }
+      .mobile-nav__wrapper .c-accordion.c-accordion--mobile-nav li:not(.c-accordion__panel),
+      .slideout-mobile-navigation--open .section-header__mobile_search--input {
+        border-color: {{ text_color }} !important;
+      }
+      .mobile-nav__wrapper .c-accordion__link:hover,
+      .mobile-nav__wrapper .disclosure__button:hover,
+      .mobile-nav__wrapper .disclosure__item a.disclosure__link:hover {
+        color: {{ hover_color }} !important;
+      }
+    {% endstyle %}
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Mobile header",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Use mobile view to edit settings."
+    },
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "Header layout",
+      "options": [
+        {
+          "value": "logo_left",
+          "label": "Logo left"
+        },
+        {
+          "value": "logo_center",
+          "label": "Logo center"
+        }
+      ],
+      "default": "logo_left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_searchbox",
+      "label": "Show searchbox",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "default": false,
+      "label": "Enable sticky header"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 10,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Logo width",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "logo_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Logo text",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "mobile_nav_scheme",
+      "label": "Color scheme",
+      "info": "Colors apply to mobile header and mobile navigation when it is opened.",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_nav",
+      "label": "Choose mobile menu",
+      "default": "main-menu",
+      "info": "It is best practice to select the same menu used in the Header. [Learn More](https://developers.google.com/search/mobile-sites/mobile-first-indexing)"
+    },
+    {
+      "type": "header",
+      "content": "Menu image"
+    },
+    {
+      "type": "image_picker",
+      "id": "menu_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "menu_image_text",
+      "label": "Heading",
+      "default": "Browse the Lookbook"
+    },
+    {
+      "type": "url",
+      "id": "menu_image_url",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Language Selector",
+      "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Enable language selector",
+      "default": true
+    },
+    {
+        "type": "header",
+        "content": "Country/Region Selector",
+        "info": "To add a country/region, go to your [payment settings.](/admin/settings/payments)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "Enable country/region selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flag",
+      "label": "Show country flags",
+      "default": true,
+      "visible_if": "{{ section.settings.show_country_selector == true }}"
+    }
+  ]
+}
+{% endschema %}

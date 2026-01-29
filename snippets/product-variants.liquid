@@ -1,0 +1,58 @@
+{%- liquid
+  if unique_id == blank
+    assign unique_id = section.id
+  endif
+-%}
+{% render 'snip-product-json', product: product %}
+{% form 'product', product,
+   id: form_id,
+   class: "product__form-container product_form",
+   data-product-form: product_form_config,
+   data-product-id: product.id %}
+
+
+   {%- unless product.has_only_default_variant -%}
+     {%- if settings.product_variants == 'swatches' -%}
+       <div class="product__variants-swatches no-js-hidden" data-section="{{ unique_id }}" data-url="{{ product.url }}" data-section-id="{{ section.id }}" data-selected-variant-id="{{ current_variant.id }}">
+         {% for option in product.options_with_values %}
+           {% render "snip-swatch",
+             option: option,
+             current_variant: current_variant,
+             product: product,
+             unique_id: unique_id,
+             show_color_swatches: settings.show_color_swatches,
+             color_swatch_shape: settings.color_swatch_shape,
+             color_swatch_style: settings.color_swatch_style,
+             form_id: form_id %}
+         {% endfor %}
+       </div>
+     {%- else -%}
+       <div class="product__variants-select no-js-hidden" data-section="{{ unique_id }}" data-url="{{ product.url }}" data-section-id="{{ section.id }}" data-selected-variant-id="{{ current_variant.id }}">
+         {%- for option in product.options_with_values -%}
+           <div class="product-form__input product-form__input--dropdown inline-block w100">
+             <label class="form__label block-label" for="Option-{{ unique_id }}-{{ forloop.index0 }}">
+               {{ option.name }}
+             </label>
+             <div class="select">
+               <select id="Option-{{ unique_id }}-{{ forloop.index0 }}"
+                 class="js-variant-selector"
+                 name="options[{{ option.name | escape }}]"
+                 form="{{ form_id }}"
+               >
+                 {%- for option_value in option.values -%}
+                   <option value="{{ option_value | escape }}" {% if option.selected_value == option_value %}selected="selected"{% endif %} data-option-value-id="{{ option_value.id }}" name="{{ option.name | downcase | escape }}">
+                    {% if option_value.available %}
+                      {{ option_value }}
+                    {% else %}
+                      {{ option_value }} - Unavailable
+                    {% endif %}
+                   </option>
+                 {%- endfor -%}
+               </select>
+             </div>
+           </div>
+         {%- endfor -%}
+       </div>
+     {%- endif -%}
+   {%- endunless -%}
+{% endform %}

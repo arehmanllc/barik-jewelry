@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "custom_css": [
+        "section.section-header__main-bar {background: #f7f7f7;}"
+      ],
+      "settings": {
+        "announcement_text": "<p><strong>Welcome to our store</strong></p>",
+        "announcement_text_size": 13,
+        "header_layout": "block_layout_center",
+        "enable_sticky": true,
+        "enable_header_overlay": false,
+        "use_icons": true,
+        "logo": "shopify://shop_images/WhatsApp_Image_2025-04-25_at_9.00.33_AM.jpg",
+        "logo_max_width": 265,
+        "logo_size": 30,
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "show_flag": true,
+        "main_nav": "main-menu",
+        "show_mm_collection_images": false,
+        "show_product_images": false,
+        "show_collection_images": false
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

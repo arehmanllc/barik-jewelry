@@ -1,0 +1,83 @@
+{% comment %} All Collections Assets {% endcomment %}
+{{ 'component-collection-grid.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% comment %} All Collections Logic {% endcomment %}
+{%- liquid
+
+  case section.settings.items_per_row
+  when 4
+    assign items_per_row = 'span-3 sm-span-6 auto'
+  when 3
+    assign items_per_row = 'span-4 sm-span-6 auto'
+  when 2
+    assign items_per_row = 'span-6 sm-span-6 auto'
+  when 1
+    assign items_per_row = 'span-12 sm-span-12'
+  endcase
+
+  assign delay_mod = section.settings.items_per_row | plus: 0
+
+  assign collection_product_count = settings.collection_product_count
+  assign collection_title_style = settings.collection_title_style
+  assign bold_collection_title = settings.bold_collection_title
+
+-%}
+
+{% comment %} All Collections Template {% endcomment %}
+<section
+  class="collection-list-template collection-list-{{ section.id }} mt4 pb9"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-grid"
+  data-section-loaded="false">
+
+  <div class="grid__wrapper cg5 sm-cg2 rg5 sm-rg2">
+    {% render 'collection-loop',
+      collection: collection,
+      grid_items: section.settings.items_per_row,
+      delay_mod: delay_mod,
+      collection_product_count: collection_product_count,
+      collection_title_style: collection_title_style,
+      bold_collection_title: bold_collection_title,
+      items_per_row: items_per_row,
+      items_per_page: section.settings.items_per_page,
+      show_collection_image: section.settings.show_collection_image,
+     %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "All collections",
+  "settings": [
+    {
+      "type": "range",
+      "id": "items_per_row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Collections per row",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "items_per_page",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "label": "Collections per page",
+      "default": 15
+    },
+    {
+      "type": "paragraph",
+      "content": "Choose a collection list section to select specific collections in a preferred order"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "label": "Show collection image",
+      "info": "Will show the collection image if there is one.",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

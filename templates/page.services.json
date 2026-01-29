@@ -1,0 +1,248 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "template-header",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "scale": 2,
+        "banner_height": 400,
+        "heading": "",
+        "subheading": "",
+        "heading_placement": "center",
+        "alignment": "a-center",
+        "color_scheme": "3"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "7d909784-cab3-4de7-830e-ae0c0df7a740": {
+          "type": "page_content",
+          "settings": {
+            "block_position": "content"
+          }
+        },
+        "menu_BdmrGc": {
+          "type": "menu",
+          "settings": {
+            "menu": "",
+            "show_border": false,
+            "block_position": "sidebar"
+          }
+        },
+        "menu_BbtqUY": {
+          "type": "menu",
+          "settings": {
+            "menu": "",
+            "show_border": false,
+            "block_position": "sidebar"
+          }
+        },
+        "text_CkbJfe": {
+          "type": "text",
+          "settings": {
+            "text_rte": "",
+            "show_border": false,
+            "block_position": "sidebar"
+          }
+        },
+        "text_bHfQAL": {
+          "type": "text",
+          "settings": {
+            "text_rte": "",
+            "show_border": false,
+            "block_position": "sidebar"
+          }
+        }
+      },
+      "block_order": [
+        "7d909784-cab3-4de7-830e-ae0c0df7a740",
+        "menu_BdmrGc",
+        "menu_BbtqUY",
+        "text_CkbJfe",
+        "text_bHfQAL"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_gXYbdz": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "rich_text": "<p><strong>Our Services</strong></p><p>Welcome to Barik Jewelry, where craftsmanship, creativity, and care come together to create unforgettable jewelry experiences. Proudly serving our community in the United States, we offer a full range of expert services to bring your jewelry dreams to life and keep your treasured pieces shining for years to come.</p><p><strong>Jewelry Repair</strong></p><p>Your precious jewelry deserves the best care. Our skilled artisans specialize in all types of jewelry repairs, from resizing rings and fixing broken chains to restoring vintage heirlooms. We treat every piece with the attention and precision it deserves, ensuring it returns to you looking as stunning as ever.</p><p></p><p><strong>Production of Exclusive Jewelry</strong></p><p>Dreaming of a one-of-a-kind piece? We offer bespoke jewelry design services to create exclusive pieces that reflect your personal style and story. From concept to creation, our experts work closely with you to design jewelry that is truly yours, using only the finest materials and craftsmanship.</p><p><strong>Jewelry Cleaning</strong></p><p>Restore your jewelry's original brilliance with our professional cleaning services. Whether it's a simple polish or a deep, ultrasonic cleaning, we handle your jewelry with the utmost care, ensuring it sparkles like new while maintaining its integrity.</p><p><strong>Laser Soldering</strong></p><p>For delicate and precise repairs, we offer state-of-the-art laser soldering. This technology allows us to repair fine and intricate jewelry without damaging sensitive stones or materials, delivering flawless results with minimal risk.</p><p><strong>3D Modeling</strong></p><p>See your ideas come to life before they are crafted! Using advanced 3D modeling technology, we create detailed digital renderings of your custom jewelry designs. This allows you to visualize and perfect every detail before production begins, ensuring complete satisfaction.</p><p><strong>Let's Create Something Beautiful Together</strong></p><p>Whether you need a cherished piece restored, a custom masterpiece designed, or simply want to give your jewelry a little extra love, Barik Jewelry is here for you. Visit us today or contact us to learn more about how we can help make your jewelry visions a reality.</p>",
+        "heading_size": 30,
+        "text_size": 15,
+        "page": "",
+        "alignment": "a-left",
+        "content_width": 95,
+        "reduce_padding": true,
+        "section_padding": "both",
+        "color_scheme": "1"
+      }
+    },
+    "rich_text_CTrxCq": {
+      "type": "rich-text",
+      "custom_css": [
+        "div {max-width: 97%;}"
+      ],
+      "settings": {
+        "title": "",
+        "rich_text": "<p>At Barik Jewelry, every service is delivered with precision, artistry, and thoughtful care crafted to preserve your treasures and bring your vision to life. With a base in California and roots in Lebanese tradition, our atelier offers exclusive services designed for the discerning client.</p>",
+        "heading_size": 30,
+        "text_size": 15,
+        "page": "",
+        "alignment": "a-left",
+        "content_width": 95,
+        "reduce_padding": true,
+        "section_padding": "both",
+        "color_scheme": "1"
+      }
+    },
+    "custom_liquid_yjrmBT": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".button_booking {background: #a5874a; padding: 1rem; color: white; margin: auto 2.5rem;}"
+      ],
+      "name": "Custom liquid",
+      "settings": {
+        "liquid": "<!-- Calendly link widget begin -->\n<link href=\"https://assets.calendly.com/assets/external/widget.css\" rel=\"stylesheet\">\n<script src=\"https://assets.calendly.com/assets/external/widget.js\" type=\"text/javascript\" async></script>\n<a class=\"button_booking\" href=\"\" onclick=\"Calendly.initPopupWidget({url: 'https://calendly.com/barikjewelry/30min?hide_gdpr_banner=1&primary_color=a5874a'});return false;\">Book Your Design Session</a>\n<!-- Calendly link widget end -->",
+        "full_width": true,
+        "section_padding": "bottom"
+      }
+    },
+    "multicolumn_a8FALq": {
+      "type": "multicolumn",
+      "blocks": {
+        "image_alongside_text_zhkcBQ": {
+          "type": "image_alongside_text",
+          "settings": {
+            "block_width": "half",
+            "two_rows": false,
+            "image": "shopify://shop_images/111825291-2000x864-69494112-7599-4dab-8052-788ae33af710.png",
+            "image_height": "small",
+            "image_align": "left",
+            "text_align": "left",
+            "heading": "Expert Restoration & Repair",
+            "caption": "<p>Our master artisans restore your heirlooms with meticulous skill reviving brilliance, reinforcing craftsmanship, and preserving the story behind every piece.</p>",
+            "button_text": "Button",
+            "link": "",
+            "color_scheme": "2"
+          }
+        },
+        "image_alongside_text_WxK3Vh": {
+          "type": "image_alongside_text",
+          "settings": {
+            "block_width": "half",
+            "two_rows": false,
+            "image": "shopify://shop_images/101659721-226x226-e4f24733-3041-49b2-b2e8-a95ab985e496.png",
+            "image_height": "small",
+            "image_align": "left",
+            "text_align": "left",
+            "heading": "Bespoke Design & Creation",
+            "caption": "<p>Collaborate privately with our Director of Design to bring your dream piece to life. From concept sketches to 3D renderings, your bespoke creation is crafted with the finest materials and attention to detail.</p>",
+            "button_text": "Button",
+            "link": "",
+            "color_scheme": "2"
+          }
+        },
+        "image_alongside_text_PjeyVj": {
+          "type": "image_alongside_text",
+          "settings": {
+            "block_width": "half",
+            "two_rows": false,
+            "image": "shopify://shop_images/different-goldsmiths-tools-on-the-jewelry-workplac-2024-10-15-06-51-33-utc.jpg",
+            "image_height": "small",
+            "image_align": "left",
+            "text_align": "left",
+            "heading": "Signature Cleaning & Polishing",
+            "caption": "<p>Illuminate your collection with our professional cleaning service, resulting in dazzling brilliance and long-lasting luster because true luxury is lasting.</p>",
+            "button_text": "Button",
+            "link": "",
+            "color_scheme": "2"
+          }
+        },
+        "image_alongside_text_An3AFm": {
+          "type": "image_alongside_text",
+          "settings": {
+            "block_width": "half",
+            "two_rows": false,
+            "image": "shopify://shop_images/132273162-2000x2999-082ed067-5fd9-4080-bba2-edc84c1d4939.png",
+            "image_height": "small",
+            "image_align": "left",
+            "text_align": "left",
+            "heading": "Refinement Through Laser Soldering",
+            "caption": "<p>Utilizing advanced laser technology, we perform delicate repairs with precision and care ensuring seamless restorations without compromising quality.</p>",
+            "button_text": "Button",
+            "link": "",
+            "color_scheme": "2"
+          }
+        },
+        "image_alongside_text_HmqyGE": {
+          "type": "image_alongside_text",
+          "settings": {
+            "block_width": "half",
+            "two_rows": false,
+            "image": "shopify://shop_images/42374928-2000x1499-2f1d6e49-949e-4a83-b6c1-04492aac0a42.png",
+            "image_height": "small",
+            "image_align": "left",
+            "text_align": "left",
+            "heading": "3D Modeling & Prototyping",
+            "caption": "<p>Visualize your design in real time through CAD and 3D modeling. With wax prototypes and interactive tools, you’ll see and feel your piece before it becomes a reality.</p>",
+            "button_text": "Button",
+            "link": "",
+            "color_scheme": "2"
+          }
+        }
+      },
+      "block_order": [
+        "image_alongside_text_zhkcBQ",
+        "image_alongside_text_WxK3Vh",
+        "image_alongside_text_PjeyVj",
+        "image_alongside_text_An3AFm",
+        "image_alongside_text_HmqyGE"
+      ],
+      "name": "Multicolumn",
+      "settings": {
+        "section_padding": "bottom"
+      }
+    },
+    "rich_text_H6VnwD": {
+      "type": "rich-text",
+      "custom_css": [
+        "div {max-width: 97%;}"
+      ],
+      "settings": {
+        "title": "",
+        "rich_text": "<p><strong>Let's Create Something Beautiful Together</strong></p><p>Whether you need a cherished piece restored, a custom masterpiece designed, or simply want to give your jewelry a little extra love, Barik Jewelry is here for you. Visit us today or contact us to learn more about how we can help make your jewelry visions a reality.</p>",
+        "heading_size": 30,
+        "text_size": 15,
+        "page": "",
+        "alignment": "a-left",
+        "content_width": 95,
+        "reduce_padding": true,
+        "section_padding": "bottom",
+        "color_scheme": "1"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "rich_text_gXYbdz",
+    "rich_text_CTrxCq",
+    "custom_liquid_yjrmBT",
+    "multicolumn_a8FALq",
+    "rich_text_H6VnwD"
+  ]
+}

@@ -1,0 +1,90 @@
+{% if collection != blank %}
+  <article
+    class="collection-loop__item {{ items_per_row }} relative collection-loop__item--{{ settings.image_ratio }} collection-title_{{ collection_title_style }}{% if circular_images %} circular-images{% endif %} animate--text delay--{{ index | minus: 1 | modulo: delay_mod | times: 1 }}"
+    data-alpha="{{ collection.title }}"
+    {{ block.shopify_attributes }}>
+
+    <a href="{{ collection.url }}" title="{{ collection_title }}" class="mb0">
+      <div class="collection-loop__img-wrapper relative">
+        <div class="relative">
+          {%- liquid
+            assign sm_render = 'calc(100vw / 2)'
+            assign md_render = 'calc(100vw / ' | append: grid_items | append: ')'
+            assign lg_render = 'calc(1600px / ' | append: grid_items | append: ')'
+
+            assign collection_image = false
+            if collection.image and product_image == false
+              assign collection_image = true
+            endif
+
+            if collection.image and collection.products.first.featured_media == false
+              assign collection_image = true
+            endif
+
+            if collection.image and show_collection_image == true
+              assign collection_image = true
+            endif
+
+          -%}
+          {% if collection_image %}
+            {% render 'helper-image',
+               type: collection.image,
+               sm_render: sm_render,
+               md_render: md_render,
+               lg_render: lg_render,
+               loading: loading,
+               fetchpriority: fetchpriority %}
+          {% elsif collection.products.first.featured_media %}
+            {% render 'helper-image',
+               type: collection.products.first.featured_media.preview_image,
+               sm_render: sm_render,
+               md_render: md_render,
+               lg_render: lg_render,
+               loading: loading,
+               fetchpriority: fetchpriority %}
+          {% else %}
+            <div class="demo-1  relative">
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="collection-loop__info mt3 pb1 px1 a-center">
+        <p class="collection-loop__title animate--text mb0{% if bold_collection_title %} strong{% endif %}">
+          {{ collection.title }}
+        </p>
+        {% if collection_product_count %}
+          <p class="collection-loop__product-count block mb0 animate--text delay--1">
+            {{ 'collections.general.item_count' | t: count: collection.products_count }}
+          </p>
+        {% endif %}
+      </div>
+    </a>
+  </article>
+{% else %}
+  <article
+    class="collection-loop__item {{ items_per_row }} relative .collection-loop__item--{{ settings.image_ratio }} collection-title_{{ collection_title_style }}{% if circular_images %} circular-images{% endif %} animate--text delay--{% cycle 1, 2, 3, 4, 5, 6 %}"
+    data-alpha="{{ collection.title }}"
+    {{ block.shopify_attributes }}>
+
+    <a href="#" title="Collection">
+      <div class="collection-loop__img-wrapper relative">
+        <div class="demo-1  relative">
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      </div>
+
+      <div class="collection-loop__info mt1 pb1 px1 a-center">
+        <p class="collection-loop__title animate--text mb0{% if bold_collection_title %} strong{% endif %}">
+          {{ 'products.product.collection' | t }} {{ index }}
+        </p>
+        {% if collection_product_count %}
+          <p class="collection-loop__product-count block mb0 animate--text delay--1">
+            {{ 'collections.general.item_count' | t: count: '2' }}
+          </p>
+        {% endif %}
+      </div>
+    </a>
+  </article>
+{% endif %}

@@ -1,0 +1,37 @@
+{% assign variant = product.selected_or_first_available_variant %}
+{% if variant %}
+<script type="application/json" data-selected-variant>
+  {
+    "id": {{ variant.id | json }},
+    "title": {{ variant.title | json }},
+    "sku": {{ variant.sku | json }},
+    "available": {{ variant.available | json }},
+    "option1": {{ variant.option1 | json }},
+    "option2": {{ variant.option2 | json }},
+    "option3": {{ variant.option3 | json }},
+    "price": {{ variant.price | json }},
+    "compare_at_price": {{ variant.compare_at_price | json }},
+    "featured_media": {{ variant.featured_media | json }},
+    "inventory_management": {{ variant.inventory_management | json }},
+    "inventory_policy": {{ variant.inventory_policy | json }},
+    "inventory_quantity": {{ variant.inventory_quantity | json }},
+    "requires_shipping": {{ variant.requires_shipping | json }},
+    "taxable": {{ variant.taxable | json }},
+    "featured_image": {
+        "id": {{ variant.image.id | json }},
+        "product_id": {{ variant.image.id | json }},
+        "position": {{ variant.image.position | json }},
+        "created_at": {{ product.published_at | json }},
+        "updated_at": {{ product.created_at | json }},
+        "alt": {{ variant.image.alt | json }},
+        "width": {{ variant.image.width | json }},
+        "height": {{ variant.image.height | json }},
+        "src": {{ variant.image.src | json }}
+    },
+    "options": {{ variant.options | json }},
+    "weight": {{ variant.weight | json  }},
+    "barcode": {{ variant.barcode | json }},
+    "requires_selling_plan": {{ variant.requires_selling_plan | json }}
+  }
+</script>
+{% endif %}

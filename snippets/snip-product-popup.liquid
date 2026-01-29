@@ -1,0 +1,51 @@
+{% comment %}
+  Product Popup Snippet
+
+  This snippet is used to create a popup that can be triggered by a button. The popup can contain content from a metafield or a page.
+
+  Accepts:
+    - block: {Object} The block object.
+    - forloop: {Object} The forloop object.
+    - multiples: {String} The multiples class.
+    - classes: {String} The classes to add to the popup.
+
+  Usage:
+    {% render 'snip-product-popup', block: block, forloop: forloop, multiples: multiples, classes: classes %}
+{% endcomment %}
+<div
+  class="{{ classes }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.popup_label != blank
+    and block.settings.popup_metafield_content != blank
+    or block.settings.page != blank
+  %}
+    <button
+      class="btn-as-link underline js-modal-open"
+      type="button"
+      name="button"
+      role="button"
+      data-wau-modal-target="product-modal--{{ forloop.index }}"
+      {{ block.shopify_attributes }}
+      popovertarget="{{ block.id }}"
+      popovertargetaction="show"
+    >
+      {{- block.settings.popup_label -}}
+    </button>
+    {% capture popup_content %}
+      {% if block.settings.page != blank %}
+        {% assign feat_page = pages[block.settings.page] %}
+        {{ feat_page.content }}
+      {% else %}
+        <div class="rte">
+          {{ block.settings.popup_metafield_content }}
+        </div>
+      {% endif %}
+    {% endcapture %}
+    {% if block.settings.popup_type == 'modal' %}
+      {% render 'snip-modal', id: block.id, state: 'auto', content: popup_content %}
+    {% else %}
+      {% render 'snip-slideout', id: block.id, state: 'auto', content: popup_content %}
+    {% endif %}
+  {% endif %}
+</div>

@@ -1,0 +1,988 @@
+{% comment %} Product Page Logic {% endcomment %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign first_3d_model = product.media | where: "media_type", "model" | first
+
+  assign thumbnail_position = section.settings.thumbnail_position
+  assign click_to_enlarge = section.settings.click_to_enlarge
+  assign enable_video_looping = section.settings.enable_video_looping
+
+  assign full_width = false
+  if section.settings.full_width
+   assign full_width = true
+  endif
+
+  if product.media.size <= 1
+   assign is_single_image = true
+  else
+   assign is_single_image = false
+  endif
+
+  assign has_media = product.media | has: 'media_type', 'model'
+  assign has_video = product.media | has: 'media_type', 'video'
+  assign has_plyr = product.media | has: 'media_type', 'video'
+  assign has_ytv = product.media | has: 'media_type', 'external_video'
+
+  assign popup_count = section.blocks | where: 'type', 'metafield_popup' | size
+
+  if popup_count > 1
+    assign multiples = 'multiples--true'
+  endif
+
+  assign is_scroll_gallery = false
+  if section.settings.gallery_style == 'thumbnail_gallery'
+    assign gallery_classes = 'carousel-container js-product-gallery'
+    assign gallery_attribute = 'data-product-gallery="thumbnail"'
+    assign sticky_content = 'sticky--content'
+  else
+    assign is_scroll_gallery = true
+    assign gallery_classes = ''
+    assign gallery_attribute = 'data-product-gallery="scroll_gallery"'
+    assign sticky_content = 'sticky--content'
+    if section.settings.grid_2_per_row and product.media.size > 1
+      assign gallery_classes = 'grid--2-per-row'
+    endif
+  endif
+
+  assign thumbnail_gallery = false
+  if section.settings.gallery_style == 'thumbnail_gallery'
+    assign thumbnail_gallery = true
+    case section.settings.gallery_grid_size
+      when 'small'
+        assign image_grid_size = 'span-4 push-1'
+        assign content_grid_size = 'span-6'
+      when 'normal'
+        assign image_grid_size = 'span-6'
+        assign content_grid_size = 'span-6'
+      when 'large'
+        assign image_grid_size = 'span-8'
+        assign content_grid_size = 'span-4'
+    endcase
+  endif
+
+  if is_scroll_gallery
+    case section.settings.gallery_grid_size
+      when 'small'
+        assign image_grid_size = 'span-4 push-2'
+        assign content_grid_size = 'span-6'
+      when 'normal'
+        assign image_grid_size = 'span-6'
+        assign content_grid_size = 'span-6'
+      when 'large'
+        assign image_grid_size = 'span-8'
+        assign content_grid_size = 'span-4'
+    endcase
+  endif
+
+  if section.settings.full_width and is_scroll_gallery
+    assign grid_wrapper_classes = 'edge pt8 sm-pt3 pb5'
+    assign grid_desc_classes = 'py5 sm-py3 pr10 md-pr6 sm-px5 pl4'
+  elsif section.settings.full_width and is_scroll_gallery  == false
+    assign grid_wrapper_classes = 'pt8 sm-pt3 pb5'
+    assign grid_desc_classes = 'py3 pr10 md-pr6 sm-pr0 pl6 sm-pl0'
+  else
+    assign grid_wrapper_classes = 'pt8 sm-pt3 pb5'
+    assign grid_desc_classes = 'py5 dv-py3 pl4 sm-px5 md-px9'
+  endif
+
+  if product.template_suffix == 'pre-order'
+    assign button_text = 'products.product.pre_order' | t
+  else
+    assign button_text = 'products.product.add_to_cart' | t
+  endif
+
+  assign has_pickup_availability = section.blocks | has: 'type', 'product_pickup'
+  assign has_complementary_products = section.blocks | has: 'type', 'complementary_products'
+  assign has_countdown = section.blocks | has: 'type', 'countdown'
+
+  # Form Ids
+  assign product_variant_form = 'product-form-' | append: product.id | append: '-' | append: section.id
+  assign product_button_form = 'product-button-form-' | append: product.id | append: '-' | append: section.id
+
+-%}
+
+{% comment %} Product Page Assets {% endcomment %}
+{{ 'section-main-product.css' | asset_url | stylesheet_tag: preload: true }}
+
+{%- if has_media -%}
+  <link
+    id="ModelViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+    media="print"
+    onload="this.media='all'"
+  >
+{%- endif -%}
+{%- if has_plyr -%}
+  <link
+    id="PlyrViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/shopify-plyr/v1.0/shopify-plyr.css"
+    media="print"
+    onload="this.media='all'"
+  >
+{%- endif -%}
+
+{% capture product_gallery_config %}{
+  "thumbPosition": {{ section.settings.thumbnail_position | json }},
+  "mainSlider": {% if product.media.size <= 1 %}false{% else %}true{% endif %},
+  "thumbSlider": {% if product.media.size >= 4 %}true{% else %}false{% endif %},
+  "productId": {{ product.id | json }},
+  "thumbsShown": 4,
+  "clickToEnlarge": {{ click_to_enlarge | json }},
+  "isQuick": false
+}{% endcapture %}
+
+{% capture product_form_config %}
+{ "money_format": {{ shop.money_format | json }},
+  "enable_history": true,
+  "sold_out": {{ "products.product.sold_out" | t | json }},
+  "button": {{ button_text | json }},
+  "unavailable": {{ 'products.product.unavailable' | t | json }},
+  "in_stock": {{ 'products.product.in_stock' | t | json }},
+  "quickview": false,
+  "featured_product": false,
+  "swatches": {{ settings.product_variants | json }}
+}
+{% endcapture %}
+
+{% comment %} Product Page Template {% endcomment %}
+<section
+  class="
+    product-page
+    product-template product__section--main section-{{ section.id }}
+  "
+  id="product-{{ product.id }}"
+  data-product-id="{{ product.id }}"
+  data-section-id="{{ section.id }}"
+  data-url="{{ product.url }}"
+  data-section-type="product"
+  data-section-loaded="false"
+  data-product-video="{{ has_video }}"
+  data-product-model="{{ has_media }}"
+  data-product-pickup-availability="{{ has_pickup_availability }}"
+  data-product-complementary-products="{{ has_complementary_products }}"
+  data-product-countdown="{{ has_countdown }}"
+  {{ gallery_attribute }}
+  data-asset-url="{{ 'section-product.js' | asset_url }}"
+  data-initial-variant="{{ current_variant.featured_media.id }}"
+>
+  {% render 'product-json', product: product %}
+
+  <div class="product-top grid__wrapper sm-cg0 {{ grid_wrapper_classes }} full-width--{{ full_width }} scroll-gallery--{{ is_scroll_gallery }}">
+    <article
+      id="product-photos"
+      class="product__section-images product-photos {{ image_grid_size }} dv-span-12 auto v-start {{ gallery_classes }} single_image--{{ is_single_image }} pb5 sm-pb0"
+      data-product-single-media-group
+      data-gallery-config='{{ product_gallery_config }}'
+    >
+      {%- if section.settings.gallery_style == 'thumbnail_gallery' -%}
+        {%
+          render 'product-image-gallery',
+          product: product,
+          thumbnail_position: thumbnail_position,
+          click_to_enlarge: click_to_enlarge,
+          enable_video_looping: enable_video_looping
+        %}
+      {%- else -%}
+        {%
+          render 'product-scroll-gallery',
+          product: product,
+          click_to_enlarge: click_to_enlarge,
+          enable_video_looping: enable_video_looping
+        %}
+      {%- endif -%}
+    </article>
+
+    <article
+      id="product-description"
+      class="product__section-right {{ content_grid_size }} dv-span-12 auto v-start {{ grid_desc_classes }}"
+    >
+      <div class="{{ sticky_content }}">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {%- when 'text_metafield' -%}
+              {%- unless block.settings.content == blank -%}
+                <div
+                  class="product-template__text-block pt2 mb2 animate--text delay--{{ forloop.index }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.label != blank -%}
+                    <p class="product-template__text-block--label mb0">{{ block.settings.label }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.content != blank -%}
+                    <div class="product-template__text-block--content rte pt1 mb0">
+                      <p>{{ block.settings.content }}</p>
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endunless -%}
+            {%- when 'richtext_metafield' -%}
+              {%- unless block.settings.content == blank -%}
+                <div
+                  class="product-template__text-block pt2 mb2 animate--text delay--{{ forloop.index }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.label != blank -%}
+                    <p class="product-template__text-block--label mb0">{{ block.settings.label }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.content != blank -%}
+                    <div class="product-template__text-block--content rte pt1 mb0">
+                      {{ block.settings.content }}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endunless -%}
+            {%- when 'product_title' -%}
+              <h1 class="h2 pt2 mb1 animate--text delay--{{ forloop.index }}" {{ block.shopify_attributes }}>
+                {{ product.title }}
+              </h1>
+            {%- when 'product_prices' -%}
+              <div
+                class="product-form__prices mb2 animate--text delay--{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+              >
+                {% render 'snip-product-price', variant: current_variant, product: product %}
+                {% if section.settings.show_tax_info %}{% render 'snip-product-taxes' %}{% endif %}
+              </div>
+            {%- when 'product_sku' -%}
+              <div
+                class="product__sku-container pt2 mb2{% if current_variant.sku == blank %} display-none {% endif %} animate--text delay--{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+              >
+                <span class="product__sku-label">{{ 'customer.order.details.sku' | t }} &nbsp; | &nbsp;</span>
+                <span class="product__sku-value js-variant-sku">{{ current_variant.sku }}</span>
+              </div>
+            {%- when 'product_form' -%}
+              <div
+                class="product-form__variants product__section--variants inline-block mb2 animate--text delay--{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+              >
+                {%
+                  render 'product-variants',
+                  product: product,
+                  block: block,
+                  section: section,
+                  type: section,
+                  product_type: 'product',
+                  current_variant: current_variant,
+                  product_form_config: product_form_config,
+                  form_id: product_variant_form
+                %}
+              </div>
+            {%- when 'product_buttons' -%}
+              {%-
+                render 'product-buttons',
+                product_type: 'product',
+                product: product,
+                block: block,
+                section: section,
+                current_variant: current_variant,
+                index: forloop.index,
+                show_quantity: block.settings.show_quantity,
+                product_form_config: product_form_config,
+                form_id: product_button_form
+              -%}
+            {%- when 'product_customization' -%}
+              {% render 'product-customization', block: block, form_id: product_button_form, forloop: forloop %}
+            {%- when 'product_pickup' -%}
+              {% render 'snip-product-pickup-availability', product: product, current_variant: current_variant, block: block, shop: shop, routes: routes, index: forloop.index %}
+            {%- when 'product_description' -%}
+              {%- if product.description != blank -%}
+                <div
+                  class="product-template__description rte pt3 mb2 animate--text delay--{{ forloop.index }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <p class="label mb1">{{ 'products.product.product_info' | t }}</p>
+                  {% if product.description contains '[#' %}
+                    {{ product.description | split: '[#' | first }}
+                  {% else %}
+                    {{ product.description }}
+                  {% endif %}
+                </div>
+              {%- endif -%}
+            {%- when 'social_share' -%}
+              <div
+                class="product-template__social-share pt2 pb2 animate--text delay--{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+              >
+                <p class="inline-block mb0 mr3 v-center">{{ 'products.product.social_share' | t }}</p>
+                {%
+                  render 'snip-social-sharing',
+                  share_title: product.title,
+                  share_permalink: product.url,
+                  share_image: product
+                %}
+              </div>
+            {%- when 'payment_terms' -%}
+              {%- form 'product', product, id: 'product-form-installment' -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <div class="spi-banner animate--text delay--{{ forloop.index }}" {{ block.shopify_attributes }}>
+                  {{ form | payment_terms }}
+                </div>
+                <!-- /#spi-banner -->
+              {%- endform -%}
+            {%- when 'metafield_popup' -%}
+              {%- capture popup_classes -%}
+                product-form__popup pt2 mb2 sm-pt1 sm-mb1 {{ multiples }} border--{{ block.settings.show_border_label }} animate--text delay--{{ forloop.index }}
+              {%- endcapture -%}
+              {% render 'snip-product-popup', block: block, forloop: forloop, multiples: multiples, classes: popup_classes %}
+            {% when 'complementary_products' %}
+              <div class="product-blocks__block product-blocks__block--{{ block.type }} animate--text delay--{{ forloop.index }}" {{ block.shopify_attributes }}>
+                {%
+                  render 'complementary-products',
+                  section: section,
+                  block: block,
+                  product: product
+                %}
+              </div>
+            {% when 'range_indicator' %}
+
+              {% liquid
+                assign range_steps = block.settings.range_steps | plus: 0
+                assign range_int = block.settings.selected_range | plus: 0
+
+                assign range_1_label = false
+                assign range_2_label = false
+                assign range_3_label = false
+
+                if block.settings.range_1_label != blank
+                  assign range_1_label = block.settings.range_1_label
+                  assign has_label = true
+                endif
+                if block.settings.range_2_label != blank
+                  assign range_2_label = block.settings.range_2_label
+                  assign has_label = true
+                endif
+                if block.settings.range_3_label != blank
+                  assign range_3_label = block.settings.range_3_label
+                  assign has_label = true
+                endif
+
+              %}
+
+              <div class="product-blocks__block product-blocks__block--{{ block.type }} product__section--range-indicator pb2 animate--text delay--{{ forloop.index }}" {{ block.shopify_attributes }}>
+                <p class="block--title">{{ block.settings.title }}</p>
+                <div class="range--container{% if block.settings.range_gaps %} has-gaps{% endif %}">
+                  {% for i in (1..range_steps) %}
+                    <div class="range--integer{% if forloop.index <= range_int %} fill--range{% endif %}"></div>
+                  {% endfor %}
+                </div>
+                {% if has_label %}
+                  <div class="range--labels">
+                    {% if range_1_label %}<div class="range--label">{{ range_1_label | escape }}</div>{% endif %}
+                    {% if range_2_label %}<div class="range--label">{{ range_2_label | escape }}</div>{% endif %}
+                    {% if range_3_label %}<div class="range--label">{{ range_3_label | escape }}</div>{% endif %}
+                  </div>
+                {% endif %}
+              </div>
+              {% style %}
+                .product-blocks__block--{{ block.type }}.product__section--range-indicator {
+                  --range-bg: {{ block.settings.background_color }};
+                  --range-bg-fill: {{ block.settings.background_color_fill }};
+                }
+                {% endstyle %}
+
+            {% when 'countdown' %}
+
+              {% liquid
+
+                assign countdown_date_end = block.settings.countdown_date_end
+                assign countdown_time_end = block.settings.countdown_time_end
+
+                assign countdown_date_parts = countdown_date_end | split: ':'
+                assign countdown_time_parts = countdown_time_end | split: ':'
+
+                assign year = countdown_date_parts[2]
+                assign month = countdown_date_parts[1]
+                assign day = countdown_date_parts[0]
+                assign hour = countdown_time_parts[0]
+                assign minute = countdown_time_parts[1]
+
+                assign countdown_end_date = year | append: '-' | append: month | append: '-' | append: day | append: ' ' | append: hour | append: ':' | append: minute | date: '%s'
+                assign date_now = 'now' | date: '%s'
+
+                assign countdown_exists = false
+                if countdown_end_date > date_now
+                  assign countdown_exists = true
+                endif
+
+              %}
+
+              {% if countdown_exists %}
+
+                <div id="block-{{ block.id }}" class="product-template__countdown rte mt2 mb3 animate--text delay--{{ forloop.index }}" {{ block.shopify_attributes }}>
+
+                    <div
+                      class="countdown__wrapper"
+                      data-section-type="countdown"
+                      data-launch-date="{{ countdown_end_date }}"
+                      data-section-id="{{ section.id }}"
+                      data-base-url="{{ shop.url }}{{ routes.root_url }}"
+                      data-hide-after-countdown="{{ block.settings.hide_after_countdown }}"
+                    >
+                      <div class="countdown__grid">
+
+                        <div class="countdown__time--content">
+                          {{ block.settings.text }}
+                        </div>
+
+                        <div class="countdown__ended--content" style="display:none;">
+                          {{ block.settings.countdown_complete_text }}
+                        </div>
+
+                        {% if countdown_exists %}
+                          <div class="countdown__time--wrapper">
+                            <p class="countdown__time" data-launch-days></p>
+                            <p class="countdown__time-label">{{ 'sections.countdown.days' | t }}</p>
+                            <span class="countdown__colon-divider">:</span>
+                          </div>
+                          <div class="countdown__time--wrapper">
+                            <p class="countdown__time" data-launch-hours></p>
+                            <p class="countdown__time-label">{{ 'sections.countdown.hours' | t }}</p>
+                            <span class="countdown__colon-divider">:</span>
+                          </div>
+                          <div class="countdown__time--wrapper">
+                            <p class="countdown__time" data-launch-mins></p>
+                            <p class="countdown__time-label">{{ 'sections.countdown.mins' | t }}</p>
+                            <span class="countdown__colon-divider">:</span>
+                          </div>
+                          <div class="countdown__time--wrapper">
+                            <p class="countdown__time" data-launch-secs></p>
+                            <p class="countdown__time-label">{{ 'sections.countdown.secs' | t }}</p>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    {% style %}
+                      #block-{{ block.id }}.product-template__countdown {
+                        --background: {{ block.settings.background_color }};
+                        --text-color: {{ block.settings.text_color }};
+                        {% if block.settings.hide_after_countdown and countdown_exists == false %}
+                          display: none;
+                        {% endif %}
+                      }
+                    {% endstyle %}
+
+                </div>
+              {% endif %}
+
+            {%- when '@app' -%}
+              <div class="product__section--app" {{ block.shopify_attributes }}>
+                {% render block %}
+              </div>
+
+            {% when 'custom_liquid' %}
+              <div class="product__block--custom-liquid product__section--custom-liquid {{ block.shopify_attributes }}">
+                {{ block.settings.custom_liquid }}
+              </div>
+
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </article>
+  </div>
+
+  {%- if first_3d_model -%}
+    <script type="application/json" id="ModelJson-{{ section.id }}">
+      {{ product.media | where: 'media_type', 'model' | json }}
+    </script>
+  {%- endif -%}
+  {%- if has_ytv -%}
+    <script type="text/javascript">
+      // Youtube API callback
+      function onYouTubeIframeAPIReady() {
+        setTimeout(function() {
+          ProductVideo.loadVideos('youtube');
+        }, 600);
+      }
+    </script>
+    {% comment %}theme-check-disable RemoteAsset{% endcomment %}
+    <script src="https://www.youtube.com/iframe_api" id="youtube-sdk" async></script>
+    {% comment %}theme-check-enable RemoteAsset{% endcomment %}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Product page",
+  "max_blocks": 15,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Enable full width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "gallery_grid_size",
+      "label": "Gallery size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "normal",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "normal",
+      "info": "Image gallery size"
+    },
+    {
+      "type": "select",
+      "id": "gallery_style",
+      "label": "Gallery style",
+      "options": [
+        {
+          "value": "thumbnail_gallery",
+          "label": "Thumbnail gallery"
+        },
+        {
+          "value": "scroll_gallery",
+          "label": "Grid gallery"
+        }
+      ],
+      "default": "scroll_gallery"
+    },
+    {
+      "type": "select",
+      "id": "thumbnail_position",
+      "label": "Thumbnail position",
+      "info":"When using the thumbnail gallery style",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "grid_2_per_row",
+      "label": "Grid gallery 2 per row",
+      "default": true,
+      "info": "When using the grid gallery style"
+    },
+    {
+      "type": "checkbox",
+      "id": "click_to_enlarge",
+      "label": "Enable click to enlarge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Enable video looping",
+      "default": false
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [Media types](https://help.shopify.com/en/manual/products/product-media)"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tax_info",
+      "label": "Show tax information",
+      "default": false,
+      "info":"If taxes are included enable this option to include that information beneath the product price"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_metafield",
+      "name": "Text",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "richtext_metafield",
+      "name": "Richtext",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "product_title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "product_form",
+      "name": "Variants",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "product_prices",
+      "name": "Prices",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "product_sku",
+      "name": "Sku",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "product_buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_quantity",
+          "label": "Show quantity selector",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient",
+          "default": false,
+          "label": "Show recipient information form for gift card products",
+          "info": "Gift card products can optionally be sent direct to a recipient along with a personal message. [Learn more](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+        }
+      ]
+    },
+    {
+      "type": "product_pickup",
+      "name": "Pickup availability",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "product_customization",
+      "name": "Product customization",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Product customizations allow you to capture additional information when your customers place an order."
+        },
+        {
+          "type": "select",
+          "id": "property_type",
+          "label": "Choose a property",
+          "options": [
+            {
+              "value": "text",
+              "label": "Single line text"
+            },
+            {
+              "value": "multi_line_text",
+              "label": "Multiple line text"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading*",
+          "default": "Label",
+          "info": "*Required."
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "product_description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "social_share",
+      "name": "Social share",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "payment_terms",
+      "name": "Payment terms",
+      "limit": 1,
+      "settings": [
+
+      ]
+    },
+    {
+      "type": "metafield_popup",
+      "name": "Text popup",
+      "limit": 3,
+      "settings": [
+        {
+          "type":"select",
+          "id":"popup_type",
+          "label":"Popup type",
+          "options":[
+            {
+              "value":"modal",
+              "label":"Modal"
+            },
+            {
+              "value":"slideout",
+              "label":"Slideout"
+            }
+          ],
+          "default":"slideout"
+        },
+        {
+          "type": "text",
+          "id": "popup_label",
+          "label": "Popup label",
+          "default": "Popup label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_border_label",
+          "label": "Show label border",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "popup_metafield_content",
+          "label": "Popup content",
+          "default": "<p>Add content which will be shown in a popup across all product pages</p>"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Or show content from a page"
+        }
+      ]
+    },
+    {
+      "type": "complementary_products",
+      "name": "Complementary products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To select complementary products, add the Search & Discovery app. [Learn more](https:\/\/shopify.dev\/themes\/product-merchandising\/recommendations)"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Pair it with"
+        },
+        {
+          "type": "range",
+          "id": "limit",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "label": "Complementary products to show",
+          "default": 2
+        }
+      ]
+    },
+    {
+      "type": "range_indicator",
+      "name": "Range indicator",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Display a range indicator for product content like a size and fit guide"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Size and fit guide"
+        },
+        {
+          "type": "range",
+          "id": "range_steps",
+          "label": "Range steps",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "selected_range",
+          "label": "Selected range",
+          "default": "3"
+        },
+        {
+          "type": "checkbox",
+          "id": "range_gaps",
+          "label": "Space between each range step",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Range background color",
+          "default": "#f5f5f5"
+        },
+        {
+          "type": "color",
+          "id": "background_color_fill",
+          "label": "Selected range fill color",
+          "default": "#dddddd"
+        },
+        {
+          "type": "text",
+          "id": "range_1_label",
+          "label": "First item label",
+          "default": "Slim fit"
+        },
+        {
+          "type": "text",
+          "id": "range_2_label",
+          "label": "Middle item label",
+          "default": "Regular fit"
+        },
+        {
+          "type": "text",
+          "id": "range_3_label",
+          "label": "Last item label",
+          "default": "Oversized"
+        }
+      ]
+    },
+    {
+      "type": "countdown",
+      "name": "Countdown",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Countdown active text",
+          "default": "<p>Countdown title</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "countdown_complete_text",
+          "label": "Countdown completed text",
+          "default": "<p>Countdown has ended</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_after_countdown",
+          "label": "Hide when countdown ends",
+          "default":true
+        },
+        {
+          "type":"paragraph",
+          "content":"The countdown will not show when entering a page with an expired countdown timer. When watching the countdown end the countdown completed text will show unless the above setting is checked."
+        },
+        {
+          "type": "text",
+          "id": "countdown_date_end",
+          "label": "Countdown Date End (DD:MM:YYYY)",
+          "default": "31:12:2024",
+          "info":"Example: 31:12:2024"
+        },
+        {
+          "type": "text",
+          "id": "countdown_time_end",
+          "label": "Countdown Time End (HH:MM)",
+          "default": "23:59",
+          "info":"End time in 24 hour format, example: 20:30"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#f2f2f2"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#cc0000"
+        }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name":"Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid",
+          "info":"Add app snippets or other Liquid code to create advanced customizations [Learn more](https:\/\/shopify.dev\/docs\/api\/liquid)"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

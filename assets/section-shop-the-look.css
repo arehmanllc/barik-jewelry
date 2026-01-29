@@ -1,0 +1,38 @@
+/* ---- Shop the look section ---- */
+
+.shop__thelook .stl__image {
+    position: relative;
+}
+.shop__thelook .stl__image .image-inner img { width: 100%; }
+.shop__thelook .stl__image .product-container { position: relative;}
+
+.product-hotspot .prod-image {
+    flex: 0 0 90px;
+}
+.product-hotspot .product-details {
+    flex: 0 0 170px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: start;
+}
+.product-hotspot .product-details p,
+.product-hotspot .product-details .price {
+    font-size: var(--font-size);
+}
+
+/* Text blocks */
+.product-hotspot .product-details .richtext p {
+    margin-bottom: 0;
+}
+
+.product-hotspot .product-details.no--image {
+    flex:  auto;
+    margin-left: 0;
+}
+
+.product-hotspot .product-details button {
+    text-align: left;
+    text-decoration: underline;
+}

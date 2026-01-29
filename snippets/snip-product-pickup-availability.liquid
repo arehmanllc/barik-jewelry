@@ -1,0 +1,25 @@
+{% comment %}
+  This snippet is used to render the pickup availability component on the product page.
+  It is used to display the pickup availability of the product in the store.
+
+  Accepts:
+    - product: The product object
+    - current_variant: The current variant object
+    - block: The block object
+    - shop: The shop object
+    - routes: The routes object
+    - forloop.index: The index of the loop
+
+  Usage:
+    {% render 'snip-product-pickup-availability', product: product, current_variant: current_variant, block: block, shop: shop, routes: routes, index: forloop.index %}
+{% endcomment %}
+<pickup-availability
+  class="product-single__store-availability-container animate--text delay--{{ index }}"
+  {{ block.shopify_attributes }}
+  data-block-id="{{ block.id }}"
+  data-store-availability-container
+  data-product-title="{{ product.title | escape }}"
+  data-has-only-default-variant="{{ product.has_only_default_variant }}"
+  data-base-url="{{ shop.url }}{{ routes.root_url }}"
+  data-variant-id="{{ current_variant.id }}"
+></pickup-availability>

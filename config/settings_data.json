@@ -1,0 +1,722 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "favicon": "shopify://shop_images/Untitled_design_bc66ceb6-c9ce-4ad5-8b1f-a3f28f018323.png",
+    "main_font": "buenard_n4",
+    "nav_font": "besley_n4",
+    "heading_font": "buenard_n4",
+    "font_size": 14,
+    "nav_size": 14,
+    "h1_size": 30,
+    "h2_size": 24,
+    "h3_size": 19,
+    "nav_spacing": 2,
+    "button_spacing": 1,
+    "heading_spacing": 2,
+    "background": "#FFFFFF",
+    "text_color": "#222222",
+    "announcement_bg": "#00080b",
+    "announcement_hover": "#FFFFFF",
+    "mobile_header_text": "#292929",
+    "header_text": "#292929",
+    "header_hover": "#000000",
+    "button_bg": "#a5874a",
+    "button_text": "#FFFFFF",
+    "button_hover": "#a5874a",
+    "secondary_button_text": "#000000",
+    "swatch_accent": "#a5874a",
+    "directional_bg": "#a5874a",
+    "directional_hover": "#eeeeee",
+    "footer_bg": "#222222",
+    "footer_text": "#f0eeeb",
+    "scheme_1_text": "#292929",
+    "scheme_2_bg": "#f0eeeb",
+    "scheme_2_text": "#222222",
+    "scheme_2_hover": "#9E9E9E",
+    "scheme_3_bg": "#a5874a",
+    "scheme_3_text": "#FFFFFF",
+    "scheme_3_hover": "#9E9E9E",
+    "enable_age_verify": false,
+    "enable_test_mode": true,
+    "age_limit": 16,
+    "show_shipping_countdown": false,
+    "free_shipping_threshold": "150",
+    "cart_upsell_title": "ADD A SPECIAL TOUCH",
+    "section_title_align": "center",
+    "scroll_animation": "animation--none",
+    "text_animation": "animation-text--none",
+    "section_button_style": "background",
+    "search_linklist": "footer",
+    "image_ratio": "square",
+    "product_info_appearance": "title_above_price_left",
+    "varying_grid": false,
+    "secondary_images_hover": true,
+    "product_grid_video": false,
+    "show_collection_swatches": true,
+    "product_variants": "swatches",
+    "color_swatch_style": "custom-image",
+    "facebook_url": "https://www.facebook.com/barikjewelry/?ref=_xav_ig_profile_page_web#",
+    "instagram": "https://www.instagram.com/barikjewelry/",
+    "enable_metal_swatches": true,
+    "gold_gradient": "",
+    "enable_kt_labels": true,
+    "sections": {
+      "mobile-header": {
+        "type": "mobile-header",
+        "settings": {
+          "header_layout": "logo_left",
+          "show_searchbox": true,
+          "enable_sticky": true,
+          "logo_max_width": 100,
+          "logo_size": 25,
+          "mobile_nav_scheme": "2",
+          "main_nav": "main-menu",
+          "menu_image_text": "Browse the Lookbook",
+          "menu_image_url": "shopify://pages/lookbook",
+          "show_locale_selector": true,
+          "show_country_selector": true,
+          "show_flag": true
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_layout": "inline_layout_center",
+          "enable_sticky": true,
+          "logo_max_width": 100,
+          "logo_size": 30,
+          "main_nav": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-1": {
+            "type": "menu",
+            "settings": {
+              "footer_nav": "collections",
+              "title": "Shop Online",
+              "column_width": 3
+            }
+          },
+          "footer-2": {
+            "type": "menu",
+            "settings": {
+              "footer_nav": "footer",
+              "title": "Support",
+              "column_width": 3
+            }
+          },
+          "footer-3": {
+            "type": "menu",
+            "settings": {
+              "footer_nav": "help",
+              "title": "Need Help?",
+              "column_width": 3
+            }
+          }
+        },
+        "block_order": [
+          "footer-1",
+          "footer-2",
+          "footer-3"
+        ],
+        "settings": {
+          "show_credit_cards": true,
+          "show_copyright": true,
+          "alignment": "a-center",
+          "show_locale_selector": true,
+          "show_country_selector": true,
+          "show_newsletter": true,
+          "show_social": true
+        }
+      },
+      "mailing-popup": {
+        "type": "mailing-popup",
+        "settings": {
+          "popup": false,
+          "popup_delay": 5,
+          "popup_frequency": 7,
+          "popup_image": "background",
+          "mail_popup_title": "Keep In Touch",
+          "mail_popup_text": "Signup for exclusive offers and promotions.",
+          "mail_button_text": "Signup",
+          "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+          "redirect_url": "",
+          "popup_h3_size": 48,
+          "popup_subheading_size": 14,
+          "popup_text_color": "#000000",
+          "popup_background_color": "#ffffff"
+        }
+      },
+      "quickshop": {
+        "type": "quickshop",
+        "blocks": {
+          "quickshop-0": {
+            "type": "product_title",
+            "settings": {}
+          },
+          "quickshop-1": {
+            "type": "product_sku",
+            "settings": {}
+          },
+          "quickshop-2": {
+            "type": "product_prices",
+            "settings": {}
+          },
+          "quickshop-3": {
+            "type": "product_form",
+            "settings": {}
+          },
+          "quickshop-5": {
+            "type": "product_buttons",
+            "settings": {
+              "show_quantity": true
+            }
+          },
+          "quickshop-6": {
+            "type": "product_description",
+            "settings": {}
+          },
+          "quickshop-7": {
+            "type": "social_share",
+            "settings": {}
+          }
+        },
+        "block_order": [
+          "quickshop-0",
+          "quickshop-1",
+          "quickshop-2",
+          "quickshop-3",
+          "quickshop-5",
+          "quickshop-6",
+          "quickshop-7"
+        ],
+        "settings": {
+          "enable_quickview": true,
+          "quickview_type": "drawer",
+          "enable_quick_add": true,
+          "enable_video_looping": false,
+          "show_tax_info": false
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {
+    "Forge": {
+      "main_font": "inter_n4",
+      "nav_font": "inter_n4",
+      "heading_font": "bodoni_moda_n4",
+      "font_size": 14,
+      "h1_size": 30,
+      "h2_size": 24,
+      "h3_size": 19,
+      "text_color": "#222222",
+      "announcement_bg": "#687886",
+      "announcement_hover": "#FFFFFF",
+      "header_hover": "#000000",
+      "button_bg": "#687886",
+      "button_text": "#FFFFFF",
+      "button_hover": "#98a3ac",
+      "secondary_button_text": "#000000",
+      "swatch_accent": "#687886",
+      "directional_hover": "#98a3ac",
+      "footer_bg": "#222222",
+      "footer_text": "#f0eeeb",
+      "scheme_2_bg": "#f0eeeb",
+      "scheme_2_text": "#222222",
+      "scheme_2_hover": "#9E9E9E",
+      "scheme_3_bg": "#687886",
+      "scheme_3_text": "#FFFFFF",
+      "scheme_3_hover": "#9E9E9E",
+      "show_shipping_countdown": true,
+      "free_shipping_threshold": "46000",
+      "cart_upsell_title": "Add a special touch",
+      "product_upsell": [],
+      "scroll_animation": "animation--active animation-type--fade",
+      "text_animation": "animation-text--active animation-text-type--fadeInUp",
+      "search_linklist": "footer",
+      "image_ratio": "vertical",
+      "secondary_images_hover": true,
+      "product_grid_video": false,
+      "show_collection_swatches": true,
+      "product_variants": "swatches",
+      "show_color_swatches": true,
+      "cart_added_event": "go_to_active_cart",
+      "facebook_url": "",
+      "instagram": "",
+      "pinterest_url": "",
+      "twittername": "",
+      "enable_metal_swatches": true,
+      "gold_gradient": "",
+      "enable_kt_labels": true,
+      "show_rating": false,
+      "sections": {
+        "mobile-header": {
+          "type": "mobile-header",
+          "settings": {
+            "header_layout": "logo_left",
+            "show_searchbox": true,
+            "enable_sticky": true,
+            "logo_max_width": 100,
+            "logo_size": 25,
+            "mobile_nav_scheme": "2",
+            "main_nav": "main-menu",
+            "menu_image": "",
+            "menu_image_text": "Image heading",
+            "menu_image_url": ""
+          }
+        },
+        "mailing-popup": {
+          "type": "mailing-popup",
+          "settings": {
+            "popup": false,
+            "popup_delay": 5,
+            "popup_frequency": 7,
+            "popup_image": "background",
+            "mail_popup_title": "Keep In Touch",
+            "mail_popup_text": "Signup for exclusive offers and promotions.",
+            "mail_button_text": "Signup",
+            "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+            "redirect_url": "",
+            "popup_h3_size": 48,
+            "popup_subheading_size": 14,
+            "popup_text_color": "#000000",
+            "popup_background_color": "#ffffff"
+          }
+        },
+        "quickshop": {
+          "type": "quickshop",
+          "blocks": {
+            "quickshop-0": {
+              "type": "product_title",
+              "settings": {}
+            },
+            "quickshop-1": {
+              "type": "product_sku",
+              "settings": {}
+            },
+            "quickshop-2": {
+              "type": "product_prices",
+              "settings": {}
+            },
+            "quickshop-3": {
+              "type": "product_form",
+              "settings": {}
+            },
+            "quickshop-5": {
+              "type": "product_buttons",
+              "settings": {
+                "show_quantity": true
+              }
+            },
+            "quickshop-6": {
+              "type": "product_description",
+              "settings": {}
+            },
+            "quickshop-7": {
+              "type": "social_share",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "quickshop-0",
+            "quickshop-1",
+            "quickshop-2",
+            "quickshop-3",
+            "quickshop-5",
+            "quickshop-6",
+            "quickshop-7"
+          ],
+          "settings": {
+            "enable_quickview": true,
+            "quickview_type": "drawer",
+            "enable_quick_add": true,
+            "enable_video_looping": false,
+            "show_tax_info": false
+          }
+        }
+      },
+      "content_for_index": []
+    },
+    "Titanium": {
+      "main_font": "instrument_sans_n4",
+      "nav_font": "instrument_sans_n4",
+      "heading_font": "proza_libre_n5",
+      "font_size": 14,
+      "nav_size": 14,
+      "h1_size": 26,
+      "h2_size": 22,
+      "h3_size": 18,
+      "nav_transform": false,
+      "buttons_transform": false,
+      "text_color": "#000000",
+      "announcement_bg": "#383838",
+      "announcement_hover": "#FFFFFF",
+      "mobile_header_text": "#000000",
+      "header_text": "#000000",
+      "header_hover": "#000000",
+      "button_bg": "#000000",
+      "button_text": "#FFFFFF",
+      "button_hover": "#9E9E9E",
+      "secondary_button_bg": "#9E9E9E",
+      "secondary_button_text": "#FFFFFF",
+      "secondary_button_hover": "#000000",
+      "swatch_accent": "#222222",
+      "directional_bg": "#FFFFFF",
+      "directional_text": "#000000",
+      "directional_hover": "#D7D7D7",
+      "footer_bg": "#383838",
+      "footer_text": "#FFFFFF",
+      "scheme_1_text": "#000000",
+      "scheme_2_bg": "#f0eeeb",
+      "scheme_2_text": "#000000",
+      "scheme_2_hover": "#9E9E9E",
+      "scheme_3_bg": "#383838",
+      "scheme_3_text": "#FFFFFF",
+      "scheme_3_hover": "#9E9E9E",
+      "show_shipping_countdown": true,
+      "free_shipping_threshold": "150",
+      "cart_upsell_title": "Trending",
+      "product_upsell": [],
+      "scroll_animation": "animation--active animation-type--fade",
+      "text_animation": "animation-text--active animation-text-type--fadeInUp",
+      "section_button_style": "borders",
+      "search_linklist": "footer",
+      "collection_title_style": "below_image",
+      "image_ratio": "as-is",
+      "secondary_images_hover": true,
+      "product_grid_video": false,
+      "show_collection_sizes": false,
+      "show_collection_swatches": true,
+      "facebook_url": "",
+      "instagram": "",
+      "pinterest_url": "",
+      "tiktok": "",
+      "twittername": "",
+      "enable_metal_swatches": true,
+      "gold_gradient": "",
+      "enable_kt_labels": true,
+      "show_rating": false,
+      "sections": {
+        "mobile-header": {
+          "type": "mobile-header",
+          "settings": {
+            "header_layout": "logo_center",
+            "show_searchbox": true,
+            "enable_sticky": true,
+            "logo_max_width": 100,
+            "logo_size": 25,
+            "mobile_nav_scheme": "2",
+            "main_nav": "main-menu",
+            "menu_image_text": "Image heading",
+            "menu_image_url": ""
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "header_layout": "block_layout_center",
+            "enable_sticky": true,
+            "logo_max_width": 100,
+            "logo_size": 30,
+            "main_nav": "main-menu"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "logo",
+              "settings": {
+                "column_width": 4
+              }
+            },
+            "footer-1": {
+              "type": "menu",
+              "settings": {
+                "footer_nav": "popular",
+                "title": "Shop Online",
+                "column_width": 4
+              }
+            },
+            "footer-2": {
+              "type": "menu",
+              "settings": {
+                "footer_nav": "footer-1",
+                "title": "Information",
+                "column_width": 4
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2"
+          ],
+          "settings": {
+            "show_credit_cards": true,
+            "show_copyright": true,
+            "alignment": "a-left",
+            "show_locale_selector": true,
+            "show_country_selector": true,
+            "show_newsletter": true,
+            "show_social": true
+          }
+        },
+        "mailing-popup": {
+          "type": "mailing-popup",
+          "settings": {
+            "popup": false,
+            "popup_delay": 5,
+            "popup_frequency": 7,
+            "popup_image": "content",
+            "email_image": "",
+            "mail_popup_title": "Keep In Touch",
+            "mail_popup_text": "Signup for exclusive offers and promotions.",
+            "mail_button_text": "Signup",
+            "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+            "redirect_url": "",
+            "popup_h3_size": 28,
+            "popup_subheading_size": 15,
+            "popup_text_color": "#000000",
+            "popup_background_color": "#f0eeeb"
+          }
+        },
+        "quickshop": {
+          "type": "quickshop",
+          "blocks": {
+            "quickshop-0": {
+              "type": "product_title",
+              "settings": {}
+            },
+            "quickshop-1": {
+              "type": "product_sku",
+              "settings": {}
+            },
+            "quickshop-2": {
+              "type": "product_prices",
+              "settings": {}
+            },
+            "quickshop-3": {
+              "type": "product_form",
+              "settings": {}
+            },
+            "quickshop-5": {
+              "type": "product_buttons",
+              "settings": {
+                "show_quantity": true
+              }
+            },
+            "quickshop-6": {
+              "type": "product_description",
+              "settings": {}
+            },
+            "quickshop-7": {
+              "type": "social_share",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "quickshop-0",
+            "quickshop-1",
+            "quickshop-2",
+            "quickshop-3",
+            "quickshop-5",
+            "quickshop-6",
+            "quickshop-7"
+          ],
+          "settings": {
+            "enable_quickview": true,
+            "quickview_type": "drawer",
+            "enable_quick_add": true,
+            "enable_video_looping": false,
+            "show_tax_info": false
+          }
+        }
+      },
+      "content_for_index": []
+    },
+    "Iridium": {
+      "main_font": "inter_n4",
+      "nav_font": "inter_n4",
+      "heading_font": "playfair_display_n4",
+      "font_size": 15,
+      "nav_size": 15,
+      "h1_size": 26,
+      "h2_size": 24,
+      "h3_size": 22,
+      "font_spacing": 0,
+      "nav_spacing": 1,
+      "button_spacing": 0,
+      "nav_transform": true,
+      "buttons_transform": true,
+      "background": "#ffffff",
+      "text_color": "#020000",
+      "announcement_bg": "#4d132d",
+      "announcement_hover": "#FFFFFF",
+      "mobile_header_bg": "#4d132d",
+      "mobile_header_text": "#ffffff",
+      "header_bg": "#4d132d",
+      "header_text": "#ffffff",
+      "header_hover": "#ffffff",
+      "button_bg": "#761d45",
+      "button_text": "#FFFFFF",
+      "button_hover": "#4d132d",
+      "secondary_button_bg": "#4d132d",
+      "secondary_button_text": "#FFFFFF",
+      "secondary_button_hover": "#761d45",
+      "swatch_accent": "#4d132d",
+      "directional_bg": "#4d132d",
+      "directional_hover": "#761d45",
+      "footer_bg": "#4d132d",
+      "footer_text": "#ffffff",
+      "footer_hover": "#ffffff",
+      "scheme_1_bg": "#4d132d",
+      "scheme_1_text": "#ffffff",
+      "scheme_2_bg": "#ffffff",
+      "scheme_2_text": "#4d132d",
+      "scheme_2_hover": "#761d45",
+      "scheme_3_bg": "#f5f5f5",
+      "scheme_3_text": "#000000",
+      "scheme_3_hover": "#000000",
+      "enable_age_verify": false,
+      "enable_test_mode": false,
+      "age_limit": 21,
+      "age_logo": "",
+      "age_text_color": "#020000",
+      "age_bg_color": "#e1e7e2",
+      "age_bg_image": "",
+      "enable_age_overlay_color": true,
+      "age_overlay_color_opacity": 50,
+      "show_shipping_countdown": true,
+      "free_shipping_threshold": "50",
+      "cart_upsell_title": "Currently trending",
+      "product_upsell": [],
+      "scroll_animation": "animation--active animation-type--fadeInUp",
+      "text_animation": "animation-text--active animation-text-type--fadeInUp",
+      "search_linklist": "main-menu",
+      "collection_title_style": "below_image",
+      "product_info_appearance": "title_above_price_center",
+      "varying_grid": false,
+      "product_grid_vendor": false,
+      "date_range": 15,
+      "secondary_images_hover": true,
+      "product_grid_video": false,
+      "show_collection_swatches": true,
+      "facebook_url": "",
+      "instagram": "",
+      "pinterest_url": "",
+      "twittername": "",
+      "enable_metal_swatches": true,
+      "gold_gradient": "",
+      "enable_kt_labels": true,
+      "sections": {
+        "mobile-header": {
+          "type": "mobile-header",
+          "settings": {
+            "header_layout": "logo_left",
+            "show_searchbox": true,
+            "enable_sticky": true,
+            "logo": "",
+            "logo_max_width": 60,
+            "logo_size": 25,
+            "mobile_nav_scheme": "1",
+            "main_nav": "main-menu",
+            "menu_image_text": "",
+            "menu_image_url": "",
+            "show_locale_selector": true,
+            "show_country_selector": true,
+            "show_flag": true
+          }
+        },
+        "mailing-popup": {
+          "type": "mailing-popup",
+          "settings": {
+            "popup": false,
+            "popup_delay": 5,
+            "popup_frequency": 7,
+            "popup_image": "background",
+            "mail_popup_title": "Keep In Touch",
+            "mail_popup_text": "Signup for exclusive offers and promotions.",
+            "mail_button_text": "Signup",
+            "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+            "redirect_url": "",
+            "popup_h3_size": 48,
+            "popup_subheading_size": 14,
+            "popup_text_color": "#000000",
+            "popup_background_color": "#ffffff"
+          }
+        },
+        "quickshop": {
+          "type": "quickshop",
+          "blocks": {
+            "quickshop-0": {
+              "type": "product_title",
+              "settings": {}
+            },
+            "quickshop-1": {
+              "type": "product_sku",
+              "settings": {}
+            },
+            "quickshop-2": {
+              "type": "product_prices",
+              "settings": {}
+            },
+            "quickshop-3": {
+              "type": "product_form",
+              "settings": {}
+            },
+            "quickshop-5": {
+              "type": "product_buttons",
+              "settings": {
+                "show_quantity": true
+              }
+            },
+            "quickshop-6": {
+              "type": "product_description",
+              "settings": {}
+            },
+            "quickshop-7": {
+              "type": "social_share",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "quickshop-0",
+            "quickshop-1",
+            "quickshop-2",
+            "quickshop-3",
+            "quickshop-5",
+            "quickshop-6",
+            "quickshop-7"
+          ],
+          "settings": {
+            "enable_quickview": true,
+            "quickview_type": "drawer",
+            "enable_quick_add": true,
+            "enable_video_looping": false,
+            "show_tax_info": false
+          }
+        }
+      },
+      "content_for_index": []
+    }
+  }
+}

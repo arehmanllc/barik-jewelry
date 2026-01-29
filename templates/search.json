@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "disabled": true,
+      "settings": {
+        "show_filters": false,
+        "filter_color_scheme": "none"
+      }
+    },
+    "banner": {
+      "type": "template-header",
+      "settings": {
+        "full_width": true,
+        "scale": 2,
+        "banner_height": 400,
+        "heading": "Shipping & Delivery",
+        "subheading": "<p>Domestic (U.S.): Complimentary insured shipping on all orders within the United States. Delivery typically takes <strong>3–5 business days</strong> for in-stock items.<br/><br/></p><p>Luxury Care: Every order is carefully packaged in our signature Barik box to ensure safe and elegant delivery.</p>",
+        "heading_placement": "center",
+        "alignment": "a-left",
+        "color_scheme": "3"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

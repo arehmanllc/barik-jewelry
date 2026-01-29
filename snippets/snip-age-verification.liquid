@@ -1,0 +1,114 @@
+{% comment %} Image Carousel with Text Assets {% endcomment %}
+{{ 'component-age-verification.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% assign age = settings.age_limit %}
+
+<div id="prompt-background" class="global-age-verification">
+  <div id="age-check-prompt" class="modal-prompt grid__wrapper a-center">
+    <div class="site-logo span-12 auto relative lh0 mt7 mb7">
+      {% if settings.age_logo != blank %}
+        <a class="inline-block lh0 mb0 shrink-wrap" href="{{ routes.root_url }}"><img style="max-width: {{ settings.logo_max_width }}px;" src="{{ settings.age_logo | image_url: width: 800 }}" alt="{{ shop.name }}"></a>
+      {% else %}
+        <a class="inline-block v-center m0" style="font-size: {{ settings.logo_size }}px; color: var(--age-text-color) !important;" href="{{ routes.root_url }}">{{ shop.name }}</a>
+      {% endif %}
+    </div>
+    <div class="push-4 span-4 auto mt12 mb12">
+      <h2 class="h1">
+        {{ 'general.age_verification.age_title' | t: age: age }}
+      </h2>
+      <p>
+        {{ 'general.age_verification.age_description' | t }}
+      </p>
+      <age-check-button>
+        <button id="submit_birthdate" class="button-enter button styled-submit btn-outline" style="display:inline-block">{{'general.age_verification.age_enter' | t }}</button>
+      </age-check-button>
+      {%- if settings.age_link -%}
+        <a class="block mt4" href="{{ settings.age_link }}">{{ 'general.age_verification.age_terms' | t }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% if settings.enable_test_mode %}
+  <script type="text/javascript">
+    document.write("<style> #prompt-background { display: block; }</style>");
+  </script>
+{% else %}
+  <script>
+    if (!customElements.get('age-check-button')) {
+      customElements.define('age-check-button', class AgeCheckButton extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          this.elements = {
+            button: this.querySelector('#submit_birthdate')
+          }
+          this.readCookie = this.readCookie.bind(this);
+          this.handleClick = this.handleClick.bind(this);
+          this.elements.button.addEventListener('click', this.handleClick);
+          this.isAnAdult = this.readCookie('isAnAdult');
+          if (this.isAnAdult) {
+            document.write("<style> #prompt-background { display: none; }</style>");
+          };
+        }
+        disconnectedCallback() {
+          this.elements.button.removeEventListener('click', this.handleClick)
+        }
+        handleClick(event) {
+          var days = 14;
+          var date = new Date();
+          date.setTime(date.getTime()+(days*24*60*60*1000));
+          var expires = "; expires="+date.toGMTString();
+          document.cookie = 'isAnAdult=true;'+expires+"; path=/; SameSite=None; Secure";
+          location.reload();
+        }
+        readCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+        }
+      });
+    }
+  </script>
+{% endif %}
+
+{% assign opacity = settings.age_overlay_color_opacity | divided_by: 100.00 %}
+
+<style>
+  #prompt-background {
+    background-color: var(--age-bg-color);
+    {% if settings.age_bg_image != blank %}
+      background:
+      {%- if settings.enable_age_overlay_color -%}
+        linear-gradient(
+          {{ settings.age_bg_overlay_color | color_modify: 'alpha', opacity }},
+          {{ settings.age_bg_overlay_color | color_modify: 'alpha', opacity }}),
+      {%- endif -%}
+      url({{ settings.age_bg_image | image_url: width: 1600 }})
+    {% endif %};
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999999;
+    overflow: auto;
+    color: var(--age-text-color);
+  }
+  div#age-check-prompt h2,
+  div#age-check-prompt p {
+      color: var(--age-text-color);
+  }
+</style>

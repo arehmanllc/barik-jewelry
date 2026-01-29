@@ -1,0 +1,45 @@
+{% comment %}
+
+Renders a modal element.
+
+Snippet for rendering a modal element.
+  Accepts:
+  - id: {String} A string value. (required)
+  - state: {String} State type, can be either "auto" or manual. (optional)
+  - content: {String} Use Liquid's capture. (optional)
+  - attributes: {String} String of attributes added to the wrapper. (optional)
+
+  Usage:
+  {% render 'snip-modal', id: 'password', state: 'auto', content: captured_content %}
+{% endcomment %}
+<div
+  popover="{{ state | default: 'auto' }}"
+  class="modal modal__container"
+  {{ attributes }}
+  id="{{ id }}"
+>
+  <!-- Inner wrapper -->
+  <div class="modal__inner-wrapper modal__general-modal__wrapper">
+    <!-- Close button -->
+    <div
+      class="slideout__trigger--close slideout__trigger-recover-password__wrapper slideout__trigger-general-modal__wrapper"
+    >
+      <button
+        class="slideout__trigger-recover-password slideout__trigger-general-modal js-modal-close"
+        aria-controls="{{ id }}"
+        aria-label="Close modal"
+        type="button"
+        name="button"
+        popovertarget="{{ id }}"
+        popovertargetaction="hide"
+      >
+        <div class="icn-close"></div>
+      </button>
+    </div><!-- /.slideout__trigger--close -->
+
+    <!-- Content -->
+    <div class="modal__inner-content-container">
+      {{ content | default: '<p>Modal content is empty!</p>' }}
+    </div><!-- /.modal__inner-content-container -->
+  </div><!-- /.modal__inner-wrapper -->
+</div><!-- /.modal -->

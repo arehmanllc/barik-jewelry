@@ -1,0 +1,53 @@
+.announcement--carousel_container {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.announcement--carousel_container .announcement--text {
+  display: none;
+}
+
+.announcement--carousel_container .announcement--text:nth-child(1) {
+  display: block;
+}
+
+.section-announcement--carousel h1,
+.section-announcement--carousel h2,
+.section-announcement--carousel h3,
+.section-announcement--carousel h4,
+.section-announcement--carousel h5,
+.section-announcement--carousel h6,
+.section-announcement--carousel p {
+  margin-bottom: 0;
+}
+
+.announcement--carousel_container.flickity-enabled .announcement--text {
+  display: block;
+}
+
+.announcement--carousel_container.flickity-enabled {
+  opacity: 1;
+}
+
+.announcement--text p {
+  margin-bottom: 0;
+}
+
+.section-announcement--carousel .flickity-button svg {
+  fill: var(--text-color);
+  height: 10px;
+}
+
+.section-announcement--carousel .flickity-button {
+  height: unset;
+  width: unset;
+  background: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.announcement--carousel_container .flickity-prev-next-button.next {
+  left: unset;
+}
+

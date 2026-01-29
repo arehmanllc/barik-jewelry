@@ -1,0 +1,166 @@
+/* ---- Countdown section ---- */
+.countdown__time {
+  font-size: var(--font-size);
+}
+
+.countdown__label,
+.countdown__how,
+.countdown__time-label {
+  font-size: var(--font-size);
+}
+
+.countdown__time--wrapper {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  position: relative;
+}
+
+.countdown__grid {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  padding: 20px;
+  background: var(--background);
+  color: var(--text-color);
+}
+
+.countdown__grid.l-center {
+  justify-content: center;
+}
+
+.countdown__grid.l-space-between {
+  justify-content: space-between;
+}
+
+.countdown__time-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+.countdown__colon-divider {
+  position: absolute;
+  top: 11px;
+  right: -10px;
+}
+
+.countdown__heading {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.countdown__heading p {
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 980px) {
+  .countdown__grid {
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .countdown__grid {
+    text-align: center;
+  }
+  .countdown__grid.l-space-between {
+    justify-content: center;
+  }
+}
+
+/* ---- Countdown section has image ---- */
+
+.countdown--content_wrapper.has--image {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.countdown--section_image {
+  flex: 1 0 100%;
+}
+.countdown--content_wrapper.has--image .countdown__grid.l-center {
+  flex: 1 0 100%;
+}
+
+@media screen and (min-width: 767px) {
+  .countdown--section_image {
+    flex: 0 0 60%;
+  }
+  .countdown--content_wrapper.has--image .countdown__grid.l-center {
+    flex: 0 0 40%;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .countdown--content_wrapper.has--image.image--right .countdown__grid.l-center {
+    order: 0;
+  }
+  .countdown--content_wrapper.has--image.image--right .countdown--section_image {
+    order: 1;
+  }
+}
+
+/* ---- Countdown section image behind text ---- */
+
+.countdown--content_wrapper.has--image.image--behind_text {
+  display: grid;
+}
+
+.countdown--content_wrapper.has--image.image--behind_text .countdown__grid,
+.countdown--content_wrapper.has--image.image--behind_text .countdown--section_image {
+  grid-area: 1/1;
+}
+
+.countdown--content_wrapper.has--image.image--behind_text .countdown__grid {
+  grid-area: 1/1;
+  background: transparent;
+  position: relative;
+  z-index:1;
+}
+
+.countdown--content_wrapper.has--image.image--behind_text .countdown--section_image {
+  position: relative;
+}
+
+.countdown--content_wrapper.has--image.image--behind_text .countdown--section_image:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content:"";
+  background: var(--section-overlay-color);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---- Image heights ---- */
+
+.countdown--content_wrapper.has--image .countdown--section_image .box-ratio {
+  padding-bottom: 0 !important;
+  height: var(--section-height);
+}
+
+.countdown--section_image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .countdown--content_wrapper.has--image .countdown--section_image .box-ratio {
+    padding-bottom: 0 !important;
+    height: var(--section-height-mobile);
+  }
+ 
+  .countdown--section_image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}

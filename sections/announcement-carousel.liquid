@@ -1,0 +1,152 @@
+{% comment %} Announcement carousel assets {% endcomment %}
+{{ 'section-announcement-carousel.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% comment %} Announcement Bar Logic {% endcomment %}
+{%- liquid
+  assign is_carousel = false
+
+  if section.blocks.size > 1
+    assign is_carousel = true
+  endif
+-%}
+
+{% comment %} Announcement carousel section {% endcomment %}
+<div class="section-announcement--carousel py3 px2 no-section-animation js-announcement-carousel"
+  data-section-id="{{ section.id }}"
+  data-asset-url="{{ 'carousel.js' | asset_url }}"
+  data-section-loaded="false"
+  data-section-type="announcement-carousel">
+  <div class="grid__wrapper wrapper-nest edge cg0">
+    {% if is_carousel %}
+      {% capture carousel_config %}{
+        "wrapAround":true,
+        "autoPlay": 5000,
+        "friction":0.4,
+        "cellAlign": "left",
+        "dragThreshold":"15",
+        "draggable": true,
+        "pauseAutoPlayOnHover":false,
+        "prevNextButtons":true,
+        "pageDots": false,
+        "accessibility": false,
+        "arrowShape": "M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+      }{% endcapture  %}
+    {% endif %}
+
+    <div class="announcement--carousel_container span-10 push-1 sm-span-12 auto{% if is_carousel %} js-carousel{% endif %}"{% if is_carousel %} data-flickity='{{ carousel_config }}' data-section-type="carousel"{% endif %}>
+      {% for block in section.blocks %}
+        <div class="announcement--text rte a-center w100 mb0">
+          {{ block.settings.announcement_text }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% style %}
+  {% if section.blocks.size == 1 %}
+    .announcement--carousel_container {
+      opacity: 1;
+    }
+  {% endif %}
+  {% unless section.settings.color_scheme == 'none' %}
+
+      .section-announcement--carousel {
+        background: var(--scheme-{{ section.settings.color_scheme }}-bg) !important;
+      }
+      .section-announcement--carousel h1,
+      .section-announcement--carousel h2,
+      .section-announcement--carousel h3,
+      .section-announcement--carousel h4,
+      .section-announcement--carousel h5,
+      .section-announcement--carousel h6,
+      .section-announcement--carousel p,
+      .section-announcement--carousel a,
+      .section-announcement--carousel a:visited {
+        color: var(--scheme-{{ section.settings.color_scheme }}-text) !important;
+      }
+      .section-announcement--carousel .flickity-button svg {
+        fill: var(--scheme-{{ section.settings.color_scheme }}-text) !important;
+      }
+      .section-announcement--carousel p {
+        font-size: {{ section.settings.text_size }}px;
+      }
+  {% endunless %}
+{% endstyle %}
+{% schema %}
+{
+  "name": "Announcement carousel",
+  "tag": "section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "1",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
+    }
+	],
+  "blocks": [
+    {
+       "type": "announcement_text",
+       "name": "Announcement text",
+       "limit": 5,
+       "settings": [
+         {
+          "type": "paragraph",
+          "content": "Add announcement text, additional messages will show in a carousel unless left blank"
+         },
+         {
+           "type": "richtext",
+           "id": "announcement_text",
+           "label": "Shop announcement",
+           "default": "<p>Share a shop announcement or message</p>"
+         }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement carousel",
+      "blocks": [
+        {
+          "type": "announcement_text"
+        },
+        {
+          "type": "announcement_text"
+        },
+        {
+          "type": "announcement_text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
