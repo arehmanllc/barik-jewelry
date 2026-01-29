@@ -14,23 +14,22 @@
       "blocks": {
         "template--15986753863850__7773d85e-29d5-49cb-80bc-bf840c5e1664-1667577564f8f77732-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/135877971.png",
-            "heading": "Stackable Gold Diamond Rings",
-            "subheading": "<p>Chic and sparkly. Mix, match, and shine your way.</p>",
+            "heading": "<p>Jewelry with</p><p>Purpose & Beauty</p>",
+            "subheading": "<p>Thoughtfully crafted designs inspired by elegance and meaning.</p>",
             "link": "/collections/all",
-            "button_text": "Button",
-            "second_link": "",
-            "second_button_text": "",
+            "button_text": "Shop All",
+            "second_link": "shopify://products/1-6-ctw-natural-diamond-puffy-heart-charm-pendant",
+            "second_button_text": "About Us",
             "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "slide_text_color": "#ffffff",
+            "overlay_opacity": 6,
+            "slide_text_color": "#242424",
             "caption_background": "rgba(0,0,0,0)",
             "hide_caption_background": false,
             "caption_horizontal": 50,
             "caption_vertical": 50,
-            "text_align": "center"
+            "text_align": "left"
           }
         },
         "template--15986753863850__7773d85e-29d5-49cb-80bc-bf840c5e1664-1667577564f8f77732-1": {
@@ -38,8 +37,8 @@
           "settings": {
             "image": "shopify://shop_images/126433524-6094x3300-f32e97d3-e668-4e26-aafe-6dd1970620dd-Photoroom-Photoroom.jpg",
             "mobile_image": "shopify://shop_images/126433524-6094x3300-f32e97d3-e668-4e26-aafe-6dd1970620dd-Photoroom-Photoroom_1.jpg",
-            "heading": "",
-            "subheading": "",
+            "heading": "<p>Jewelry with</p><p>Purpose & Beauty</p>",
+            "subheading": "<p>Thoughtfully crafted designs inspired by elegance and meaning.</p>",
             "link": "shopify://collections",
             "button_text": "Check our collection",
             "second_link": "",
@@ -51,7 +50,7 @@
             "hide_caption_background": true,
             "caption_horizontal": 50,
             "caption_vertical": 50,
-            "text_align": "center"
+            "text_align": "left"
           }
         }
       },
@@ -59,7 +58,6 @@
         "template--15986753863850__7773d85e-29d5-49cb-80bc-bf840c5e1664-1667577564f8f77732-0",
         "template--15986753863850__7773d85e-29d5-49cb-80bc-bf840c5e1664-1667577564f8f77732-1"
       ],
-      "disabled": true,
       "settings": {
         "full_width": true,
         "enable_autoplay": false,
@@ -138,7 +136,6 @@
     },
     "hero_image_with_text_AX9cDb": {
       "type": "hero-image-with-text",
-      "disabled": true,
       "name": "Hero image with text",
       "settings": {
         "image": "shopify://shop_images/different-goldsmiths-tools-on-the-jewelry-workplac-2024-10-15-06-51-33-utc.jpg",
@@ -284,6 +281,7 @@
         "16425204605bb47af2-0": {
           "type": "text_block",
           "settings": {
+            "content_type": "icon",
             "icon": "gift",
             "link": "",
             "title": "Gift wrap",
@@ -293,6 +291,7 @@
         "16425204605bb47af2-1": {
           "type": "text_block",
           "settings": {
+            "content_type": "icon",
             "icon": "globe",
             "link": "",
             "title": "Worldwide",
@@ -302,6 +301,7 @@
         "16425204605bb47af2-2": {
           "type": "text_block",
           "settings": {
+            "content_type": "icon",
             "icon": "chat",
             "link": "",
             "title": "24/7 Support",
@@ -311,6 +311,7 @@
         "9e893234-1f35-4234-b109-6fb9c7856a3e": {
           "type": "text_block",
           "settings": {
+            "content_type": "icon",
             "icon": "return",
             "link": "",
             "title": "Free Returns",
@@ -320,6 +321,7 @@
         "40f2ec0c-4c6f-4492-aa5c-6c17db35147e": {
           "type": "text_block",
           "settings": {
+            "content_type": "icon",
             "icon": "heart",
             "link": "",
             "title": "Eco Friendly",
