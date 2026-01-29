@@ -93,7 +93,10 @@
 .section-slideshow .slideshow__caption p {
   line-height: initial;
 }
-
+.grid__wrapper.slideshow__caption{
+  grid-template-columns: unset;
+  width: 100%;
+}
 .slideshow__caption .slideshow__caption-wrapper {
   padding: 30px;
   background: var(--background);
@@ -124,7 +127,11 @@
   color: var(--text-color);
   margin-bottom: 0;
 }
-
+.slideshow__caption h2.slideshow__title p{
+  font-size: clamp(32px,4vw,56px);
+  font-weight: 500;
+  font-family: var(--heading-family);
+}
 .slideshow__caption .btn-border-link span,
 .section-slideshow__button span {
   font-size: var(--font-size-reset);

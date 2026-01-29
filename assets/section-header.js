@@ -25,6 +25,8 @@ const Header = {
       Header.doubleTapToGo(doubleTapToGoItems);
     }
 
+    // Initialize megamenu hover functionality
+    Header.initMegamenuHover();
 
     // Aria support
     WAU.a11yHelpers.setUpAriaExpansion();
@@ -205,6 +207,45 @@ const Header = {
       .forEach(function (activeMenu) {
         activeMenu.classList.remove(activeClass);
       });
+  },
+  initMegamenuHover: function initMegamenuHover() {
+    const megamenuWrappers = document.querySelectorAll('.megamenu__wrapper--flex');
+    
+    megamenuWrappers.forEach(function(wrapper) {
+      const menuLinks = wrapper.querySelectorAll('.menu__listlink[data-collection-index]');
+      const imageWrappers = wrapper.querySelectorAll('.megamenu__collection-image-wrapper[data-image-index]');
+      
+      menuLinks.forEach(function(link) {
+        link.addEventListener('mouseenter', function() {
+          const index = this.getAttribute('data-collection-index');
+          
+          // Hide all images
+          imageWrappers.forEach(function(img) {
+            img.classList.remove('active');
+          });
+          
+          // Show the corresponding image
+          const targetImage = wrapper.querySelector(`.megamenu__collection-image-wrapper[data-image-index="${index}"]`);
+          if (targetImage) {
+            targetImage.classList.add('active');
+          }
+        });
+      });
+      
+      // Reset to first image when mouse leaves the megamenu
+      const megamenuContainer = wrapper.closest('.megamenu');
+      if (megamenuContainer) {
+        megamenuContainer.addEventListener('mouseleave', function() {
+          imageWrappers.forEach(function(img) {
+            img.classList.remove('active');
+          });
+          // Show first image by default
+          if (imageWrappers.length > 0) {
+            imageWrappers[0].classList.add('active');
+          }
+        });
+      }
+    });
   }
 }
 
