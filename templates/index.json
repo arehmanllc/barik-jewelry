@@ -184,6 +184,49 @@
         "section_padding": "none"
       }
     },
+    "1642541933e9708a47": {
+      "type": "shop-the-look",
+      "blocks": {
+        "1642541933781cefa2-0": {
+          "type": "product",
+          "settings": {
+            "product": "1-10-ctw-natural-diamond-crescent-moon-necklace",
+            "hotspot_horizontal": 43,
+            "hotspot_vertical": 29,
+            "hotspot_color": "#000000"
+          }
+        },
+        "f5c89dbb-bcd4-4567-a7b9-78905523d155": {
+          "type": "product",
+          "settings": {
+            "product": "1-3ctw-natural-diamond-earrings",
+            "hotspot_horizontal": 58,
+            "hotspot_vertical": 46,
+            "hotspot_color": "#000000"
+          }
+        },
+        "9965037a-619b-4539-a933-cb350f0fe7dc": {
+          "type": "product",
+          "settings": {
+            "product": "1-4-ct-natural-diamond-solitaire-necklace",
+            "hotspot_horizontal": 37,
+            "hotspot_vertical": 73,
+            "hotspot_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "1642541933781cefa2-0",
+        "f5c89dbb-bcd4-4567-a7b9-78905523d155",
+        "9965037a-619b-4539-a933-cb350f0fe7dc"
+      ],
+      "settings": {
+        "full_width": false,
+        "title": "",
+        "image": "shopify://shop_images/135877971-8192x5465-f59ab60d-9495-49d4-a702-61c9d63a6395-Photoroom-Photoroom.jpg",
+        "section_padding": "both"
+      }
+    },
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
       "type": "featured-collection",
       "settings": {
@@ -344,49 +387,6 @@
         "section_padding": "both"
       }
     },
-    "1642541933e9708a47": {
-      "type": "shop-the-look",
-      "blocks": {
-        "1642541933781cefa2-0": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "hotspot_horizontal": 43,
-            "hotspot_vertical": 29,
-            "hotspot_color": "#000000"
-          }
-        },
-        "f5c89dbb-bcd4-4567-a7b9-78905523d155": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "hotspot_horizontal": 58,
-            "hotspot_vertical": 46,
-            "hotspot_color": "#000000"
-          }
-        },
-        "9965037a-619b-4539-a933-cb350f0fe7dc": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "hotspot_horizontal": 37,
-            "hotspot_vertical": 73,
-            "hotspot_color": "#000000"
-          }
-        }
-      },
-      "block_order": [
-        "1642541933781cefa2-0",
-        "f5c89dbb-bcd4-4567-a7b9-78905523d155",
-        "9965037a-619b-4539-a933-cb350f0fe7dc"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "title": "Shop the Look",
-        "section_padding": "both"
-      }
-    },
     "1642520461c9848fcf": {
       "type": "text-with-icons",
       "blocks": {
@@ -529,6 +529,7 @@
     "7773d85e-29d5-49cb-80bc-bf840c5e1664",
     "marquee_9im86a",
     "collection_list_wHky6C",
+    "1642541933e9708a47",
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "featured_collection_6mKR8x",
     "featured_collection_q9b7d4",
@@ -536,7 +537,6 @@
     "hero_image_with_text_AX9cDb",
     "164253557900d67a91",
     "multicolumn_hWamPV",
-    "1642541933e9708a47",
     "1642520461c9848fcf",
     "16425280643589a733",
     "newsletter_ttXdDd",
