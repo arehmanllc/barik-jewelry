@@ -138,6 +138,52 @@
         "padding_bottom_mobile": 13
       }
     },
+    "collection_list_wHky6C": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_r8aBJP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bracelets-1",
+            "product_image": false
+          }
+        },
+        "featured_collection_zqfRge": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "earrings",
+            "product_image": false
+          }
+        },
+        "featured_collection_UAgYMB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "necklaces-1",
+            "product_image": false
+          }
+        },
+        "featured_collection_UfRNgA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rings",
+            "product_image": false
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_r8aBJP",
+        "featured_collection_zqfRge",
+        "featured_collection_UAgYMB",
+        "featured_collection_UfRNgA"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "Shop by Categories",
+        "items_per_row": 4,
+        "circular_images": false,
+        "section_padding": "none"
+      }
+    },
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
       "type": "featured-collection",
       "settings": {
@@ -482,6 +528,7 @@
   "order": [
     "7773d85e-29d5-49cb-80bc-bf840c5e1664",
     "marquee_9im86a",
+    "collection_list_wHky6C",
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "featured_collection_6mKR8x",
     "featured_collection_q9b7d4",
