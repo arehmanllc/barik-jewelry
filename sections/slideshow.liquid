@@ -225,10 +225,10 @@ data-section-type="carousel">
 
 
             {% if has_caption %}
-            <div class="slideshow__caption slide-{{ block.id }}{% if caption_below %} caption--below__image{% endif %}{% if hide_caption_background %} hide_caption_background{% endif %}">
+            <div class="grid__wrapper slideshow__caption slide-{{ block.id }}{% if caption_below %} caption--below__image{% endif %}{% if hide_caption_background %} hide_caption_background{% endif %}">
               <div class="slideshow__caption-wrapper a-{{ align_text }}">
                 {% if has_heading %}
-                  <h2 class="slideshow__title slide-animate delay--1">{{ block.settings.heading | escape }}</h2>
+                  <h2 class="slideshow__title slide-animate delay--1">{{ block.settings.heading }}</h2>
                 {% endif %}
                 {% if has_subheading %}
                   <div class="rte mb0 slide-animate delay--2">
@@ -352,10 +352,9 @@ data-section-type="carousel">
           "content": "Caption content"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "heading",
-          "label": "Heading",
-          "default": "Slide image title"
+          "label": "Heading"
         },
         {
           "type": "richtext",

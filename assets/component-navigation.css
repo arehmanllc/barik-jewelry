@@ -50,7 +50,7 @@
   font-size: var(--nav-size);
   color: var(--nav-color) !important;
   display: block;
-  padding: 0 10px !important;
+  padding: 0 8px !important;
   position: relative;
   letter-spacing: var(--nav-spacing);
   margin-bottom: 0;
@@ -181,12 +181,14 @@
   left: 0;
   z-index: 4;
   line-height: initial;
-  padding: 0 20px !important;
+  /* padding: 0 20px !important; */
+  padding: 50px;
   background: var(--dropdown-background-color);
-  width: 95%;
-  left: 2.5%;
-  max-width: 95%;
+  width: 90%;
+  left: 5%;
+  max-width: 90%;
   margin: 0;
+  border-radius: 10px;
 }
 
 .megamenu--container {
@@ -199,6 +201,58 @@
   flex: 1 1 auto;
   columns: 4;
   padding: 20px 0;
+}
+
+/* New flex layout for hover functionality */
+.megamenu__wrapper--flex {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+  columns: unset;
+  padding: 0;
+}
+.megamenu__listitem .menu__listlink:hover{
+  color: var(--nav-hover-link-color) !important;
+}
+.megamenu__links-column {
+  flex: 0 0 400px;
+  min-width: 200px;
+}
+
+.megamenu__images-column {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.megamenu__collection-image-wrapper {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  width: 100%;
+  height: 100%;
+}
+.megamenu__collection-image-wrapper >a{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.megamenu__collection-image-wrapper.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.megamenu__collection-image-wrapper:first-child {
+  opacity: 1;
+  visibility: visible;
+}
+
+.megamenu__images-column {
+  position: relative;
 }
 
 .nav-inner-container.nav_inline_center .navigation__menu {
@@ -247,14 +301,15 @@
   margin-right: auto;
   background-color: transparent;
 }
-
+/* 
 .megamenu__collection-image .box-ratio {
-  padding-bottom: 50% !important;
-}
+  padding-bottom: 320px !important;
+} */
 
 
 .megamenu__collection-image .box-ratio img {
-  object-fit: cover;
+  /* object-fit: cover; */
+  object-fit: contain;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -304,7 +359,14 @@
   clear: left;
   padding: 0 0 5px;
 }
-
+.megamenu__listitem .menu__listlink{
+  display: block;
+  font-size: clamp(24px,3vw,56px);
+  color: rgba(36, 36, 36, 0.5) !important;
+  font-family: var(--heading-family);
+  border-bottom: 1px solid rgba(36, 36, 36, 0.5);
+  margin-bottom: 0;
+} 
 .megamenu__listlink {
   padding: 0 !important;
   font-weight: normal !important;

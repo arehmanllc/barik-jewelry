@@ -13,26 +13,24 @@
   "sections": {
     "header": {
       "type": "header",
-      "custom_css": [
-        "section.section-header__main-bar {background: #f7f7f7;}"
-      ],
+      "custom_css": [],
       "settings": {
-        "announcement_text": "<p><strong>Welcome to our store</strong></p>",
-        "announcement_text_size": 13,
-        "header_layout": "block_layout_center",
+        "announcement_text": "<p>Valentine Day Sale is Live</p>",
+        "announcement_text_size": 14,
+        "header_layout": "inline_layout_left",
         "enable_sticky": true,
         "enable_header_overlay": false,
         "use_icons": true,
         "logo": "shopify://shop_images/WhatsApp_Image_2025-04-25_at_9.00.33_AM.jpg",
-        "logo_max_width": 265,
+        "logo_max_width": 175,
         "logo_size": 30,
         "show_locale_selector": true,
         "show_country_selector": true,
         "show_flag": true,
-        "main_nav": "main-menu",
-        "show_mm_collection_images": false,
-        "show_product_images": false,
-        "show_collection_images": false
+        "main_nav": "figma-header-menu",
+        "show_mm_collection_images": true,
+        "show_product_images": true,
+        "show_collection_images": true
       }
     }
   },
