@@ -69,7 +69,73 @@
         "caption_below": false,
         "slide_heading_size": 32,
         "subheading_size": 18,
-        "section_padding": "bottom"
+        "section_padding": "none"
+      }
+    },
+    "marquee_9im86a": {
+      "type": "marquee",
+      "blocks": {
+        "marquee_item_QQLMMm": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Timeless Elegance",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_hrH43R": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "✧",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_f7wTiH": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Designed to Last",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_ba4kde": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "✧",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_m44nf3": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Consciously Made",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_j6xPBq": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "✧",
+            "enable_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "marquee_item_QQLMMm",
+        "marquee_item_hrH43R",
+        "marquee_item_f7wTiH",
+        "marquee_item_ba4kde",
+        "marquee_item_m44nf3",
+        "marquee_item_j6xPBq"
+      ],
+      "name": "Marquee Section",
+      "settings": {
+        "autoplay": true,
+        "font_heading_family": "f-body",
+        "heading_size": "f-20",
+        "font_weight": "b-400",
+        "padding_top": 13,
+        "padding_top_mobile": 13,
+        "padding_bottom": 13,
+        "padding_bottom_mobile": 13
       }
     },
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
@@ -415,6 +481,7 @@
   },
   "order": [
     "7773d85e-29d5-49cb-80bc-bf840c5e1664",
+    "marquee_9im86a",
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "featured_collection_6mKR8x",
     "featured_collection_q9b7d4",
