@@ -243,6 +243,22 @@
         "section_padding": "both"
       }
     },
+    "image_with_text_mxbbHd": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Jewelry with Meaning",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "More About Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "2",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
       "type": "featured-collection",
       "settings": {
@@ -547,6 +563,7 @@
     "collection_list_wHky6C",
     "1642541933e9708a47",
     "image_with_text_gKnTji",
+    "image_with_text_mxbbHd",
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "featured_collection_6mKR8x",
     "featured_collection_q9b7d4",
