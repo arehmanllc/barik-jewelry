@@ -58,6 +58,7 @@
     "text_animation": "animation-text--none",
     "section_button_style": "background",
     "search_linklist": "footer",
+    "collection_product_count": false,
     "image_ratio": "square",
     "product_info_appearance": "title_above_price_left",
     "varying_grid": false,
