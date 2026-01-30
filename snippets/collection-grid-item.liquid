@@ -54,6 +54,7 @@
         <p class="collection-loop__title animate--text mb0{% if bold_collection_title %} strong{% endif %}">
           {{ collection.title }}
         </p>
+        {%- render 'icon-arrow' -%}
         {% if collection_product_count %}
           <p class="collection-loop__product-count block mb0 animate--text delay--1">
             {{ 'collections.general.item_count' | t: count: collection.products_count }}
