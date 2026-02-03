@@ -6,7 +6,24 @@
 .section-featured-collection__section-heading {
   padding-bottom: 0;
 }
-
+.section-featured-collection .grid__wrapper{
+  grid-template-columns: 1fr;
+}
+.section-featured-collection .section-featured-collection__section-heading{
+  font-size: clamp(32px, 4vw, 56px);
+    font-weight: 500;
+    letter-spacing: -1.25px;
+}
+.section-featured-collection{
+  margin-top: 10rem;
+}
+.section-featured-collection .ft-coll-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  left: 50%;
+}
 .section-featured-collection__wrapper--carousel .flickity-button.previous {
   position: absolute;
   top: calc(50% - 44px);

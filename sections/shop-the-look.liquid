@@ -168,15 +168,18 @@
                         -o-transform: translate(-{{ hotspot_horizontal }}%, -{{ hotspot_vertical }}%);
                         transform: translate(-{{ hotspot_horizontal }}%, -{{ hotspot_vertical }}%);
                         cursor: pointer;
+                        border-radius:50%;
+                        outline: 2px solid #ffffff;
+                        outline-offset: 4px;
                     }
                     .product-{{ block.id }}.hotspot:after {
                         content: "";
                         background-color: {{ color }};
-                        width: 20px;
-                        height: 20px;
-                        border: 5px solid white;
+                        width: 5px;
+                        height: 5px;
+                        border: 1px solid white;
                         border-radius: 50%;
-                        opacity: 0.6;
+                        opacity: 1;
                         display: block;
                         pointer-events: all;
                     }

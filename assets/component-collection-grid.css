@@ -19,17 +19,36 @@
 .collection-loop__item--square .box-ratio {
   padding-bottom: 100% !important;
 }
-
+.collection-loop__item .collection-loop__img-wrapper img{
+  transition: all ease-in-out 0.5s;
+}
+.collection-loop__item:hover .collection-loop__img-wrapper img{
+  transform: translate(-50%,-50%) scale(1.07);
+}
+.collection-loop__item:hover .collection-loop__title{
+  color: #A5874A;
+}
+.collection-loop__item .collection-loop__title + svg{
+  transition: all ease-in-out 0.7s;
+}
+.collection-loop__item:hover .collection-loop__title + svg > *{
+  stroke: #A5874A;
+  
+}
+.collection-loop__item:hover .collection-loop__title + svg {
+transform: rotate(-45deg);
+}
 .collection-loop__item--square .box-ratio img {
   object-fit: cover;
   height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%) scale(1);
+  /* -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%); */
 }
 
 .collection-loop__item--square .collection-info {
@@ -41,7 +60,7 @@
 }
 
 .collection-loop__item--vertical .box-ratio img {
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
   position: absolute;
   top: 50%;
@@ -74,6 +93,7 @@
 
 .collection-loop__title.strong {
   font-weight: bold;
+  color: #434343;
 }
 
 /* Floating title on image */
