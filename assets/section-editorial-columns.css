@@ -1,5 +1,5 @@
 @media (max-width: 767px) {
-  .section-txt-cols__inner-wrapper {
+  .section-txt-cols__inner-wrapper:not(.flickity-enabled) {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
@@ -9,11 +9,54 @@
     padding: 0;
   }
 
-  .section-txt-cols__item {
+  .section-txt-cols__inner-wrapper:not(.flickity-enabled) .section-txt-cols__item {
     flex: 0 0 auto;
     width: 270px !important;
     margin-right: 15px !important;
   }
+}
+.section-txt-cols__inner-wrapper .box-ratio{
+  padding-bottom: 250px !important;
+  border-radius: 10px;
+}
+/* Flickity specific overrides for this section */
+.section-txt-cols .flickity-viewport {
+  width: 100%;
+}
+
+.section-txt-cols .flickity-prev-next-button {
+  background: var(--directional-bg);
+  color: var(--directional-text);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: none;
+  opacity: 1;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+.section-txt-cols .flickity-prev-next-button:hover {
+  background: var(--directional-hover);
+  opacity: 1;
+}
+
+.section-txt-cols .flickity-prev-next-button.previous {
+  left: 10px;
+  top: calc(50% - 44px) !important;
+  transform: translateY(0) !important;
+}
+
+.section-txt-cols .flickity-prev-next-button.next {
+  right: 10px;
+  left: unset;
+  top: calc(50% - 44px) !important;
+  transform: translateY(0) !important;
+}
+
+.section-txt-cols .flickity-prev-next-button svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--directional-text);
 }
 
 .section-txt-cols__block-heading {

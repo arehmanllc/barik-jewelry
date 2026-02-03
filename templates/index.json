@@ -289,182 +289,27 @@
         "section_padding": "both"
       }
     },
-    "featured_collection_6mKR8x": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "title": "The Finishing Line",
-        "subheading": "<p>Every outfit deserves a perfect ending, necklaces that bring polish, sparkle, and personality.</p>",
-        "link_text": "SHOP THE COLLECTION",
-        "link_url": "https://barikjewelry.com/collections/necklaces-1",
-        "text_position": "left",
-        "collection": "necklaces-1",
-        "display_type": "carousel",
-        "items_per_row": 4,
-        "items_per_page": 7,
-        "section_padding": "both"
-      }
-    },
-    "featured_collection_q9b7d4": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "title": "One Pendant, Endless Possibilities",
-        "subheading": "<p>Layer it, gift it, or wear it solo </p><p>pendants designed to move with you through every moment.</p>",
-        "link_text": "SHOP THE COLLECTION",
-        "link_url": "https://barikjewelry.com/collections/pendant-1",
-        "text_position": "left",
-        "collection": "pendant-1",
-        "display_type": "carousel",
-        "items_per_row": 4,
-        "items_per_page": 7,
-        "section_padding": "both"
-      }
-    },
-    "1642532857b939b884": {
-      "type": "rich-text",
-      "settings": {
-        "title": "At Barik Jewelry, every creation is more than a design, it’s a memory immortalized in gold and stone.",
-        "rich_text": "<p>We craft timeless, personalized pieces that celebrate your most cherished moments. From bespoke initials to one-of-a-kind engagement rings, each piece is handcrafted with utmost care, precision, and passion.</p>",
-        "heading_size": 32,
-        "text_size": 17,
-        "page": "",
-        "alignment": "a-center",
-        "content_width": 60,
-        "reduce_padding": false,
-        "section_padding": "bottom",
-        "color_scheme": "2"
-      }
-    },
-    "hero_image_with_text_AX9cDb": {
-      "type": "hero-image-with-text",
-      "name": "Hero image with text",
-      "settings": {
-        "image": "shopify://shop_images/different-goldsmiths-tools-on-the-jewelry-workplac-2024-10-15-06-51-33-utc.jpg",
-        "text_align": "left",
-        "vertical_align": "middle",
-        "title": "CUSTOM JEWELRY by Mohamad Arnaout",
-        "text": "<p>Our Director of Design, Mohamad Arnaout, brings your dream piece to life using advanced computer-aided design (CAD) technology—right before your eyes. The vision and innovative work done at Barik's transforms every piece of jewelry into a true masterpiece. With the help of our state-of-the-art wax mills, 3D printers, and expert wax carvers, you can explore your design from every angle and try on prototypes to ensure the perfect size, fit, and style.</p>",
-        "heading_size": 36,
-        "text_size": 15,
-        "button": "",
-        "link": "",
-        "section_padding": "both",
-        "color_scheme": "2",
-        "color_header": false
-      }
-    },
-    "164253557900d67a91": {
-      "type": "image-with-text-overlay",
-      "disabled": true,
-      "settings": {
-        "show_overlay_color": false,
-        "overlay_color": "#000000",
-        "image_height": 700,
-        "title": "Image with text overlay",
-        "subheading_text": "",
-        "button_text": "Button",
-        "link": "shopify://collections/all",
-        "heading_size": 60,
-        "subheading_size": 18,
-        "text_color": "#ffffff",
-        "full_width": true,
-        "section_padding": "both"
-      }
-    },
-    "multicolumn_hWamPV": {
-      "type": "multicolumn",
-      "blocks": {
-        "image_alongside_text_MMpBqa": {
-          "type": "image_alongside_text",
-          "settings": {
-            "block_width": "half",
-            "two_rows": false,
-            "image_height": "natural",
-            "image_align": "left",
-            "text_align": "left",
-            "heading": "Image alongside text",
-            "caption": "<p>Caption content.</p>",
-            "button_text": "Button",
-            "link": "",
-            "color_scheme": "2"
-          }
-        },
-        "image_floating_text_KTWWfw": {
-          "type": "image_floating_text",
-          "settings": {
-            "block_width": "half",
-            "two_rows": true,
-            "image_height": "natural",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "text_align": "center",
-            "text_position": "center_center",
-            "heading": "Image with floating text",
-            "caption": "<p>Caption content.</p>",
-            "button_text": "Button",
-            "link": "",
-            "caption_background_fill": false,
-            "color_scheme": "2"
-          }
-        },
-        "image_alongside_text_GxYJek": {
-          "type": "image_alongside_text",
-          "settings": {
-            "block_width": "half",
-            "two_rows": false,
-            "image_height": "natural",
-            "image_align": "left",
-            "text_align": "left",
-            "heading": "Image alongside text",
-            "caption": "<p>Caption content.</p>",
-            "button_text": "Button",
-            "link": "",
-            "color_scheme": "2"
-          }
-        }
-      },
-      "block_order": [
-        "image_alongside_text_MMpBqa",
-        "image_floating_text_KTWWfw",
-        "image_alongside_text_GxYJek"
-      ],
-      "disabled": true,
-      "settings": {
-        "section_padding": "both"
-      }
-    },
     "1642520461c9848fcf": {
       "type": "text-with-icons",
       "blocks": {
-        "16425204605bb47af2-0": {
-          "type": "text_block",
-          "settings": {
-            "content_type": "icon",
-            "icon": "gift",
-            "link": "",
-            "title": "Gift wrap",
-            "subheading": ""
-          }
-        },
         "16425204605bb47af2-1": {
           "type": "text_block",
           "settings": {
             "content_type": "icon",
-            "icon": "globe",
+            "icon": "credit-card",
             "link": "",
-            "title": "Worldwide",
-            "subheading": ""
+            "title": "Thoughtful Craftsmanship",
+            "subheading": "<p>Carefully made pieces with lasting beauty and refined detail.</p>"
           }
         },
         "16425204605bb47af2-2": {
           "type": "text_block",
           "settings": {
             "content_type": "icon",
-            "icon": "chat",
+            "icon": "clock",
             "link": "",
-            "title": "24/7 Support",
-            "subheading": ""
+            "title": "Timeless Design",
+            "subheading": "<p>Classic forms created to remain relevant beyond trends.</p>"
           }
         },
         "9e893234-1f35-4234-b109-6fb9c7856a3e": {
@@ -473,8 +318,8 @@
             "content_type": "icon",
             "icon": "return",
             "link": "",
-            "title": "Free Returns",
-            "subheading": ""
+            "title": "Responsible Creation",
+            "subheading": "<p>Mindfully sourced materials crafted with care and intention.</p>"
           }
         },
         "40f2ec0c-4c6f-4492-aa5c-6c17db35147e": {
@@ -483,19 +328,17 @@
             "content_type": "icon",
             "icon": "heart",
             "link": "",
-            "title": "Eco Friendly",
-            "subheading": ""
+            "title": "Made to Endure",
+            "subheading": "<p>Designed for everyday wear and a lifetime of meaning.</p>"
           }
         }
       },
       "block_order": [
-        "16425204605bb47af2-0",
         "16425204605bb47af2-1",
         "16425204605bb47af2-2",
         "9e893234-1f35-4234-b109-6fb9c7856a3e",
         "40f2ec0c-4c6f-4492-aa5c-6c17db35147e"
       ],
-      "disabled": true,
       "settings": {
         "title": "",
         "icon_size": 45,
@@ -503,72 +346,138 @@
         "section_padding": "both"
       }
     },
-    "16425280643589a733": {
-      "type": "testimonials",
+    "editorial_columns_DnYzCD": {
+      "type": "editorial-columns",
       "blocks": {
-        "1642528063e878de0b-0": {
-          "type": "testimonial",
+        "text_block_7arkQy": {
+          "type": "text_block",
           "settings": {
-            "content": "<p>I love it and I’m sure she will too!</p>",
-            "author": "John Th",
-            "link": ""
+            "image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+            "link": "",
+            "title": "Expert Restoration & Repair",
+            "subheading": "<p>Our master artisans restore your heirlooms with meticulous skill reviving brilliance, reinforcing craftsmanship, and preserving the story behind every piece.</p>"
           }
         },
-        "1642528063e878de0b-1": {
-          "type": "testimonial",
+        "text_block_3f6cnJ": {
+          "type": "text_block",
           "settings": {
-            "content": "<p>My wife is really happy with the ring. Thank you so much. </p>",
-            "author": "Juan Ch",
-            "link": ""
+            "image": "shopify://shop_images/689491_600_P_266668841.jpg",
+            "link": "",
+            "title": "Bespoke Design & Creation",
+            "subheading": "<p>Collaborate privately with our Director of Design to bring your dream piece to life. From concept sketches to 3D renderings, your bespoke creation is crafted with the finest materials and attention to detail.</p>"
           }
         },
-        "1642528063e878de0b-2": {
-          "type": "testimonial",
+        "text_block_49tkTw": {
+          "type": "text_block",
           "settings": {
-            "content": "<p>She loves the ring! Thanks so much again </p>",
-            "author": "Gavin D",
-            "link": ""
+            "image": "shopify://shop_images/689510_602_P_266668852.jpg",
+            "link": "",
+            "title": "Signature Cleaning & Polishing",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        },
+        "text_block_n7Beqw": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/689491_600_P_266668841.jpg",
+            "link": "",
+            "title": "Refinement Through Laser Soldering",
+            "subheading": "<p>Utilizing advanced laser technology, we perform delicate repairs with precision and care ensuring seamless restorations without compromising quality.</p>"
+          }
+        },
+        "text_block_apfxgt": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/be5d62a0-4946-46b3-98ba-4e7cb0b095f2_712e2da6-35d0-455b-9777-94dbd7823aa4.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        },
+        "text_block_VwgyNW": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/Hand_wearing_a_gold_ring_with_a_pear-shaped_diamond-Photoroom.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
           }
         }
       },
       "block_order": [
-        "1642528063e878de0b-0",
-        "1642528063e878de0b-1",
-        "1642528063e878de0b-2"
+        "text_block_7arkQy",
+        "text_block_3f6cnJ",
+        "text_block_49tkTw",
+        "text_block_n7Beqw",
+        "text_block_apfxgt",
+        "text_block_VwgyNW"
       ],
+      "name": "Editorial columns",
       "settings": {
-        "title": "Reviews",
-        "text_align": "center",
-        "color_scheme": "2",
+        "title": "Only at Barik Jewelry",
+        "text_align": "left",
         "section_padding": "both"
       }
     },
-    "newsletter_ttXdDd": {
-      "type": "newsletter",
-      "disabled": true,
-      "custom_css": [
-        "p {max-width: none;}"
+    "accordion_tDUUGf": {
+      "type": "accordion",
+      "blocks": {
+        "panel_htUggG": {
+          "type": "panel",
+          "settings": {
+            "heading": "Can I return or exchange my jewelry if I'm not satisfied?",
+            "content": "<p>Can I return or exchange my jewelry if I'm not satisfied?</p>"
+          }
+        },
+        "panel_EbXtUB": {
+          "type": "panel",
+          "settings": {
+            "heading": "How long will my order take to arrive?",
+            "content": "<p>How long will my order take to arrive?</p>"
+          }
+        },
+        "panel_bpQ6n9": {
+          "type": "panel",
+          "settings": {
+            "heading": "Are the materials you use hypoallergenic?",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "panel_xcFidE": {
+          "type": "panel",
+          "settings": {
+            "heading": "How do you ensure the ethical sourcing of your materials?",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "panel_P4HEwR": {
+          "type": "panel",
+          "settings": {
+            "heading": "How should I care for my jewelry to keep it looking its best?",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "panel_VEWfpx": {
+          "type": "panel",
+          "settings": {
+            "heading": "What steps do you take to minimize your environment impact?",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "panel_htUggG",
+        "panel_EbXtUB",
+        "panel_bpQ6n9",
+        "panel_xcFidE",
+        "panel_P4HEwR",
+        "panel_VEWfpx"
       ],
-      "name": "Newsletter",
+      "name": "Accordion",
       "settings": {
-        "title": "Coming Soon: Something Exciting is Cooking!",
-        "subheading": "<p>At Barik Jewelry, our story is rooted in tradition and designed for the future — and now, something new is being crafted with the same spirit of excellence. We are preparing to unveil a special addition to our collection, blending timeless craftsmanship with fresh inspiration.</p><p>Stay connected — the next piece of our journey is almost here.</p><p>In the meantime, we invite you to discover more about <a href=\"/pages/about-us\" title=\"About us\"><strong>our heritage</strong></a><strong> and </strong><a href=\"/pages/services\" title=\"Services\"><strong>services</strong></a>. If you wish to schedule a personal consultation or have any inquiries, please don't hesitate to reach out. We're always here to assist you.</p>",
-        "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
-        "alignment": "a-center",
-        "show_social_icons": true,
-        "heading_font_size": 32,
-        "subheading_font_size": 16,
-        "color_scheme": "none",
+        "heading": "Your Questions",
+        "allow_multiple": false,
         "section_padding": "both"
-      }
-    },
-    "contact_form_XCxFtH": {
-      "type": "contact-form",
-      "name": "Contact form",
-      "settings": {
-        "title": "Contact Form",
-        "width": 90,
-        "section_padding": "bottom"
       }
     }
   },
@@ -581,15 +490,8 @@
     "featured_collection_ymBt9h",
     "image_with_text_gKnTji",
     "image_with_text_mxbbHd",
-    "featured_collection_6mKR8x",
-    "featured_collection_q9b7d4",
-    "1642532857b939b884",
-    "hero_image_with_text_AX9cDb",
-    "164253557900d67a91",
-    "multicolumn_hWamPV",
     "1642520461c9848fcf",
-    "16425280643589a733",
-    "newsletter_ttXdDd",
-    "contact_form_XCxFtH"
+    "editorial_columns_DnYzCD",
+    "accordion_tDUUGf"
   ]
 }

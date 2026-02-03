@@ -1,0 +1,13 @@
+.section-txt-icons__outer-wrapper .section-txt-icons__block-heading{
+  font-size: 22px;
+  letter-spacing: 0;
+}
+.section-txt-icons__outer-wrapper .section-txt-cols__inner-wrapper{
+  display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        margin-right: 20px;
+        margin-left: 20px;
+        padding: 0;
+}
