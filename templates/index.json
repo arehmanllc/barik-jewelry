@@ -184,6 +184,21 @@
         "section_padding": "top"
       }
     },
+    "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Our Most Cherished Pieces",
+        "subheading": "",
+        "link_text": "Shop the Collection",
+        "link_url": "shopify://collections/earrings",
+        "text_position": "left",
+        "collection": "earrings",
+        "display_type": "carousel",
+        "items_per_row": 4,
+        "items_per_page": 7,
+        "section_padding": "both"
+      }
+    },
     "1642541933e9708a47": {
       "type": "shop-the-look",
       "blocks": {
@@ -193,7 +208,7 @@
             "product": "1-10-ctw-natural-diamond-crescent-moon-necklace",
             "hotspot_horizontal": 43,
             "hotspot_vertical": 29,
-            "hotspot_color": "#000000"
+            "hotspot_color": "#ffffff"
           }
         },
         "f5c89dbb-bcd4-4567-a7b9-78905523d155": {
@@ -202,7 +217,7 @@
             "product": "1-3ctw-natural-diamond-earrings",
             "hotspot_horizontal": 58,
             "hotspot_vertical": 46,
-            "hotspot_color": "#000000"
+            "hotspot_color": "#ffffff"
           }
         },
         "9965037a-619b-4539-a933-cb350f0fe7dc": {
@@ -211,7 +226,7 @@
             "product": "1-4-ct-natural-diamond-solitaire-necklace",
             "hotspot_horizontal": 37,
             "hotspot_vertical": 73,
-            "hotspot_color": "#000000"
+            "hotspot_color": "#ffffff"
           }
         }
       },
@@ -221,9 +236,24 @@
         "9965037a-619b-4539-a933-cb350f0fe7dc"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "title": "",
         "image": "shopify://shop_images/135877971-8192x5465-f59ab60d-9495-49d4-a702-61c9d63a6395-Photoroom-Photoroom.jpg",
+        "section_padding": "both"
+      }
+    },
+    "featured_collection_ymBt9h": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Introducing Our Latest Designs",
+        "subheading": "",
+        "link_text": "Shop the Collection",
+        "link_url": "shopify://collections/earrings",
+        "text_position": "left",
+        "collection": "earrings",
+        "display_type": "carousel",
+        "items_per_row": 4,
+        "items_per_page": 7,
         "section_padding": "both"
       }
     },
@@ -238,7 +268,7 @@
         "iwt_text": "<p>At Barik Jewelry, every piece is thoughtfully crafted to celebrate moments that matter. Rooted in craftsmanship and refined by modern design, our creations are made to be timeless, personal, and enduring.<br/><br/>From carefully chosen stones to polished finishes, each design is created to be worn, cherished, and remembered.</p>",
         "iwt_button": "More About Us",
         "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
-        "color_scheme": "2",
+        "color_scheme": "1",
         "iwt_section_height": 500,
         "section_padding": "both"
       }
@@ -250,27 +280,12 @@
         "full_width": false,
         "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
         "iwt_layout": "image_left",
-        "iwt_heading": "Jewelry with Meaning",
+        "iwt_heading": "Your Design, Our Craft",
         "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
-        "iwt_button": "More About Us",
+        "iwt_button": "Create with Us",
         "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
-        "color_scheme": "2",
+        "color_scheme": "1",
         "iwt_section_height": 500,
-        "section_padding": "both"
-      }
-    },
-    "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Your Perfect Earrings",
-        "subheading": "<p><strong>Looking for Brilliant sparkle? </strong></p><p>Discover earrings that fit your style, whether you’re dressing up for an event or keeping it simple and chic.</p>",
-        "link_text": "SHOP THE COLLECTION",
-        "link_url": "https://barikjewelry.com/collections/earrings",
-        "text_position": "left",
-        "collection": "earrings",
-        "display_type": "carousel",
-        "items_per_row": 4,
-        "items_per_page": 7,
         "section_padding": "both"
       }
     },
@@ -561,10 +576,11 @@
     "7773d85e-29d5-49cb-80bc-bf840c5e1664",
     "marquee_9im86a",
     "collection_list_wHky6C",
+    "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "1642541933e9708a47",
+    "featured_collection_ymBt9h",
     "image_with_text_gKnTji",
     "image_with_text_mxbbHd",
-    "f5fdc4e1-da0f-4059-b0b5-7e50a682d115",
     "featured_collection_6mKR8x",
     "featured_collection_q9b7d4",
     "1642532857b939b884",
