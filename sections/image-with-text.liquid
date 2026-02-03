@@ -49,7 +49,7 @@
         </div>
       {% endif %}
     </article>
-    <article class="info span-6 auto relative" style="order: {{ text_order }};">
+    <article class="info span-6 auto relative {% if section.settings.iwt_layout == 'image_left' %}img-lft{% endif %}" style="order: {{ text_order }};">
       <div class="info__inner-wrapper px10 sm-px6 sm-py8">
         {% if section.settings.iwt_heading != blank %}
           <h2 class="animate--text">{{ section.settings.iwt_heading }}</h2>
@@ -95,12 +95,16 @@
           top: 50%;
           transform: translateY(-50%);
         }
+        .img-lft .info__inner-wrapper{
+          text-align: right;
+        }
       }
       .image-with-text-{{ section.id }} .background-image {
         height: 100%;
         width: 100%;
         background-size: cover;
         background-position: {{ section.settings.iwt_image.presentation.focal_point }};
+        border-radius: 10px;
       }
       @media (min-width: 1367px) {
         .image-with-text-{{ section.id }} .background-image {
@@ -112,12 +116,22 @@
           height: {{ section.settings.iwt_section_height }}px;
           background-image: url({{ section.settings.iwt_image | image_url: width: 1400 }});
         }
+        
       }
       @media (max-width: 768px) {
         .image-with-text-{{ section.id }} .background-image {
           height: {{ section.settings.iwt_section_height }}px;
           background-image: url({{ section.settings.iwt_image | image_url: width: 800 }});
         }
+      }
+      .section-image-with-text h2{
+        font-size: clamp(32px, 4vw, 56px);
+        font-weight: 500;
+        line-height: 42px;
+        letter-spacing: -1.25px;
+      }
+      .section-image-with-text .rte{
+        margin-top: 1.3rem;
       }
     </style>
 </div>

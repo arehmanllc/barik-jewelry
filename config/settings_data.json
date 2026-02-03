@@ -270,7 +270,7 @@
       "enable_metal_swatches": true,
       "gold_gradient": "",
       "enable_kt_labels": true,
-      "show_rating": false,
+      "show_rating": true,
       "sections": {
         "mobile-header": {
           "type": "mobile-header",

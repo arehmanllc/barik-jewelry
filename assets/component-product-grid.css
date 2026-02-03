@@ -46,7 +46,9 @@
    font-style: var(--main-style);
    font-weight: var(--main-weight);
    letter-spacing: var(--main-spacing);
-	 margin-bottom: 0
+	 margin-bottom: 0;
+	 font-weight: 600;
+	 color: #242424;
 }
  .product-loop__vendor {
   font-size: calc(var(--font-size-sm) - 2px);

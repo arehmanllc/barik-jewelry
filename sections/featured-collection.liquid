@@ -122,11 +122,11 @@
     {%- if section.settings.subheading != blank -%}
       <div class="rte mb2">{{ section.settings.subheading }}</div>
     {%- endif -%}
-    {%- if section.settings.link_url != blank and section.settings.link_text != blank -%}
+    {% comment %} {%- if section.settings.link_url != blank and section.settings.link_text != blank -%}
       <a class="{{ button_style }} inline-block mt4 mb0 sm-mb2 relative" href="{{ section.settings.link_url }}">
         <span>{{ section.settings.link_text }}</span>
       </a>
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
   </div>
 {%- endcapture -%}
 
@@ -176,6 +176,11 @@
     </div>
     {%- if section.settings.text_position == 'right' -%}
       {{ text_section }}
+    {%- endif -%}
+     {%- if section.settings.link_url != blank and section.settings.link_text != blank -%}
+      <a class="ft-coll-btn {{ button_style }} inline-block relative" href="{{ section.settings.link_url }}">
+        <span>{{ section.settings.link_text }}</span>
+      </a>
     {%- endif -%}
   </div>
 
