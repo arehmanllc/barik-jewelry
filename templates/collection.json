@@ -48,7 +48,8 @@
         "items_per_row": 3,
         "collection_image": false,
         "show_count": false,
-        "show_savings": true
+        "show_savings": true,
+        "filter_layout": "sidebar"
       }
     },
     "image-with-text": {
