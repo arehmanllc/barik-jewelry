@@ -158,6 +158,10 @@
                         width: 290px;
                         border-radius: 5px;
                     }
+                    .product-{{ block.id }} .hover.active {
+                        display: flex;
+                        flex-direction: column;
+                    }
                     .product-{{ block.id }}.hotspot {
                         position: absolute;
                         left: {{ hotspot_horizontal }}%;
@@ -185,25 +189,6 @@
                     }
                     .product-{{ block.id }}.hotspot:hover {
                         z-index: 1;
-                    }
-                    .shop__thelook-image-{{ section.id }}:hover .hotspot:after {
-                        border: 5px solid white;
-                        transform: scale(1);
-                    }
-                    @media screen and (prefers-reduced-motion: no-preference) {
-                      .shop__thelook-image-{{ section.id }}:hover .hotspot:after {
-                          animation: pulse 1.5s infinite;
-                          animation-timing-function: linear;
-                      }
-                    }
-                    @keyframes pulse {
-                        0% { transform: scale(1); }
-                        50% { transform: scale(1.25); }
-                        00% { transform: scale(1); }
-                    }
-                    .product-{{ block.id }}.hotspot:hover .hover {
-                        display: flex;
-                        flex-direction: column;
                     }
                 {% endstyle %}
             {% endfor %}

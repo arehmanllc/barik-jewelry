@@ -5,6 +5,7 @@
   assign main_font_bold = main_font | font_modify: 'weight', 'bold'
   assign main_font_italic = main_font | font_modify: 'style', 'italic'
   assign main_font_bold_italic = main_font_bold | font_modify: 'style', 'italic'
+  assign main_font_medium = main_font | font_modify: 'weight', '500'
 %}
 
 {% style %}
@@ -13,6 +14,7 @@
 {{ main_font_bold | font_face: font_display: 'swap' }}
 {{ main_font_italic | font_face: font_display: 'swap' }}
 {{ main_font_bold_italic | font_face: font_display: 'swap' }}
+{{ main_font_medium | font_face: font_display: 'swap' }}
 {{ heading_font | font_face: font_display: 'swap' }}
 {{ nav_font | font_face: font_display: 'swap' }}
 

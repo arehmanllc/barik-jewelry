@@ -479,6 +479,21 @@
         "allow_multiple": false,
         "section_padding": "both"
       }
+    },
+    "newsletter_ycQpBM": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "title": "Jewelry with a Story to Tell",
+        "subheading": "<p>Receive early access to new designs, special moments, and the art behind our pieces.</p>",
+        "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+        "alignment": "a-left",
+        "show_social_icons": false,
+        "heading_font_size": 32,
+        "subheading_font_size": 18,
+        "color_scheme": "none",
+        "section_padding": "both"
+      }
     }
   },
   "order": [
@@ -492,6 +507,7 @@
     "image_with_text_mxbbHd",
     "1642520461c9848fcf",
     "editorial_columns_DnYzCD",
-    "accordion_tDUUGf"
+    "accordion_tDUUGf",
+    "newsletter_ycQpBM"
   ]
 }

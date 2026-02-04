@@ -11,13 +11,12 @@
   "sections": {
     "banner": {
       "type": "collection-header",
-      "disabled": true,
       "settings": {
         "full_width": true,
         "collection_image": true,
         "image": "shopify://shop_images/Elegant_Gold_and_Diamond_Jewelry_Flat_Lay.png",
-        "scale": 2,
-        "banner_height": 400,
+        "scale": 0,
+        "banner_height": 600,
         "heading": "Our Collection",
         "subheading": "",
         "heading_placement": "center",
@@ -32,7 +31,7 @@
           "type": "filter",
           "settings": {
             "filter_color_scheme": "none",
-            "filter_appearance": "vertical"
+            "filter_appearance": "horizontal"
           }
         },
         "a693520f-e2ed-48e0-aaae-58e0dc5dcc3f": {
@@ -49,7 +48,7 @@
         "items_per_row": 3,
         "collection_image": false,
         "show_count": false,
-        "show_savings": false
+        "show_savings": true
       }
     },
     "image-with-text": {
