@@ -9,13 +9,14 @@
     padding: 0;
   }
 
-  .section-txt-cols__inner-wrapper:not(.flickity-enabled) .section-txt-cols__item {
+  .section-txt-cols__inner-wrapper:not(.flickity-enabled)
+    .section-txt-cols__item {
     flex: 0 0 auto;
     width: 270px !important;
     margin-right: 15px !important;
   }
 }
-.section-txt-cols__inner-wrapper .box-ratio{
+.section-txt-cols__inner-wrapper .box-ratio {
   padding-bottom: 250px !important;
   border-radius: 10px;
 }
@@ -23,7 +24,12 @@
 .section-txt-cols .flickity-viewport {
   width: 100%;
 }
-
+#only-at-barik-jewelry {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: -1.25px;
+}
 .section-txt-cols .flickity-prev-next-button {
   background: var(--directional-bg);
   color: var(--directional-text);
@@ -32,7 +38,9 @@
   border-radius: 50%;
   box-shadow: none;
   opacity: 1;
-  transition: opacity 0.3s, background-color 0.3s;
+  transition:
+    opacity 0.3s,
+    background-color 0.3s;
 }
 
 .section-txt-cols .flickity-prev-next-button:hover {

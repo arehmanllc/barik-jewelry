@@ -1,0 +1,17 @@
+.section-accordion {
+  background-color: #f7f7f7;
+  padding-block: 50px;
+}
+.section-accordion .details {
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+.section-accordion .details__summary {
+  background-color: #f7f7f7;
+}
+.section-accordion .section-heading {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: -1.25px;
+}
