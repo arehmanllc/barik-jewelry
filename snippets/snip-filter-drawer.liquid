@@ -30,8 +30,9 @@
 -%}
 
 <div
-  class="filter-drawer__wrapper grid__wrapper edge rg0 cg0 sm-rg0 sm-cg0"
+  class="filter-drawer__wrapper grid__wrapper edge rg0 cg0 sm-rg0 sm-cg0 {% if is_sidebar %}sidebar__wrapper{% endif %}"
 >
+  {%- unless is_sidebar -%}
   <div class="filter-drawer__mobile-close span-12 auto a-right">
     <div class="slideout__trigger--close">
       <button
@@ -56,6 +57,7 @@
       </button>
     </div>
   </div>
+  {%- endunless -%}
 
   {%- unless has_filter == false -%}
     <div
@@ -395,7 +397,6 @@
               type="checkbox"
               name="sort_by"
               value="{{ option.value | escape }}"
-              style="display: none;"
               id="{{ option.name | downcase | handle }}"
             >
             <a class="slide-nav__first-level--link mb0 vib-center" href="?sort_by={{ option.name | escape }}">

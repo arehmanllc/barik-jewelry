@@ -66,6 +66,12 @@
   endif
 
   assign delay_mod = section.settings.items_per_row | plus: 0
+
+  if section.settings.filter_layout == 'sidebar'
+    assign is_sidebar = true
+  else
+    assign is_sidebar = false
+  endif
 -%}
 
 {% comment %} Collection Page Template {% endcomment %}
@@ -78,6 +84,7 @@
   data-asset-url="{{ 'section-main-collection.js' | asset_url }}"
   data-collection-handle="{{ collection.handle }}"
   data-empty="{{ empty_collection }}"
+  data-filter-layout="{{ section.settings.filter_layout }}"
 >
   {% paginate collection.products by page_limit %}
     <div id="CollectionProductGrid" class="grid__wrapper">
@@ -109,12 +116,12 @@
       {%- endif -%}
 
       <div class="collection__page--topbar span-12 auto grid__wrapper edge rg0">
-        <div class="span-5 sm-span-12 auto a-left v-end">
+        <div class="span-5 sm-span-12 auto v-center {% if is_sidebar %}md-lg-hide{% endif %}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'filter' -%}
                 <button
-                  class="button js-slideout-open js-menu-toggle mr3"
+                  class="button js-slideout-open js-menu-toggle mr3 {% if is_sidebar %}md-lg-hide{% endif %}"
                   data-wau-slideout-target="collection-filters"
                   data-slideout-direction="left"
                   data-toggle-menu="filter"
@@ -141,7 +148,7 @@
                 </button>
               {%- when 'sort_by' -%}
                 <button
-                  class="button js-slideout-open js-menu-toggle mr3"
+                  class="button js-slideout-open js-menu-toggle mr3 {% if is_sidebar %}md-lg-hide{% endif %}"
                   data-wau-slideout-target="collection-filters"
                   data-slideout-direction="left"
                   data-toggle-menu="sort"
@@ -166,7 +173,7 @@
             {%- endcase -%}
           {%- endfor -%}
         </div>
-        <div class="span-7 sm-hide auto a-right v-end">
+        <div class="{% if is_sidebar %}span-9 push-3{% else %}span-7{% endif %} sm-span-12 auto a-right v-end">
           {%- if section.settings.show_count -%}
             <p class="topbar__count mb0">
               {{ 'collections.general.item_count.other' | t: count: collection.products_count }}
@@ -176,7 +183,7 @@
         {%- if filter_count > 0 -%}
           {%- for block in section.blocks -%}
             {%- if block.type == 'filter' -%}
-              <div class="filter-drawer__filtering__results js-filters-reset span-12 auto">
+              <div class="filter-drawer__filtering__results js-filters-reset {% if is_sidebar %}span-9 push-3{% else %}span-12{% endif %} auto">
                 <h3 class="visually-hidden">{{ 'collections.filter.filtering_by_label' | t }}</h3>
                 <ul class="current_filters mb0 mt4">
                   {%- for filter in collection.filters -%}
@@ -233,14 +240,36 @@
               block: block,
               type: collection,
               filter_count: filter_count,
-              slideout_id: "slideout-collection-filters"
+              slideout_id: "slideout-collection-filters",
+              is_sidebar: false
             %}
           </form>
         </aside>
       {%- endif -%}
 
+      {%- assign show_sidebar = false -%}
+      {%- if is_sidebar and has_filter or has_sortby -%}
+        {%- assign show_sidebar = true -%}
+        {%- assign filter_block = section.blocks | where: 'type', 'filter' | first -%}
+      {%- endif -%}
+
+      {%- if show_sidebar -%}
+        <aside class="collection__sidebar span-3 sm-hide auto" id="collection-sidebar">
+           <form id="CollectionSidebarFiltersForm" data-filters>
+             {% render 'snip-filter-drawer',
+               has_sortby: has_sortby,
+               has_filter: has_filter,
+               block: filter_block,
+               type: collection,
+               filter_count: filter_count,
+               is_sidebar: true
+             %}
+           </form>
+        </aside>
+      {%- endif -%}
+
       {%- if collection.products.size >= 1 -%}
-        <div class="collection span-12" id="main-collection-product-grid" data-id="{{ section.id }}">
+        <div class="collection {% if is_sidebar %}span-9 auto{% else %}span-12{% endif %} sm-span-12" id="main-collection-product-grid" data-id="{{ section.id }}">
           <div class="product-loop grid__wrapper {{ grid_type }} edge {{ wrapper_class }}">
             {% if collection != blank %}
               {% for product in collection.products limit: page_limit %}
@@ -297,7 +326,7 @@
         </div>
       {%- else -%}
         <div
-          class="collection collection--empty span-12 relative"
+          class="collection collection--empty {% if is_sidebar %}span-9 auto{% else %}span-12{% endif %} sm-span-12 relative"
           id="main-collection-product-grid"
           data-id="{{ section.id }}"
         >
@@ -358,6 +387,22 @@
       "id": "show_savings",
       "label": "Show savings amount",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "filter_layout",
+      "label": "Filter layout",
+      "default": "drawer",
+      "options": [
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        },
+        {
+          "value": "sidebar",
+          "label": "Sidebar"
+        }
+      ]
     }
   ],
   "blocks": [

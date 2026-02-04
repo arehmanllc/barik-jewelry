@@ -14,7 +14,7 @@ WAU.ThemeCart = (function (exports) {
   }
 
   function fetchJSON(url, config) {
-    return fetch(url, config).then(function(response) {
+    return fetch(url, config).then(function (response) {
       if (!response.ok) {
         throw response;
       }
@@ -163,7 +163,7 @@ WAU.ThemeCart = (function (exports) {
    * @returns {Promise} Resolves with the state object of the cart (https://help.shopify.com/en/themes/development/getting-started/using-ajax-api#get-cart)
    */
   function getState() {
-    return cart().then(function(cart) {
+    return cart().then(function (cart) {
       Events.trigger("cart:ready", cart)
     });
   }
@@ -173,7 +173,7 @@ WAU.ThemeCart = (function (exports) {
    * @returns {Promise} Resolves with the object of the cart (https://help.shopify.com/en/themes/development/getting-started/using-ajax-api#get-cart)
    */
   function getCart() {
-    return cart().then(function(cart) {
+    return cart().then(function (cart) {
       return cart;
     });
   }
@@ -186,10 +186,10 @@ WAU.ThemeCart = (function (exports) {
   function getItemIndex(key$$1) {
     key(key$$1);
 
-    return cart().then(function(state) {
+    return cart().then(function (state) {
       var index = -1;
 
-      state.items.forEach(function(item, i) {
+      state.items.forEach(function (item, i) {
         index = item.key === key$$1 ? i + 1 : index;
       });
 
@@ -211,10 +211,10 @@ WAU.ThemeCart = (function (exports) {
   function getItem(key$$1) {
     key(key$$1);
 
-    return cart().then(function(state) {
+    return cart().then(function (state) {
       var lineItem = null;
 
-      state.items.forEach(function(item) {
+      state.items.forEach(function (item) {
         lineItem = item.key === key$$1 ? item : lineItem;
       });
 
@@ -278,7 +278,7 @@ WAU.ThemeCart = (function (exports) {
     key(key$$1);
     options(options$$1);
 
-    return getItemIndex(key$$1).then(function(line) {
+    return getItemIndex(key$$1).then(function (line) {
       return cartChange(line, options$$1);
     });
   }
@@ -291,7 +291,7 @@ WAU.ThemeCart = (function (exports) {
   function removeItem(key$$1) {
     key(key$$1);
 
-    return getItemIndex(key$$1).then(function(line) {
+    return getItemIndex(key$$1).then(function (line) {
       return cartChange(line, { quantity: 0 });
     });
   }
@@ -301,7 +301,7 @@ WAU.ThemeCart = (function (exports) {
    * @returns {Promise} Resolves with the state object of the cart (https://help.shopify.com/en/themes/development/getting-started/using-ajax-api#get-cart)
    */
   function clearItems() {
-    return cartClear().then(function() {
+    return cartClear().then(function () {
       Events.trigger("cart:clear");
     });
   }
@@ -311,7 +311,7 @@ WAU.ThemeCart = (function (exports) {
    * @returns {Promise} Resolves with the cart attributes object
    */
   function getAttributes() {
-    return cart().then(function(state) {
+    return cart().then(function (state) {
       return state.attributes;
     });
   }
@@ -329,7 +329,7 @@ WAU.ThemeCart = (function (exports) {
    * @returns {Promise} Resolves with the cart state object
    */
   function clearAttributes() {
-    return getAttributes().then(function(attributes) {
+    return getAttributes().then(function (attributes) {
       for (var key$$1 in attributes) {
         attributes[key$$1] = '';
       }
@@ -342,7 +342,7 @@ WAU.ThemeCart = (function (exports) {
    * @returns {Promise} Resolves with the cart note string
    */
   function getNote() {
-    return cart().then(function(state) {
+    return cart().then(function (state) {
       return state.note;
     });
   }
@@ -397,7 +397,7 @@ WAU.ThemeCart = (function (exports) {
 WAU.AjaxCart = {
   init: function init() {
     let config = document.getElementById('cart-config');
-    if ( !config ) return false;
+    if (!config) return false;
     config = JSON.parse(config.innerHTML || '{}');
 
     var selectors = {
@@ -409,16 +409,16 @@ WAU.AjaxCart = {
     // Init carts
     this.initializeAjaxCart(config);
 
-		// Set No Js Cart or Remove
-		if (config.cart_action == 'no_js_cart') {
-			if ( document.querySelector('.js-ajax-cart-content') ) {
-				document.querySelector('.js-ajax-cart-content').remove();
-			}
-		} else {
-			if ( document.querySelector('.js-ajax-cart-content-nojs') ){
-				document.querySelector('.js-ajax-cart-content-nojs').remove();
-			}
-		}
+    // Set No Js Cart or Remove
+    if (config.cart_action == 'no_js_cart') {
+      if (document.querySelector('.js-ajax-cart-content')) {
+        document.querySelector('.js-ajax-cart-content').remove();
+      }
+    } else {
+      if (document.querySelector('.js-ajax-cart-content-nojs')) {
+        document.querySelector('.js-ajax-cart-content-nojs').remove();
+      }
+    }
 
     // Override add to cart form
     document.querySelectorAll(selectors.addToCart).forEach((element, i) => {
@@ -427,7 +427,7 @@ WAU.AjaxCart = {
       if (element.dataset.ajaxBound === '1') return;
       element.dataset.ajaxBound = '1';
 
-		  element.addEventListener('click', function (e) {
+      element.addEventListener('click', function (e) {
         e.preventDefault();
 
         var addToCartForm = this.closest('form');
@@ -443,7 +443,7 @@ WAU.AjaxCart = {
         WAU.AjaxCart.updateView(config, Cart);
 
         // Remove page loader
-        setTimeout(function(){
+        setTimeout(function () {
           document.querySelector('body').classList.add('cart-loaded');
         }, 800);
 
@@ -463,7 +463,7 @@ WAU.AjaxCart = {
 
           if (config.cart_action == 'drawer') {
             WAU.AjaxCart.showDrawer(config);
-          } else if (config.cart_action == 'modal_cart')  {
+          } else if (config.cart_action == 'modal_cart') {
             WAU.AjaxCart.showModal(config);
           } else {
             window.location.href = config.cart_url;
@@ -479,7 +479,7 @@ WAU.AjaxCart = {
   cartEvents: function cartEvents(config) {
     var selectors = {
       cartDrawerRemove: '.js-cart-remove',
-			cartDrawerQty: '[data-item-qty]',
+      cartDrawerQty: '[data-item-qty]',
       cartDrawerQtyDecrease: '[data-ajax-qty-decrease]',
       cartDrawerQtyIncrease: '[data-ajax-qty-increase]',
       cartNote: '.js-cart-note',
@@ -487,31 +487,31 @@ WAU.AjaxCart = {
     };
 
     // Cart Events
-		document.querySelectorAll(selectors.cartDrawerQty).forEach((element, i) => {
+    document.querySelectorAll(selectors.cartDrawerQty).forEach((element, i) => {
       element.addEventListener('change', function (e) {
         e.preventDefault();
 
         var quantity = parseInt(this.value),
-						itemKey = this.dataset.itemKey,
-						itemMax = this.dataset.limit,
-						lineElement = element.closest('.ajax-cart__cart-item');
+          itemKey = this.dataset.itemKey,
+          itemMax = this.dataset.limit,
+          lineElement = element.closest('.ajax-cart__cart-item');
 
-				// Set new quantity
-				element.value = quantity;
+        // Set new quantity
+        element.value = quantity;
 
-				// Adjust cart object
-				setTimeout(function() {
-					if (quantity === 0) {
-						WAU.AjaxCart.removeFromCart(itemKey, config);
-					} else {
+        // Adjust cart object
+        setTimeout(function () {
+          if (quantity === 0) {
+            WAU.AjaxCart.removeFromCart(itemKey, config);
+          } else {
 
-						WAU.AjaxCart.checkLimit(itemMax, quantity, lineElement, config);
+            WAU.AjaxCart.checkLimit(itemMax, quantity, lineElement, config);
 
-						WAU.ThemeCart.updateItem(itemKey, { quantity }).then(state => {
-							WAU.AjaxCart.updateView(config, state);
-						});
-					}
-				}, 250);
+            WAU.ThemeCart.updateItem(itemKey, { quantity }).then(state => {
+              WAU.AjaxCart.updateView(config, state);
+            });
+          }
+        }, 250);
 
 
         return false;
@@ -532,13 +532,13 @@ WAU.AjaxCart = {
       element.addEventListener('click', function (e) {
         e.preventDefault();
 
-				if (this.nextElementSibling.value === '1') {
-					var itemKey = this.dataset.itemKey;
-					WAU.AjaxCart.removeFromCart(itemKey, config);
-				} else {
-					var itemId = this.dataset.ajaxQtyDecrease;
-	        WAU.AjaxCart.adjustQty(-1, itemId, config);
-				}
+        if (this.nextElementSibling.value === '1') {
+          var itemKey = this.dataset.itemKey;
+          WAU.AjaxCart.removeFromCart(itemKey, config);
+        } else {
+          var itemId = this.dataset.ajaxQtyDecrease;
+          WAU.AjaxCart.adjustQty(-1, itemId, config);
+        }
 
         return false;
       });
@@ -554,7 +554,7 @@ WAU.AjaxCart = {
       });
     });
     document.querySelectorAll(selectors.cartNote).forEach((element, i) => {
-			element.addEventListener('blur', (event) => {
+      element.addEventListener('blur', (event) => {
         let note = element.value;
         WAU.ThemeCart.updateNote(note).then(state => {
           WAU.AjaxCart.updateView(config, state);
@@ -564,10 +564,28 @@ WAU.AjaxCart = {
     document.querySelectorAll(selectors.cartUpsell).forEach((element, i) => {
       element.addEventListener('click', (e) => {
         e.preventDefault();
+
+        if (element.classList.contains('disabled')) return false;
+
+        element.classList.add('disabled');
+        element.style.pointerEvents = 'none';
+
         const id = parseInt(element.dataset.variantId);
-        WAU.ThemeCart.addItem(id, 1).then(state => {
+        WAU.ThemeCart.addItem(id, { quantity: 1 }).then(state => {
           WAU.ThemeCart.getCart().then(Cart => {
             WAU.AjaxCart.updateView(config, Cart);
+            element.classList.remove('disabled');
+            element.style.pointerEvents = 'auto';
+          });
+        }).catch(error => {
+          element.classList.remove('disabled');
+          element.style.pointerEvents = 'auto';
+
+          error.json().then(errorData => {
+            const errorMessage = errorData.description || errorData.message || config.cart_error;
+            alert(errorMessage);
+          }).catch(() => {
+            alert(config.cart_error);
           });
         });
       });
@@ -613,21 +631,21 @@ WAU.AjaxCart = {
     // Update Line Item
     document.querySelectorAll(selectors.lineItem).forEach((element, i) => {
       elementInput = element.querySelector(selectors.updatesItem),
-      key = elementInput.dataset.itemKey,
-      max = elementInput.dataset.limit,
-      quantity = parseInt(elementInput.value) + parseInt(value);
+        key = elementInput.dataset.itemKey,
+        max = elementInput.dataset.limit,
+        quantity = parseInt(elementInput.value) + parseInt(value);
 
       // Check limit to prevent over adding
-			if (WAU.AjaxCart.checkLimit(max, quantity, element, config)) return false;
+      if (WAU.AjaxCart.checkLimit(max, quantity, element, config)) return false;
 
       // Check new qty to prevent going lower than 1
-      if (quantity === 0 ) return false;
+      if (quantity === 0) return false;
 
       // Set new quantity
       elementInput.value = quantity;
 
       // Adjust cart object
-      setTimeout(function() {
+      setTimeout(function () {
         WAU.ThemeCart.updateItem(key, { quantity }).then(state => {
           WAU.AjaxCart.updateView(config, state);
         });
@@ -635,26 +653,26 @@ WAU.AjaxCart = {
 
     });
   },
-	checkLimit: function checkLimit(max, quantity, element, config) {
-		// Check limit to prevent over adding
-		if ( max != '' && quantity > max ) {
-			let cartNote = document.createElement("div");
-					cartNote.classList.add('mini-cart__cart-note');
-					cartNote.innerHTML = '<p class="a-center"><b>' + config.cart_error + '</b>&nbsp;&nbsp;' + config.update_qty_error + '</p>';
+  checkLimit: function checkLimit(max, quantity, element, config) {
+    // Check limit to prevent over adding
+    if (max != '' && quantity > max) {
+      let cartNote = document.createElement("div");
+      cartNote.classList.add('mini-cart__cart-note');
+      cartNote.innerHTML = '<p class="a-center"><b>' + config.cart_error + '</b>&nbsp;&nbsp;' + config.update_qty_error + '</p>';
 
-			let adjacentElement = element.querySelector('.js-item-quantity');
-			let parentElement = adjacentElement.parentNode;
+      let adjacentElement = element.querySelector('.js-item-quantity');
+      let parentElement = adjacentElement.parentNode;
 
-			parentElement.appendChild(cartNote, adjacentElement);
+      parentElement.appendChild(cartNote, adjacentElement);
 
-			setTimeout(function() {
-				WAU.Helpers.fadeOut(cartNote);
-				parentElement.removeChild(cartNote);
-			}, 2000);
+      setTimeout(function () {
+        WAU.Helpers.fadeOut(cartNote);
+        parentElement.removeChild(cartNote);
+      }, 2000);
 
-			return true;
-		}
-	},
+      return true;
+    }
+  },
   addToCart: function addToCart(addToCartForm, formContext, config, isQuickview, quickAdd, trigger) {
     var selectors = {
       addToCart: '.js-ajax-submit',
@@ -663,7 +681,7 @@ WAU.AjaxCart = {
 
     let context;
 
-    if ( isQuickview ) { context = document.getElementById('quickview-form') } else { context = formContext; }
+    if (isQuickview) { context = document.getElementById('quickview-form') } else { context = formContext; }
 
     // Check if we have a recipient form.
     const isRecipientForm = [...addToCartForm.elements].filter(element => {
@@ -680,15 +698,15 @@ WAU.AjaxCart = {
       recipientConfig.body = formData;
 
       fetch('/cart/add.js', recipientConfig)
-        .then(function(response) {
+        .then(function (response) {
           return response.json();
-        }).then(function(data) {
+        }).then(function (data) {
           if (data.status == 422) {
             const errors = data.description;
-            const messages  = data.message;
+            const messages = data.message;
             Events.trigger("recipientform:errors", messages, errors, config, addToCartForm);
           }
-        }).catch(function(error) {
+        }).catch(function (error) {
           console.error(error);
         });
     }
@@ -746,59 +764,64 @@ WAU.AjaxCart = {
       context.querySelector(selectors.addToCart).classList.remove('disabled');
       context.querySelector(selectors.addToCart).removeAttribute('disabled', 'disabled');
 
-      setTimeout(function(){
+      setTimeout(function () {
         if (trigger && trigger.hasAttribute('data-complementary-product')) trigger.textContent = config.add_to_cart;
-				if ( context.querySelector(selectors.addToCart) ) context.querySelector(selectors.addToCart).value = config.add_to_cart;
+        if (context.querySelector(selectors.addToCart)) context.querySelector(selectors.addToCart).value = config.add_to_cart;
       }, 3000);
 
       WAU.ThemeCart.getCart().then(Cart => {
 
-				if ( isQuickview && config.cart_added_event != 'product_page') {
-					let type = context.getAttribute('data-quickshop-type');
+        if (isQuickview && config.cart_added_event != 'product_page') {
+          let type = context.getAttribute('data-quickshop-type');
 
-					if ( quickAdd === false ) {
-						if ( type == 'drawer' ) {
-							WAU.Quickshop.hideDrawer();
-						} else {
-							WAU.Quickshop.hideModal();
-						}
-					}
-        } else if ( isQuickview && config.cart_added_event == 'product_page') {
-					if ( quickAdd === true ) {
-						var trigger = document.querySelector('.js-quick-adding');
-						if ( trigger ) {
-							trigger.classList.remove('loading-quickshop');
-							WAU.Helpers.fadeOut(trigger.querySelector('.quickview-trigger--plus'));
-							WAU.Helpers.fadeIn(trigger.querySelector('.quickview-trigger--check'), 'inline-block');
+          if (quickAdd === false) {
+            if (type == 'drawer') {
+              WAU.Quickshop.hideDrawer();
+            } else {
+              WAU.Quickshop.hideModal();
+            }
+          }
+        } else if (isQuickview && config.cart_added_event == 'product_page') {
+          if (quickAdd === true) {
+            var triggerCheck = document.querySelector('.js-quick-adding');
+            if (triggerCheck) {
+              triggerCheck.classList.remove('loading-quickshop');
+              WAU.Helpers.fadeOut(triggerCheck.querySelector('.quickview-trigger--plus'));
+              WAU.Helpers.fadeIn(triggerCheck.querySelector('.quickview-trigger--check'), 'inline-block');
 
-							setTimeout(function(){
-								WAU.Helpers.fadeOut(trigger.querySelector('.quickview-trigger--check'));
-								WAU.Helpers.fadeIn(trigger.querySelector('.quickview-trigger--plus'), 'inline-block');
-								trigger.classList.remove('js-quick-adding');
-							}, 4000);
-						}
-					} else {
-						WAU.Helpers.fadeIn(context.querySelector(selectors.cartAddedMsg));
+              setTimeout(function () {
+                WAU.Helpers.fadeOut(triggerCheck.querySelector('.quickview-trigger--check'));
+                WAU.Helpers.fadeIn(triggerCheck.querySelector('.quickview-trigger--plus'), 'inline-block');
+                triggerCheck.classList.remove('js-quick-adding');
+              }, 4000);
+            }
+          } else {
+            WAU.Helpers.fadeIn(context.querySelector(selectors.cartAddedMsg));
 
-						if ( context.getAttribute('data-quickshop-type') == 'drawer' ) {
-							context.querySelector(selectors.cartAddedMsg).scrollIntoView();
-						}
+            if (context.getAttribute('data-quickshop-type') == 'drawer') {
+              context.querySelector(selectors.cartAddedMsg).scrollIntoView();
+            }
 
-						setTimeout(function(){
-							WAU.Helpers.fadeOut(context.querySelector(selectors.cartAddedMsg));
-						}, 4000);
-					}
+            setTimeout(function () {
+              WAU.Helpers.fadeOut(context.querySelector(selectors.cartAddedMsg));
+            }, 4000);
+          }
         }
 
         if (config.cart_action == 'drawer' && config.cart_added_event == 'go_to_active_cart') {
           WAU.AjaxCart.showDrawer(config);
-        } else if (config.cart_action == 'modal_cart' && config.cart_added_event == 'go_to_active_cart' )  {
+        } else if (config.cart_action == 'modal_cart' && config.cart_added_event == 'go_to_active_cart') {
           WAU.AjaxCart.showModal(config);
-        } else if (config.cart_action == 'page_only' && config.cart_added_event == 'go_to_active_cart' )  {
+        } else if (config.cart_action == 'page_only' && config.cart_added_event == 'go_to_active_cart') {
           window.location.href = config.cart_url;
-        } else if ( config.cart_added_event == 'product_page' ) {
-			    WAU.Helpers.fadeIn(context.querySelector(selectors.cartAddedMsg));
-          setTimeout(function(){
+        } else if (config.cart_added_event == 'product_page') {
+          WAU.Helpers.fadeIn(context.querySelector(selectors.cartAddedMsg));
+
+          if (context.getAttribute('data-quickshop-type') == 'drawer') {
+            context.querySelector(selectors.cartAddedMsg).scrollIntoView();
+          }
+
+          setTimeout(function () {
             WAU.Helpers.fadeOut(context.querySelector(selectors.cartAddedMsg));
           }, 4000);
         } else {
@@ -807,11 +830,10 @@ WAU.AjaxCart = {
 
         WAU.AjaxCart.updateView(config, Cart);
       });
-    }).catch(error => {
       if (error.status == 422) {
-				function showErrorMsg() {
-					// Show error msg
-					WAU.Helpers.fadeIn(context.querySelector('.js-error-msg'));
+        function showErrorMsg() {
+          // Show error msg
+          WAU.Helpers.fadeIn(context.querySelector('.js-error-msg'));
 
           if (trigger) {
             trigger.textContent = config.add_to_cart;
@@ -819,30 +841,24 @@ WAU.AjaxCart = {
             trigger.removeAttribute('disabled', 'disabled');
           }
 
-					// Re-enable add to cart button
-					context.querySelector(selectors.addToCart).value = config.add_to_cart;
-					context.querySelector(selectors.addToCart).classList.remove('disabled');
-					context.querySelector(selectors.addToCart).removeAttribute('disabled', 'disabled');
+          // Re-enable add to cart button
+          context.querySelector(selectors.addToCart).value = config.add_to_cart;
+          context.querySelector(selectors.addToCart).classList.remove('disabled');
+          context.querySelector(selectors.addToCart).removeAttribute('disabled', 'disabled');
 
-					setTimeout(function(){
-						WAU.Helpers.fadeOut(context.querySelector('.js-error-msg'));
-					}, 4000);
-				}
+          setTimeout(function () {
+            WAU.Helpers.fadeOut(context.querySelector('.js-error-msg'));
+          }, 4000);
+        }
 
-				if ( isQuickview ) {
-					let type = context.getAttribute('data-quickshop-type');
-					let trigger = document.querySelector('.js-quickview-onboard-trigger');
+        if (isQuickview) {
+          let type = context.getAttribute('data-quickshop-type');
 
-					if ( type == 'drawer' ) {
-						WAU.Quickshop.showDrawer(trigger);
-						showErrorMsg();
-					} else {
-						WAU.Quickshop.showModal(trigger);
-						showErrorMsg();
-					}
-				} else {
-					showErrorMsg();
-				}
+          // Just show the error message without trying to open quickview
+          showErrorMsg();
+        } else {
+          showErrorMsg();
+        }
       } else {
         console.log(error)
       }
@@ -850,35 +866,35 @@ WAU.AjaxCart = {
   },
   addItemsToCart: function addItemsToCart(data, button) {
     let config = document.getElementById('cart-config');
-    if ( !config ) return false;
+    if (!config) return false;
     config = JSON.parse(config.innerHTML || '{}');
 
     // Disable add to cart button temporarily
     button.value = config.adding_to_cart;
     button.classList.add('disabled');
     button.getAttribute('disabled', 'disabled');
- 
+
     WAU.ThemeCart.addItems(data).then(state => {
       // Re-enable add to cart button
       button.value = config.added_to_cart;
       button.classList.remove('disabled');
       button.removeAttribute('disabled', 'disabled');
 
-      setTimeout(function(){
-				if ( button ) button.value = config.add_set_to_cart;
+      setTimeout(function () {
+        if (button) button.value = config.add_set_to_cart;
       }, 3000);
 
       WAU.ThemeCart.getCart().then(Cart => {
 
         if (config.cart_action == 'drawer' && config.cart_added_event == 'go_to_active_cart') {
           WAU.AjaxCart.showDrawer(config);
-        } else if (config.cart_action == 'modal_cart' && config.cart_added_event == 'go_to_active_cart' )  {
+        } else if (config.cart_action == 'modal_cart' && config.cart_added_event == 'go_to_active_cart') {
           WAU.AjaxCart.showModal(config);
-        } else if (config.cart_action == 'page_only' && config.cart_added_event == 'go_to_active_cart' )  {
+        } else if (config.cart_action == 'page_only' && config.cart_added_event == 'go_to_active_cart') {
           window.location.href = config.cart_url;
-        } else if ( config.cart_added_event == 'product_page' ) {
-			    WAU.Helpers.fadeIn(document.querySelectorAll('.js-added-msg')[0]);
-          setTimeout(function(){
+        } else if (config.cart_added_event == 'product_page') {
+          WAU.Helpers.fadeIn(document.querySelectorAll('.js-added-msg')[0]);
+          setTimeout(function () {
             WAU.Helpers.fadeOut(document.querySelectorAll('.js-added-msg')[0]);
           }, 4000);
         } else {
@@ -896,7 +912,7 @@ WAU.AjaxCart = {
           button.classList.remove('disabled');
           button.removeAttribute('disabled', 'disabled');
 
-          setTimeout(function(){
+          setTimeout(function () {
             WAU.Helpers.fadeOut(document.querySelectorAll('.js-added-msg')[0]);
           }, 4000);
         } else {
@@ -914,7 +930,7 @@ WAU.AjaxCart = {
         button.classList.remove('disabled');
         button.removeAttribute('disabled', 'disabled');
 
-        setTimeout(function(){
+        setTimeout(function () {
           WAU.Helpers.fadeOut(document.querySelectorAll('.js-error-msg')[0]);
         }, 4000);
       } else {
@@ -946,94 +962,96 @@ WAU.AjaxCart = {
     url = config.cart_url + '/?view=ajax';
 
     fetch(url, data)
-    .then(res => res.text())
-    .then(response => {
-      let html = WAU.AjaxCart.getAjaxCart(response);
+      .then(res => res.text())
+      .then(response => {
+        let html = WAU.AjaxCart.getAjaxCart(response);
 
-      // Replace cart content
-      document.querySelectorAll('.js-ajax-cart-content').forEach((item, i) => {
-        item.innerHTML = html.content;
+        // Replace cart content
+        document.querySelectorAll('.js-ajax-cart-content').forEach((item, i) => {
+          item.innerHTML = html.content;
+        });
+
+      }).catch(error => {
+        console.log(error)
       });
-
-    }).catch(error => {
-      console.log(error)
-    });
   },
   updateView: function updateView(config, Cart) {
     let data, url;
     url = config.cart_url + '/?view=ajax';
 
     fetch(url, data)
-    .then(res => res.text())
-    .then(response => {
-      let html = WAU.AjaxCart.getAjaxCart(response);
+      .then(res => res.text())
+      .then(response => {
+        let html = WAU.AjaxCart.getAjaxCart(response);
 
-      var selectors = {
-        cartContent: '.js-ajax-cart-content',
-        cartEmpty: '.js-cart-empty',
-        cartForm: '.js-cart-form',
-        cartCount: '.js-cart-count',
-        cartAdditonalCheckoutButtons: '.js-additional-checkout-buttons'
-      };
+        var selectors = {
+          cartContent: '.js-ajax-cart-content',
+          cartEmpty: '.js-cart-empty',
+          cartForm: '.js-cart-form',
+          cartCount: '.js-cart-count',
+          cartAdditonalCheckoutButtons: '.js-additional-checkout-buttons'
+        };
 
-      if (Cart.item_count === 0) {
-        // Hide form
-        document.querySelectorAll(selectors.cartForm).forEach((item, i) => {
-          item.classList.add('hide');
-        });
-        // Show empty msg
-        document.querySelectorAll(selectors.cartEmpty).forEach((item, i) => {
-          item.classList.remove('hide');
-        });
-        // Update cart count
-        document.querySelectorAll(selectors.cartCount).forEach((item, i) => {
-          item.innerHTML = '0';
-        });
-        // Hide additional checkout buttons
-        document.querySelectorAll(selectors.cartAdditonalCheckoutButtons)?.forEach((item) => {
-          item.classList.add('hide');
-        });
-      } else {
-        // Hide empty msg
-        document.querySelectorAll(selectors.cartEmpty).forEach((item, i) => {
-          item.classList.add('hide');
-        });
-        // Update cart count
-        document.querySelectorAll(selectors.cartCount).forEach((item, i) => {
-          item.innerHTML = Cart.item_count;
-        });
-        // Replace cart page and drawer content
-        document.querySelectorAll(selectors.cartContent).forEach((item, i) => {
-          item.innerHTML = html.content;
-        });
-        // Show additional checkout buttons
-        document.querySelectorAll(selectors.cartAdditonalCheckoutButtons)?.forEach((item) => {
-          item.classList.remove('hide');
-        });
+        if (Cart.item_count === 0) {
+          // Hide form
+          document.querySelectorAll(selectors.cartForm).forEach((item, i) => {
+            item.classList.add('hide');
+          });
+          // Show empty msg
+          document.querySelectorAll(selectors.cartEmpty).forEach((item, i) => {
+            item.classList.remove('hide');
+          });
+          // Update cart count
+          document.querySelectorAll(selectors.cartCount).forEach((item, i) => {
+            item.innerHTML = '0';
+            item.classList.add('hide');
+          });
+          // Hide additional checkout buttons
+          document.querySelectorAll(selectors.cartAdditonalCheckoutButtons)?.forEach((item) => {
+            item.classList.add('hide');
+          });
+        } else {
+          // Hide empty msg
+          document.querySelectorAll(selectors.cartEmpty).forEach((item, i) => {
+            item.classList.add('hide');
+          });
+          // Update cart count
+          document.querySelectorAll(selectors.cartCount).forEach((item, i) => {
+            item.innerHTML = Cart.item_count;
+            item.classList.remove('hide');
+          });
+          // Replace cart page and drawer content
+          document.querySelectorAll(selectors.cartContent).forEach((item, i) => {
+            item.innerHTML = html.content;
+          });
+          // Show additional checkout buttons
+          document.querySelectorAll(selectors.cartAdditonalCheckoutButtons)?.forEach((item) => {
+            item.classList.remove('hide');
+          });
 
-        // Reload events
-        WAU.AjaxCart.cartEvents(config);
-      }
+          // Reload events
+          WAU.AjaxCart.cartEvents(config);
+        }
 
-      // Set Cart Loaded
-      setTimeout(function(){
-        document.querySelector('body').classList.add('cart-loaded');
-      }, 500);
-    })
-    .catch(error => {
-      console.log(error)
-    });
+        // Set Cart Loaded
+        setTimeout(function () {
+          document.querySelector('body').classList.add('cart-loaded');
+        }, 500);
+      })
+      .catch(error => {
+        console.log(error)
+      });
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   WAU.AjaxCart.init();
 });
 
-document.addEventListener('shopify:section:select', function(event){
+document.addEventListener('shopify:section:select', function (event) {
   WAU.AjaxCart.init();
 });
 
-document.addEventListener('shopify:section:load', function(event){
+document.addEventListener('shopify:section:load', function (event) {
   WAU.AjaxCart.init();
 });

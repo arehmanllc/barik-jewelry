@@ -189,7 +189,7 @@
     -%}
 
     {%- unless product.template_suffix == 'set' -%}
-      {% comment %} {%- if product.variants.size > 1 -%}
+      {%- if product.variants.size > 1 -%}
         <button class="quick-view-{{ product.id }} product-listing__quickview-trigger js-quickview-trigger no-js-hidden"
           type="button" name="button"
           aria-hidden="true"
@@ -224,7 +224,8 @@
             fill: 'var(--directional-text)',
             hover: 'var(--directional-text)' %}
         </button>
-      {%- elsif product.available -%} {% endcomment %}
+      {%- elsif product.available -%}
+        {% if product.available %}
         <button class="quick-view-{{ product.id }} product-listing__quickview-trigger js-quickview-trigger no-js-hidden"
           type="button" name="button"
           aria-hidden="true"
@@ -267,7 +268,8 @@
               fill: 'var(--directional-text)',
               hover: 'var(--directional-text)' %}
         </button>
-      {% comment %} {%- endif -%} {% endcomment %}
+        {% endif %}
+      {%- endif -%}
     {%- endunless -%}
   </div>
 

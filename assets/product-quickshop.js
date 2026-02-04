@@ -80,6 +80,10 @@ WAU.Quickshop = {
     return html;
   },
   showModal: function showModal(trigger) {
+		if (!trigger) {
+			console.error('Quickshop trigger element not found');
+			return;
+		}
 		trigger.setAttribute('data-wau-modal-target', 'quickview');
 		trigger.classList.add('js-modal-open');
 
@@ -91,6 +95,10 @@ WAU.Quickshop = {
     WAU.Modal._closeByName("modal-quickview");
   },
 	showDrawer: function showDrawer(trigger) {
+		if (!trigger) {
+			console.error('Quickshop trigger element not found');
+			return;
+		}
 		trigger.setAttribute('data-wau-slideout-target', 'quickview');
 		trigger.setAttribute('data-slideout-direction', 'right');
 		trigger.classList.add('js-slideout-open');
@@ -126,7 +134,11 @@ WAU.Quickshop = {
 			const context = document.getElementById('quickview-form');
 
 			// Load product js function
-			Product(context);
+			if (typeof Product !== 'undefined') {
+				Product(context);
+			} else {
+				console.error('Product function is not defined');
+			}
 
 			// Load Payment Buttons
 			if (context.querySelector('.js-quickview-wrapper')) {
