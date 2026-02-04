@@ -325,6 +325,9 @@
           fill: fill_color,
           hover: hover_color
         %}
+        <span class="js-cart-count cart-count-bubble {% if cart.item_count == 0 %}hide{% endif %}">
+          {{- cart.item_count -}}
+        </span>
       {%- else -%}
         <span class="navigation__top-level--hover">
           {{- 'general.header.cart' | t -}}
@@ -361,6 +364,9 @@
             fill: fill_color,
             hover: hover_color
           %}
+          <span class="js-cart-count cart-count-bubble {% if cart.item_count == 0 %}hide{% endif %}">
+            {{- cart.item_count -}}
+          </span>
         {%- else -%}
           <span class="navigation__top-level--hover">
             {{- 'general.header.cart' | t -}}

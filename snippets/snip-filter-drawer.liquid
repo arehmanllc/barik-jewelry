@@ -30,8 +30,9 @@
 -%}
 
 <div
-  class="filter-drawer__wrapper grid__wrapper edge rg0 cg0 sm-rg0 sm-cg0"
+  class="filter-drawer__wrapper grid__wrapper edge rg0 cg0 sm-rg0 sm-cg0 {% if is_sidebar %}sidebar__wrapper{% endif %}"
 >
+  {%- unless is_sidebar -%}
   <div class="filter-drawer__mobile-close span-12 auto a-right">
     <div class="slideout__trigger--close">
       <button
@@ -56,12 +57,13 @@
       </button>
     </div>
   </div>
+  {%- endunless -%}
 
   {%- unless has_filter == false -%}
     <div
-      class="filter-drawer__menu-block {% unless collection.all_products_count >= 1000 %}active--menu{% endunless %} js-mobile-menu span-12 auto"
-      data-menu-handle="filter"
-      {% if collection.all_products_count >= 1000 %}
+      class="filter-drawer__menu-block {% unless collection.all_products_count >= 1000 %}active--menu{% endunless %} {% unless is_sidebar %}js-mobile-menu{% endunless %} span-12 auto"
+      {% unless is_sidebar %}data-menu-handle="filter"{% endunless %}
+      {% if collection.all_products_count >= 1000 and is_sidebar == false %}
         style="display: none;"
       {% endif %}
     >
@@ -112,13 +114,27 @@
                 assign filter_type = 'regular'
               endif
             -%}
-            <div class="sidebar__filter-block sidebar-filter filter--{{ filter_type }}">
-              <p class="sm-caps">
+            <div class="sidebar__filter-block sidebar-filter filter--{{ filter_type }} {% if is_sidebar %}c-accordion c-accordion--collection-sidebar{% endif %}">
+              <p class="sm-caps {% if is_sidebar %}c-accordion__header js-accordion-header closed{% endif %}">
                 {{ filter.label | escape }}
                 {% if filter.operator == 'AND' -%}
                   <small>{{ 'collections.filter.match_all' | t }}</small>
                 {%- endif %}
+                {% if is_sidebar %}
+                  <span class="dropdown-arrow">
+                    {% render 'snip-icons',
+                      wrapper: '.c-accordion__header',
+                      type: 'apollo',
+                      icon: 'down-carrot',
+                      size: '12px',
+                      classes: 'vib-center',
+                      fill: 'var(--text-color)',
+                      hover: 'var(--text-color)'
+                    %}
+                  </span>
+                {% endif %}
               </p>
+              <div class="{% if is_sidebar %}c-accordion__panel closed{% endif %}">
               <ul>
                 {% liquid
                   if filter.operator == 'AND'
@@ -243,6 +259,7 @@
                   </li>
                 {% endfor %}
               </ul>
+              </div>
             </div>
           {% when 'price_range' %}
             {%- liquid
@@ -254,8 +271,24 @@
               endif
             -%}
 
-            <div class="sidebar__filter-block sidebar-filter filter--price-range" data-filters-price-range>
-              <p class="sm-caps">{{ filter.label | escape }}</p>
+            <div class="sidebar__filter-block sidebar-filter filter--price-range {% if is_sidebar %}c-accordion c-accordion--collection-sidebar{% endif %}" data-filters-price-range>
+              <p class="sm-caps {% if is_sidebar %}c-accordion__header js-accordion-header closed{% endif %}">
+                {{ filter.label | escape }}
+                {% if is_sidebar %}
+                  <span class="dropdown-arrow">
+                    {% render 'snip-icons',
+                      wrapper: '.c-accordion__header',
+                      type: 'apollo',
+                      icon: 'down-carrot',
+                      size: '12px',
+                      classes: 'vib-center',
+                      fill: 'var(--text-color)',
+                      hover: 'var(--text-color)'
+                    %}
+                  </span>
+                {% endif %}
+              </p>
+              <div class="{% if is_sidebar %}c-accordion__panel closed{% endif %}">
               <div class="filter-range__boxes js-price-range">
                 <div class="filter-range__field inline-block w50">
                   <label class="filter-range__field__label visually-hidden" for="Filter-{{ filter.label | escape }}">
@@ -367,6 +400,7 @@
                   >
                 </div>
               </div>
+              </div>
             </div>
         {% endcase %}
       {%- endfor -%}
@@ -374,12 +408,29 @@
   {%- endunless -%}
   {%- unless has_sortby == false -%}
     <div
-      class="filter-drawer__menu-block js-mobile-menu {% if collection.all_products_count >= 1000 or has_filter == false %}active--menu{% endif %} span-12 auto"
-      data-menu-handle="sort"
+      class="filter-drawer__menu-block {% if is_sidebar %}active--menu c-accordion c-accordion--collection-sidebar{% endif %} {% unless is_sidebar %}js-mobile-menu{% endunless %} span-12 auto"
+      {% unless is_sidebar %}data-menu-handle="sort"{% endunless %}
+      {% unless is_sidebar %}style="display: none;"{% endunless %}
     >
-      <div class="filter-drawer__header sm-caps grid__wrapper edge">
-        <p class="span-12 auto a-left">{{ 'collections.filter.sort_title' | t }}</p>
+      <div class="filter-drawer__header sm-caps grid__wrapper edge {% if is_sidebar %}c-accordion__header js-accordion-header closed{% endif %}">
+        <p class="span-12 auto a-left">
+          {{ 'collections.filter.sort_title' | t }}
+          {% if is_sidebar %}
+            <span class="dropdown-arrow">
+              {% render 'snip-icons',
+                wrapper: '.c-accordion__header',
+                type: 'apollo',
+                icon: 'down-carrot',
+                size: '12px',
+                classes: 'vib-center',
+                fill: 'var(--text-color)',
+                hover: 'var(--text-color)'
+              %}
+            </span>
+          {% endif %}
+        </p>
       </div>
+      <div class="{% if is_sidebar %}c-accordion__panel closed{% endif %}">
       <ul class="slide-nav__first-level--wrapper" data-link-parent="main">
         {% for option in type.sort_options %}
           {%- liquid
@@ -392,18 +443,20 @@
 
           <li class="slide-nav__first-level--item js-filter {{ status }}">
             <input
-              type="checkbox"
+              type="radio"
               name="sort_by"
               value="{{ option.value | escape }}"
               style="display: none;"
               id="{{ option.name | downcase | handle }}"
+              {% if option.value == collection.sort_by %}checked{% endif %}
             >
-            <a class="slide-nav__first-level--link mb0 vib-center" href="?sort_by={{ option.name | escape }}">
+            <a class="slide-nav__first-level--link mb0 vib-center" href="?sort_by={{ option.value | escape }}">
               <label for="{{ option.name | downcase | handle }}" class="filter__text--label">{{ option.name }}</label>
             </a>
           </li>
         {% endfor %}
       </ul>
+      </div>
     </div>
   {%- endunless -%}
 
@@ -503,7 +556,7 @@
     .filter-drawer__wrapper .slideout__trigger--close svg g {
       fill: {{ text_color }};
     }
-    {% if block.settings.filter_appearance == 'vertical' %}
+    {% if block.settings.filter_appearance == 'vertical' or is_sidebar %}
       .sidebar-filter:not(.filter--color) ul>li {
         display: flex;
         align-items: center;

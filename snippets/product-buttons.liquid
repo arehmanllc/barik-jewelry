@@ -53,7 +53,7 @@
       <input
         id="quickshop-productQty-{{ product.id }}"
         min="1"
-        data-limit="{% if current_variant.inventory_management == 'shopify' %}{% unless current_variant.inventory_policy == 'continue' %}{{ current_variant.inventory_quantity }}{% endunless %}{% endif %}"
+        data-limit="{% if current_variant and current_variant.inventory_management == 'shopify' %}{% unless current_variant.inventory_policy == 'continue' %}{{ current_variant.inventory_quantity }}{% endunless %}{% endif %}"
         type="text"
         name="quantity"
         class="product-qty product__quantity-input vib-center"
@@ -90,7 +90,7 @@
       {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
     {%- endif -%}
 
-    <input id="formVariantId" name="id" type="hidden" value="{{ product.selected_or_first_available_variant.id }}">
+    <input id="formVariantId" name="id" type="hidden" value="{% if current_variant %}{{ current_variant.id }}{% else %}{{ product.selected_or_first_available_variant.id }}{% endif %}">
     <div class="note note-success mt3 js-added-msg a-center mb4" style="display: none">
       {{ 'products.product.added' | t }} <a class="underline" href="{{ routes.cart_url }}">
         {{- 'products.product.view_cart' | t -}}
