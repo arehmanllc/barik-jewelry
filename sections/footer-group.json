@@ -14,10 +14,17 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "logo_EMj4WR": {
+          "type": "logo",
+          "settings": {
+            "footer_logo": "shopify://shop_images/Untitled_design_e13b3997-affb-466a-b20f-b7887a324668.png",
+            "column_width": 3
+          }
+        },
         "footer-1": {
           "type": "menu",
           "settings": {
-            "footer_nav": "shipping-and-returns",
+            "footer_nav": "figma-header-menu",
             "title": "Shop Online",
             "column_width": 3
           }
@@ -25,24 +32,33 @@
         "footer-2": {
           "type": "menu",
           "settings": {
-            "footer_nav": "footer",
+            "footer_nav": "figma-header-menu",
             "title": "Support",
             "column_width": 3
           }
         },
-        "footer-3": {
-          "type": "menu",
+        "social_zyAxiB": {
+          "type": "social",
           "settings": {
-            "footer_nav": "",
-            "title": "Need Help?",
+            "title": "FOLLOW US",
+            "column_width": 2
+          }
+        },
+        "text_kDGY6j": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "footer_text": "<p>Barik creates timeless, minimal jewelry designed to be worn every day and cherished for years. Each piece is thoughtfully crafted to balance modern elegance with lasting quality.</p>",
             "column_width": 3
           }
         }
       },
       "block_order": [
+        "logo_EMj4WR",
         "footer-1",
         "footer-2",
-        "footer-3"
+        "social_zyAxiB",
+        "text_kDGY6j"
       ],
       "settings": {
         "show_credit_cards": true,
@@ -51,9 +67,9 @@
         "show_locale_selector": true,
         "show_country_selector": true,
         "show_flag": true,
-        "show_newsletter": true,
+        "show_newsletter": false,
         "show_social": true,
-        "show_policy": false,
+        "show_policy": true,
         "enable_follow_on_shop": true
       }
     }
