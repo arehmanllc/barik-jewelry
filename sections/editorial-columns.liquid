@@ -74,7 +74,7 @@
 
 {% comment %} Editorial Columns Template {% endcomment %}
 <div
-  class="section-txt-cols text-columns-{{ section.id }} global__section {{ section_padding }} {% if request.visual_preview_mode %}preview-mode{% endif %}"
+  class="{% if section.settings.tstimonials_grid %}testimonials-grid {% endif %}section-txt-cols text-columns-{{ section.id }} global__section {{ section_padding }} {% if request.visual_preview_mode %}preview-mode{% endif %}"
   data-section-id="{{ section.id }}"
   {% if show_carousel %}
     data-section-type="carousel"
@@ -141,16 +141,43 @@
            flex: 0 0 25%;
            padding: 0 10px;
         }
+        .testimonials-grid.text-columns-{{ section.id }} .section-txt-cols__item {
+           width: 50%;
+           flex: 0 0 50%;
+           padding: 0 10px;
+        }
+        .testimonials-grid .section-txt-cols__item{
+          display: grid;
+          grid-template-columns: 212px 1fr;
+          gap: 20px;
+        }
+        .testimonials-grid .box-ratio  img{
+          height: 270px;
+          object-fit: cover;
+        }
+        .testimonials-grid .section-txt-cols__content{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
         @media screen and (max-width: 740px) {
           .text-columns-{{ section.id }} .section-txt-cols__item {
              width: 50%;
              flex: 0 0 50%;
+          }
+          .testimonials-grid.text-columns-{{ section.id }} .section-txt-cols__item {
+            width: 100%;
+            flex: 0 0 100%;
           }
         }
         @media screen and (max-width: 480px) {
           .text-columns-{{ section.id }} .section-txt-cols__item {
              width: 100%;
              flex: 0 0 100%;
+          }
+          .testimonials-grid.text-columns-{{ section.id }} .section-txt-cols__item {
+            width: 100%;
+            flex: 0 0 100%;
           }
         }
         .text-columns-{{ section.id }} .flickity-enabled {
@@ -176,6 +203,12 @@
   "class": "dynamic-section",
   "max_blocks": 6,
   "settings": [
+      {
+      "type": "checkbox",
+      "id": "tstimonials_grid",
+      "label": "Make Testimonials 2 Grid system",
+      "default": false
+    },
     {
       "type": "text",
       "id": "title",
