@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "collection-header",
+      "custom_css": [],
       "settings": {
         "full_width": true,
         "collection_image": true,
@@ -21,7 +22,73 @@
         "subheading": "",
         "heading_placement": "center",
         "alignment": "a-center",
-        "color_scheme": "2"
+        "color_scheme": "3"
+      }
+    },
+    "marquee_zdkD8U": {
+      "type": "marquee",
+      "blocks": {
+        "marquee_item_7kgVAx": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Timeless Elegance",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_XFKb88": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "✧",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_RYRgmG": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Designed to Last",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_iEdFtX": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "✧",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_aTTyHJ": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Consciously Made",
+            "enable_icon": false
+          }
+        },
+        "marquee_item_tFDGgJ": {
+          "type": "marquee_item",
+          "settings": {
+            "text": "✧",
+            "enable_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "marquee_item_7kgVAx",
+        "marquee_item_XFKb88",
+        "marquee_item_RYRgmG",
+        "marquee_item_iEdFtX",
+        "marquee_item_aTTyHJ",
+        "marquee_item_tFDGgJ"
+      ],
+      "name": "Marquee Section",
+      "settings": {
+        "autoplay": true,
+        "font_heading_family": "f-body",
+        "heading_size": "f-20",
+        "font_weight": "b-400",
+        "padding_top": 24,
+        "padding_top_mobile": 13,
+        "padding_bottom": 24,
+        "padding_bottom_mobile": 13
       }
     },
     "main": {
@@ -52,25 +119,107 @@
         "filter_layout": "sidebar"
       }
     },
-    "image-with-text": {
-      "type": "image-with-text",
-      "disabled": true,
+    "collection_list_idxT7j": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_FVFGid": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bracelets-1",
+            "product_image": false
+          }
+        },
+        "featured_collection_8PxEPK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "earrings",
+            "product_image": false
+          }
+        },
+        "featured_collection_pyz6cY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "necklaces-1",
+            "product_image": false
+          }
+        },
+        "featured_collection_qBMEQ4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rings",
+            "product_image": false
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_FVFGid",
+        "featured_collection_8PxEPK",
+        "featured_collection_pyz6cY",
+        "featured_collection_qBMEQ4"
+      ],
+      "name": "Collection list",
       "settings": {
-        "full_width": true,
-        "iwt_layout": "image_left",
-        "iwt_heading": "Heading",
-        "iwt_text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-        "iwt_button": "Button",
-        "iwt_link": "",
-        "color_scheme": "3",
+        "title": "Other Categories",
+        "items_per_row": 4,
+        "circular_images": false,
+        "section_padding": "top"
+      }
+    },
+    "image_with_text_6XG3rC": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Jewelry with Meaning",
+        "iwt_text": "<p>At Barik Jewelry, every piece is thoughtfully crafted to celebrate moments that matter. Rooted in craftsmanship and refined by modern design, our creations are made to be timeless, personal, and enduring.<br/><br/>From carefully chosen stones to polished finishes, each design is created to be worn, cherished, and remembered.</p>",
+        "iwt_button": "More About Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
         "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "image_with_text_rpr33T": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Your Design, Our Craft",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "Create with Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "newsletter_BhTAXg": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "title": "Jewelry with a Story to Tell",
+        "subheading": "<p>Receive early access to new designs, special moments, and the art behind our pieces.</p>",
+        "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+        "alignment": "a-left",
+        "show_social_icons": false,
+        "heading_font_size": 32,
+        "subheading_font_size": 18,
+        "color_scheme": "none",
         "section_padding": "both"
       }
     }
   },
   "order": [
     "banner",
+    "marquee_zdkD8U",
     "main",
-    "image-with-text"
+    "collection_list_idxT7j",
+    "image_with_text_6XG3rC",
+    "image_with_text_rpr33T",
+    "newsletter_BhTAXg"
   ]
 }
