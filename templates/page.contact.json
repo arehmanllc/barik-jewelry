@@ -38,7 +38,7 @@
           "settings": {
             "text_rte": "<p><strong>We operate by appointment only. Consultations via phone or in person.</strong></p><p><strong>Located</strong>:</p><p>Sacramento St. Fair Oaks,CA</p><p><br/><strong>Phone Number</strong>:<br/>916-995-0608<br/><br/><strong>Hours</strong>:<br/>Monday — Friday<br/>8am to 8pm EST</p>",
             "show_border": true,
-            "block_position": "content"
+            "block_position": "sidebar"
           }
         },
         "4335fa9a-4179-4f3f-8983-d5b81c71f219": {
@@ -62,10 +62,58 @@
         "07e56099-bfa6-4c3d-bd77-8a2dbbf45945"
       ],
       "settings": {}
+    },
+    "text_with_icons_nxCWaR": {
+      "type": "text-with-icons",
+      "blocks": {
+        "text_block_ykAWMf": {
+          "type": "text_block",
+          "settings": {
+            "content_type": "icon",
+            "icon": "location",
+            "link": "",
+            "title": "Located",
+            "subheading": "<p>Fair Oaks,CA</p>"
+          }
+        },
+        "text_block_6dy7RY": {
+          "type": "text_block",
+          "settings": {
+            "content_type": "icon",
+            "icon": "phone",
+            "link": "",
+            "title": "Contact Number",
+            "subheading": "<p><a href=\"tel:916-995-0608\" target=\"_blank\" title=\"tel:916-995-0608\">916-995-0608</a></p>"
+          }
+        },
+        "text_block_7myi7e": {
+          "type": "text_block",
+          "settings": {
+            "content_type": "icon",
+            "icon": "clock",
+            "link": "",
+            "title": "Hours",
+            "subheading": "<p>Monday — Friday<br/>8am to 8pm EST</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_ykAWMf",
+        "text_block_6dy7RY",
+        "text_block_7myi7e"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "title": "",
+        "icon_size": 60,
+        "color_scheme": "2",
+        "section_padding": "both"
+      }
     }
   },
   "order": [
     "banner",
-    "main"
+    "main",
+    "text_with_icons_nxCWaR"
   ]
 }

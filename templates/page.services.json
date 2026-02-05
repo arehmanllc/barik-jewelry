@@ -118,7 +118,71 @@
       "settings": {
         "liquid": "<!-- Calendly link widget begin -->\n<link href=\"https://assets.calendly.com/assets/external/widget.css\" rel=\"stylesheet\">\n<script src=\"https://assets.calendly.com/assets/external/widget.js\" type=\"text/javascript\" async></script>\n<a class=\"button_booking\" href=\"\" onclick=\"Calendly.initPopupWidget({url: 'https://calendly.com/barikjewelry/30min?hide_gdpr_banner=1&primary_color=a5874a'});return false;\">Book Your Design Session</a>\n<!-- Calendly link widget end -->",
         "full_width": true,
-        "section_padding": "bottom"
+        "section_padding": "none"
+      }
+    },
+    "image_with_text_LJWcjH": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Your Design, Our Craft",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "Create with Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "image_with_text_mqGEKH": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Your Design, Our Craft",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "Create with Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "image_with_text_CAWgLH": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Your Design, Our Craft",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "Create with Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "image_with_text_CGkJbq": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Your Design, Our Craft",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "Create with Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
       }
     },
     "multicolumn_a8FALq": {
@@ -212,6 +276,7 @@
         "image_alongside_text_An3AFm",
         "image_alongside_text_HmqyGE"
       ],
+      "disabled": true,
       "name": "Multicolumn",
       "settings": {
         "section_padding": "bottom"
@@ -219,6 +284,7 @@
     },
     "rich_text_H6VnwD": {
       "type": "rich-text",
+      "disabled": true,
       "custom_css": [
         "div {max-width: 97%;}"
       ],
@@ -242,6 +308,10 @@
     "rich_text_gXYbdz",
     "rich_text_CTrxCq",
     "custom_liquid_yjrmBT",
+    "image_with_text_LJWcjH",
+    "image_with_text_mqGEKH",
+    "image_with_text_CAWgLH",
+    "image_with_text_CGkJbq",
     "multicolumn_a8FALq",
     "rich_text_H6VnwD"
   ]

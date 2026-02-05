@@ -11,9 +11,9 @@
   "sections": {
     "banner": {
       "type": "template-header",
-      "disabled": true,
       "settings": {
         "full_width": true,
+        "image": "shopify://shop_images/Hand_wearing_a_gold_ring_with_a_pear-shaped_diamond-Photoroom.jpg",
         "scale": 2,
         "banner_height": 400,
         "heading": "",
@@ -23,8 +23,41 @@
         "color_scheme": "3"
       }
     },
+    "image_with_text_m7q9XU": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Jewelry with Meaning",
+        "iwt_text": "<p>At Barik Jewelry, every piece is thoughtfully crafted to celebrate moments that matter. Rooted in craftsmanship and refined by modern design, our creations are made to be timeless, personal, and enduring.<br/><br/>From carefully chosen stones to polished finishes, each design is created to be worn, cherished, and remembered.</p>",
+        "iwt_button": "More About Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "image_with_text_HgYbeV": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Your Design, Our Craft",
+        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
+        "iwt_button": "Create with Us",
+        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
     "image_with_text_pGWaC3": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "iwt_image": "shopify://shop_images/Hand_wearing_a_gold_ring_with_a_pear-shaped_diamond-Photoroom.jpg",
@@ -40,6 +73,7 @@
     },
     "image_with_text_yGdQ8G": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "iwt_image": "shopify://shop_images/different-goldsmiths-tools-on-the-jewelry-workplac-2024-10-15-06-51-33-utc.jpg",
@@ -55,6 +89,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
     },
     "collage_DFqE8x": {
@@ -134,6 +169,8 @@
   },
   "order": [
     "banner",
+    "image_with_text_m7q9XU",
+    "image_with_text_HgYbeV",
     "image_with_text_pGWaC3",
     "image_with_text_yGdQ8G",
     "main",

@@ -29,6 +29,7 @@
       "blocks": {
         "7d909784-cab3-4de7-830e-ae0c0df7a740": {
           "type": "page_content",
+          "disabled": true,
           "settings": {
             "block_position": "content"
           }
@@ -38,10 +39,44 @@
         "7d909784-cab3-4de7-830e-ae0c0df7a740"
       ],
       "settings": {}
+    },
+    "rich_text_JxepiV": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "title": "Customer care",
+        "rich_text": "<p>At Barik Jewelry, our commitment extends beyond design. We take pride in offering a seamless, trustworthy experience for every client from the moment you place your order until your cherished piece arrives in your hands.</p>",
+        "heading_size": 40,
+        "text_size": 20,
+        "page": "",
+        "alignment": "a-center",
+        "content_width": 60,
+        "reduce_padding": false,
+        "section_padding": "none",
+        "color_scheme": "1"
+      }
+    },
+    "image_with_text_gWM3Wh": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+        "iwt_layout": "image_right",
+        "iwt_heading": "",
+        "iwt_text": "<h1><br/><strong>Customer Support</strong><br/></h1><p>Concierge Service: Our dedicated team is available to assist you with sizing, care, design consultations, or order inquiries.<br/><br/>Contact Us: [Email: barikjewelry@hotmail.com] /  [phone num:+1 916-995-0608]<br/><br/><br/>By Appointment Only: Private consultations available virtually or in person in Fair Oaks, California.</p><p></p><h1><strong>Shipping & Delivery </strong></h1><p>Domestic (U.S.): Complimentary insured shipping on all orders within the United States. Delivery typically takes 3–5 business days for in-stock items.<br/><br/>Luxury Care: Every order is carefully packaged in our signature Barik box to ensure safe and elegant delivery.<br/></p><h1><strong>Made-to-Order & In-Stock Items</strong></h1><p>In-Stock Items: Ready to ship within 2–3 business days.<br/><br/>Made-to-Order & Bespoke Pieces: Depending on complexity, custom creations require 2–6 weeks for design, production, and quality inspection. Exact timelines are provided during your private consultation.</p><h1><strong>Returns & Exchanges</strong></h1><p>In-Stock Jewelry: Eligible for returns or exchanges within 14 days of delivery, provided the item is unworn and in original packaging.<br/><br/>Custom & Made-to-Order Pieces: Due to their unique nature, bespoke and personalized pieces are non-returnable. We work closely with you during the design process to ensure your complete satisfaction.</p>",
+        "iwt_button": "Button",
+        "iwt_link": "",
+        "color_scheme": "1",
+        "iwt_section_height": 1200,
+        "section_padding": "both"
+      }
     }
   },
   "order": [
     "banner",
-    "main"
+    "main",
+    "rich_text_JxepiV",
+    "image_with_text_gWM3Wh"
   ]
 }
