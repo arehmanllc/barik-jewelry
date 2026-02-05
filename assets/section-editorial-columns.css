@@ -24,7 +24,7 @@
 .section-txt-cols .flickity-viewport {
   width: 100%;
 }
-#only-at-barik-jewelry {
+.section-txt-cols .section-heading {
   font-size: clamp(32px, 4vw, 56px);
   font-weight: 500;
   line-height: 42px;

@@ -252,11 +252,128 @@
       "settings": {
         "items_per_row": 4,
         "items_shown": 9,
-        "title": "Related Products",
-        "subheading": "<p>Looking for more? Discover related designs crafted to inspire your next timeless look</p>",
+        "title": "Complete the look",
+        "subheading": "",
         "link_text": "",
         "link_url": "",
         "text_position": "left",
+        "section_padding": "both"
+      }
+    },
+    "shop_the_look_D8VHLm": {
+      "type": "shop-the-look",
+      "blocks": {
+        "product_LwdzxY": {
+          "type": "product",
+          "settings": {
+            "product": "1-10-ctw-natural-diamond-crescent-moon-necklace",
+            "hotspot_horizontal": 43,
+            "hotspot_vertical": 29,
+            "hotspot_color": "#ffffff"
+          }
+        },
+        "product_W9VAkJ": {
+          "type": "product",
+          "settings": {
+            "product": "1-3ctw-natural-diamond-earrings",
+            "hotspot_horizontal": 58,
+            "hotspot_vertical": 46,
+            "hotspot_color": "#ffffff"
+          }
+        },
+        "product_CjAByW": {
+          "type": "product",
+          "settings": {
+            "product": "1-4-ct-natural-diamond-solitaire-necklace",
+            "hotspot_horizontal": 37,
+            "hotspot_vertical": 73,
+            "hotspot_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "product_LwdzxY",
+        "product_W9VAkJ",
+        "product_CjAByW"
+      ],
+      "settings": {
+        "full_width": true,
+        "title": "",
+        "image": "shopify://shop_images/135877971-8192x5465-f59ab60d-9495-49d4-a702-61c9d63a6395-Photoroom-Photoroom.jpg",
+        "section_padding": "both"
+      }
+    },
+    "editorial_columns_EFYt7H": {
+      "type": "editorial-columns",
+      "blocks": {
+        "text_block_k8zTaT": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+          }
+        },
+        "text_block_p7VgmE": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/152151246-1000x710-0668bb12-18ca-43c9-9dbb-162ce5395329.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+          }
+        },
+        "text_block_z4hVYX": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/152151246-1000x710-0668bb12-18ca-43c9-9dbb-162ce5395329.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+          }
+        },
+        "text_block_9WxNAm": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/689491_600_P_266668841.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+          }
+        },
+        "text_block_A9qxMq": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/689510_602_P_266668852.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+          }
+        },
+        "text_block_RnN478": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/2.jpg",
+            "link": "",
+            "title": "Our collections",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_k8zTaT",
+        "text_block_p7VgmE",
+        "text_block_z4hVYX",
+        "text_block_9WxNAm",
+        "text_block_A9qxMq",
+        "text_block_RnN478"
+      ],
+      "name": "Editorial columns",
+      "settings": {
+        "tstimonials_grid": true,
+        "title": "What Our Customers Say",
+        "text_align": "left",
         "section_padding": "both"
       }
     }
@@ -265,6 +382,8 @@
     "main",
     "1642796129844cd818",
     "product-details",
-    "product-recommendations"
+    "product-recommendations",
+    "shop_the_look_D8VHLm",
+    "editorial_columns_EFYt7H"
   ]
 }

@@ -1,0 +1,38 @@
+.product-page .h2{
+  font-size: clamp(32px,4vw,56px);
+  letter-spacing: 0;
+  line-height: 60px;
+  padding-top: 0;
+}
+.product-page .price-item{
+  font-family: var(--main-family);
+  font-size: 21px;
+}
+.product-page .swatches__option-name{
+  font-size: 14px !important;
+}
+.product-page .swatches__option-value{
+  font-size: 14px !important;
+}
+.product__section--main .product__quantity--selector{
+  width: 100%;
+  justify-content: space-between;
+  background: transparent !important;
+}
+.product-qty{
+  background-color: transparent !important;
+}
+.add-item.add{
+  background-color: #A5874A;
+  color: #ffffff;
+  max-width: 100%;
+}
+.ajax-submit, .product-additional-buttons, .product-additional-buttons .shopify-payment-button__button--unbranded {
+    max-width: 100% !important;
+}
+.shopify-payment-button__button{
+  max-width: 100% !important;
+}
+.pt-tab-btn{
+  margin-bottom: 0;
+}

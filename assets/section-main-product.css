@@ -89,11 +89,11 @@
   zoom: 1;
   padding: 0 10px;
   color: var(--text-color);
-  border-color: var(--text-color-light);
+  /* border-color: var(--text-color-light); */
   background-color: var(--background);
   margin: 0px var(--space-2) var(--space-2) 0;
   cursor: pointer;
-  border: 1px solid;
+  /* border: 1px solid; */
   position: relative;
   text-transform: uppercase;
   font-weight: var(--main-weight);
@@ -130,10 +130,10 @@
 
 .swatches__container .swatches__shape--square label {
   min-width: 30px !important;
-  width: 30px !important;
-  height: 30px !important;
+  width: 50px !important;
+  height: 50px !important;
   line-height: 27px !important;
-  outline: 0 !important;
+  /* outline: 0 !important; */
   padding: 0;
 }
 
@@ -147,16 +147,26 @@
 }
 
 .swatches__form--input:checked+.swatches__form--label {
-  border: 1px solid var(--swatch-accent);
+  /* border: 1px solid var(--swatch-accent); */
   background: var(--swatch-accent);
   color: var(--background);
+  outline: 2px solid #242424;
+  outline-offset: 2px;
   opacity: 1;
 }
-
-.product__section--main .swatches__swatch--color .swatches__form--input:checked+.swatches__form--label {
+.product__form-buttons{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 210px 1fr;
+}
+.product__quantity{
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+/* .product__section--main .swatches__swatch--color .swatches__form--input:checked+.swatches__form--label {
   border-color: var(--text-color);
   box-shadow: 0px 0px 3px 1px #b8b8b8;
-}
+} */
 
 .product__section--main .swatches__swatch--color .swatches__form--label:hover,
 .product__section--main .swatches__swatch--color .swatches__form--label:focus {
@@ -231,7 +241,7 @@
   font-family: var(--main-family);
   font-weight: var(--main-weight);
   font-style: var(--main-style);
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   font-size: var(--font-size-sm);
   text-transform:  uppercase;
 }
@@ -239,9 +249,9 @@
 .product__section--main .swatches__option-value {
   text-transform: uppercase;
   font-size: var(--font-size-sm);
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   margin-left: 5px;
-  font-weight: normal;
+  font-weight: 700;
 }
 
 /* Product Description */
