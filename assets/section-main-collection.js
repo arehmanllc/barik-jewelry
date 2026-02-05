@@ -260,7 +260,35 @@ const CollectionFilters = {
   },
   sidebarAccordions: function sidebarAccordions(container) {
     container.querySelectorAll('.c-accordion--collection-sidebar').forEach((accordion) => {
-      WAU.Helpers.Accordion(accordion, '.js-accordion-header', '.c-accordion__panel');
+      const header = accordion.querySelector('.js-accordion-header');
+      const panel = accordion.querySelector('.c-accordion__panel');
+
+      if (header && panel) {
+        // Set initial ARIA attributes - start with accordions open
+        header.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+
+        // Don't set inline max-height - let CSS handle it
+        panel.style.maxHeight = '';
+
+        // Add click event listener
+        header.addEventListener('click', function () {
+          const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+          // Toggle current accordion
+          header.setAttribute('aria-expanded', !isExpanded);
+          panel.setAttribute('aria-hidden', isExpanded);
+
+          // Set max-height for smooth transition
+          if (!isExpanded) {
+            // Opening: remove inline style, let CSS handle it
+            panel.style.maxHeight = '';
+          } else {
+            // Closing: set to 0 to trigger transition and then CSS handles hidden state
+            panel.style.maxHeight = '0px';
+          }
+        });
+      }
     });
   }
 }

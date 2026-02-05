@@ -114,14 +114,26 @@
                 assign filter_type = 'regular'
               endif
             -%}
-            <div class="sidebar__filter-block sidebar-filter filter--{{ filter_type }}">
-              <p class="sm-caps">
-                {{ filter.label | escape }}
-                {% if filter.operator == 'AND' -%}
-                  <small>{{ 'collections.filter.match_all' | t }}</small>
-                {%- endif %}
-              </p>
-              <ul>
+            <div class="sidebar__filter-block sidebar-filter filter--{{ filter_type }} c-accordion--collection-sidebar">
+              <div class="js-accordion-header c-accordion__header">
+                <p class="sm-caps mb0">
+                  {{ filter.label | escape }}
+                  {% if filter.operator == 'AND' -%}
+                    <small>{{ 'collections.filter.match_all' | t }}</small>
+                  {%- endif %}
+                </p>
+                {% render 'snip-icons',
+                  wrapper: '.c-accordion__header',
+                  type: 'apollo',
+                  icon: 'down-carrot',
+                  size: '12px',
+                  classes: 'c-accordion__icon vib-center',
+                  fill: 'var(--text-color)',
+                  hover: 'var(--hover-color)'
+                %}
+              </div>
+              <div class="c-accordion__panel">
+                <ul>
                 {% liquid
                   if filter.operator == 'AND'
                     assign active_values = filter.values | where: 'active', true
@@ -245,6 +257,7 @@
                   </li>
                 {% endfor %}
               </ul>
+              </div>
             </div>
           {% when 'price_range' %}
             {%- liquid
@@ -256,9 +269,21 @@
               endif
             -%}
 
-            <div class="sidebar__filter-block sidebar-filter filter--price-range" data-filters-price-range>
-              <p class="sm-caps">{{ filter.label | escape }}</p>
-              <div class="filter-range__boxes js-price-range">
+            <div class="sidebar__filter-block sidebar-filter filter--price-range c-accordion--collection-sidebar" data-filters-price-range>
+              <div class="js-accordion-header c-accordion__header">
+                <p class="sm-caps mb0">{{ filter.label | escape }}</p>
+                {% render 'snip-icons',
+                  wrapper: '.c-accordion__header',
+                  type: 'apollo',
+                  icon: 'down-carrot',
+                  size: '12px',
+                  classes: 'c-accordion__icon vib-center',
+                  fill: 'var(--text-color)',
+                  hover: 'var(--hover-color)'
+                %}
+              </div>
+              <div class="c-accordion__panel">
+                <div class="filter-range__boxes js-price-range">
                 <div class="filter-range__field inline-block w50">
                   <label class="filter-range__field__label visually-hidden" for="Filter-{{ filter.label | escape }}">
                     {{- 'collections.filter.from' | t -}}
@@ -370,19 +395,30 @@
                 </div>
               </div>
             </div>
+            </div>
         {% endcase %}
       {%- endfor -%}
     </div>
   {%- endunless -%}
   {%- unless has_sortby == false -%}
     <div
-      class="filter-drawer__menu-block js-mobile-menu {% if collection.all_products_count >= 1000 or has_filter == false %}active--menu{% endif %} span-12 auto"
+      class="filter-drawer__menu-block js-mobile-menu {% if collection.all_products_count >= 1000 or has_filter == false %}active--menu{% endif %} span-12 auto c-accordion--collection-sidebar"
       data-menu-handle="sort"
     >
-      <div class="filter-drawer__header sm-caps grid__wrapper edge">
-        <p class="span-12 auto a-left">{{ 'collections.filter.sort_title' | t }}</p>
+      <div class="js-accordion-header c-accordion__header">
+        <p class="sm-caps mb0">{{ 'collections.filter.sort_title' | t }}</p>
+        {% render 'snip-icons',
+          wrapper: '.c-accordion__header',
+          type: 'apollo',
+          icon: 'down-carrot',
+          size: '12px',
+          classes: 'c-accordion__icon vib-center',
+          fill: 'var(--text-color)',
+          hover: 'var(--hover-color)'
+        %}
       </div>
-      <ul class="slide-nav__first-level--wrapper" data-link-parent="main">
+      <div class="c-accordion__panel">
+        <ul class="slide-nav__first-level--wrapper" data-link-parent="main">
         {% for option in type.sort_options %}
           {%- liquid
             if option.value == collection.sort_by
@@ -394,10 +430,11 @@
 
           <li class="slide-nav__first-level--item js-filter {{ status }}">
             <input
-              type="checkbox"
+              type="radio"
               name="sort_by"
               value="{{ option.value | escape }}"
               id="{{ option.name | downcase | handle }}"
+              {% if option.value == collection.sort_by %}checked{% endif %}
             >
             <a class="slide-nav__first-level--link mb0 vib-center" href="?sort_by={{ option.name | escape }}">
               <label for="{{ option.name | downcase | handle }}" class="filter__text--label">{{ option.name }}</label>
@@ -405,6 +442,7 @@
           </li>
         {% endfor %}
       </ul>
+      </div>
     </div>
   {%- endunless -%}
 
@@ -504,33 +542,210 @@
     .filter-drawer__wrapper .slideout__trigger--close svg g {
       fill: {{ text_color }};
     }
+    
+    /* Sort By Radio Button Styling */
+    .slide-nav__first-level--item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .slide-nav__first-level--item input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      margin-right: 12px;
+      cursor: pointer;
+      flex-shrink: 0;
+      border: 1.5px solid #d1d5db;
+      border-radius: 3px;
+      background: white;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    
+    .slide-nav__first-level--item input[type="radio"]:checked {
+      background: white;
+      border-color: #d1d5db;
+    }
+    
+    .slide-nav__first-level--item input[type="radio"]:checked:after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      background: #4b5563; /* Dark grey dot */
+      border-radius: 50%;
+    }
+    
+    .slide-nav__first-level--item input[type="radio"]:hover {
+      border-color: #9ca3af;
+    }
+    
+    .slide-nav__first-level--item a {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      text-decoration: none;
+    }
+    
+    .slide-nav__first-level--item label {
+      cursor: pointer;
+      margin: 0;
+    }
+    
+    /* Accordion Styles */
+    .c-accordion--collection-sidebar {
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--dotted-color);
+      overflow: visible;
+    }
+    
+    .c-accordion--collection-sidebar:first-of-type {
+      border-top: 1px solid var(--dotted-color);
+    }
+    
+    .c-accordion__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      background: {{ bg_color }};
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      border: none;
+    }
+    
+    .c-accordion__header:hover {
+      opacity: 0.7;
+    }
+    
+    .c-accordion__header p {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    
+    .c-accordion__icon {
+      transition: transform 0.3s ease;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    
+    .c-accordion__header[aria-expanded="true"] .c-accordion__icon {
+      transform: rotate(180deg);
+    }
+    
+    .c-accordion__panel {
+      overflow: visible;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .c-accordion__panel[aria-hidden="false"] {
+      display: block !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    
+    .c-accordion__panel[aria-hidden="true"] {
+      display: none !important;
+      max-height: 0 !important;
+      overflow: hidden;
+    }
+    
+    .c-accordion__panel ul {
+      padding: 0 0 16px 0;
+      margin: 0;
+      list-style: none;
+    }
+    
+    .c-accordion__panel .filter-range__boxes {
+      padding: 0 0 16px 0;
+    }
     {% if block.settings.filter_appearance == 'vertical' %}
-      .sidebar-filter:not(.filter--color) ul>li {
+      .sidebar-filter:not(.filter--color) ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .sidebar-filter:not(.filter--color) ul li {
         display: flex;
         align-items: center;
+        margin-bottom: 12px;
       }
-      .sidebar-filter:not(.filter--color) ul>li a label {
+      
+      .sidebar-filter:not(.filter--color) ul li a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+        padding: 0;
+      }
+      
+      /* Style both checkboxes and radio buttons */
+      .sidebar-filter:not(.filter--color) ul li input[type="checkbox"],
+      .sidebar-filter:not(.filter--color) ul li input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        margin-right: 12px;
+        cursor: pointer;
+        flex-shrink: 0;
+        border: 1.5px solid #d1d5db;
+        border-radius: 3px;
+        background: white;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+      
+      /* Checked state - indicator */
+      .sidebar-filter:not(.filter--color) ul li input[type="checkbox"]:checked,
+      .sidebar-filter:not(.filter--color) ul li input[type="radio"]:checked {
+        background: white;
+        border-color: #d1d5db;
+      }
+      
+      /* Circular dot indicator */
+      .sidebar-filter:not(.filter--color) ul li input[type="checkbox"]:checked:after,
+      .sidebar-filter:not(.filter--color) ul li input[type="radio"]:checked:after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 10px;
+        height: 10px;
+        background: #4b5563;
+        border-radius: 50%;
+      }
+      
+      /* Hover state */
+      .sidebar-filter:not(.filter--color) ul li input[type="checkbox"]:hover,
+      .sidebar-filter:not(.filter--color) ul li input[type="radio"]:hover {
+        border-color: #9ca3af;
+      }
+      
+      .sidebar-filter:not(.filter--color) ul li a label {
         border: 0;
         padding: 0;
         display: flex;
         align-items: center;
-        margin-left: 18px;
+        margin: 0;
+        cursor: pointer;
+        flex: 1;
       }
-      .sidebar-filter:not(.filter--color) ul>li a {
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding: 2px 4px;
-      }
-      .sidebar-filter:not(.filter--color) ul>li a:before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        border: 1px solid var(--dotted-color);
-        position: absolute;
-      }
-      .sidebar-filter:not(.filter--color) ul>li a:hover label,
-      .sidebar-filter:not(.filter--color) ul>li a:hover label span,
+      
+      .sidebar-filter:not(.filter--color) ul li a:hover label,
+      .sidebar-filter:not(.filter--color) ul li a:hover label span,
       .sidebar__filter-block .current .regular-filter--label,
       .sidebar__filter-block .current .regular-filter--label span,
       .sidebar__filter-block .js-collection-side-filter:hover .regular-filter--label,
@@ -538,22 +753,12 @@
         background: {{ bg_color }} !important;
         color: {{ text_color }} !important;
       }
-      .sidebar-filter:not(.filter--color)  li a:hover svg g,
-      .sidebar-filter:not(.filter--color)  li a:hover svg:hover g,
+      
+      .sidebar-filter:not(.filter--color) li a:hover svg g,
+      .sidebar-filter:not(.filter--color) li a:hover svg:hover g,
       .sidebar__filter-block .current svg .hover-fill,
       .sidebar__filter-block .js-collection-side-filter:hover svg .hover-fill {
         fill: {{ hover_color }} !important;
-      }
-      .sidebar-filter:not(.filter--color) ul>li a.current:after {
-        content: "";
-        border-left: 2px solid {{  text_color }};
-        position: absolute;
-        left: 5px;
-        width: 7px;
-        transform: rotate(-45deg);
-        border-bottom: 2px solid {{ text_color }};
-        height: 3px;
-        top: 12px;
       }
     {% endif %}
   </style>

@@ -88,13 +88,13 @@
 >
   {% paginate collection.products by page_limit %}
     <div id="CollectionProductGrid" class="grid__wrapper">
-      {%- if collection.description != blank -%}
+      {% comment %} {%- if collection.description != blank -%}
         <div class="collection__page--description collection-description {{ header_width }} auto mt2 pb2 a-center">
           <div class="rte">
             {{ collection.description }}
           </div>
         </div>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
 
       {%- if collection_image -%}
         <div class="collection__page--image span-4 auto">

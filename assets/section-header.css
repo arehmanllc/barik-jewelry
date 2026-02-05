@@ -413,7 +413,9 @@ ul.header--country_list {
 .header__cart-links--cart a {
   position: relative;
 }
-
+.slideout__trigger--open > .js-mini-cart-trigger:hover .js-cart-count{
+  color: #ffffff !important;
+}
 .cart-count-bubble {
   position: absolute;
   top: -8px;
