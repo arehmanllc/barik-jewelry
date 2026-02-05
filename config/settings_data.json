@@ -53,7 +53,7 @@
     "show_shipping_countdown": false,
     "free_shipping_threshold": "150",
     "cart_upsell_title": "ADD A SPECIAL TOUCH",
-    "section_padding": 0,
+    "section_padding": 30,
     "section_title_align": "left",
     "scroll_animation": "animation--active animation-type--fade",
     "text_animation": "animation-text--active animation-text-type--fadeInRight",
@@ -68,7 +68,9 @@
     "show_collection_sizes": true,
     "show_collection_swatches": true,
     "product_variants": "swatches",
-    "color_swatch_style": "custom-image",
+    "color_swatch_shape": "square",
+    "color_swatch_style": "swatch",
+    "swatch_option_names": "color, colour, farbe, couleur, cor, colore, metal, gold,gold color",
     "facebook_url": "https://www.facebook.com/barikjewelry/?ref=_xav_ig_profile_page_web#",
     "instagram": "https://www.instagram.com/barikjewelry/",
     "enable_metal_swatches": true,
@@ -221,6 +223,24 @@
         "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
         "settings": {}
+      },
+      "7226623565105347364": {
+        "type": "shopify://apps/ai-product-description/blocks/description_tabs/0199f770-8893-7fd2-aa18-60494ee27236",
+        "disabled": false,
+        "settings": {
+          "heading_tag": "h3",
+          "layout": "vertical",
+          "create_default_tab": true,
+          "default_tab_title": "Description",
+          "default_tab_open": true,
+          "custom_styles": false,
+          "bg_color": "transparent",
+          "text_color": "#000000",
+          "border_color": "rgba(0,0,0,0.2)",
+          "padding_x": 16,
+          "padding_y": 12,
+          "rte_class": "rte"
+        }
       }
     }
   },
