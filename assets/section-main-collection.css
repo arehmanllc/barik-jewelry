@@ -4,7 +4,9 @@
     display: block;
   }
 }
-
+.c-accordion--collection-sidebar .c-accordion__header[aria-expanded="true"] + .c-accordion__panel{
+  display: block;
+}
 #CollectionProductGrid .collection__sidebar .filter-drawer__menu-block {
   display: block !important;
 }

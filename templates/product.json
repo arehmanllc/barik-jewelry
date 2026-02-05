@@ -111,7 +111,7 @@
         "gallery_style": "thumbnail_gallery",
         "thumbnail_position": "bottom",
         "grid_2_per_row": true,
-        "click_to_enlarge": true,
+        "click_to_enlarge": false,
         "enable_video_looping": false,
         "show_tax_info": false
       }
