@@ -27,27 +27,67 @@ const handleProductPopup = event => {
 
     // Get child product.
     let product = target.querySelector('.product-hotspot');
-    
+    let overlay = document.querySelector('.shop-the-look-overlay');
+
     // Check if this hotspot is already active
     const isAlreadyActive = product.classList.contains('active');
-    
+
     // Close all other hotspots
     closeAllHotspots();
-    
+
     // If this hotspot wasn't active before, open it
     if (!isAlreadyActive) {
         product.classList.add('active');
         activeHotspot = target;
-        
-        // Use helper method to determine if it is out of bounds
-        // or not.
-        let isOut = WAU.Helpers.isOutOfBounds(product);
 
-        if (isOut.left) {
-            product.style.transform = `translateX(${Math.round(Math.abs(isOut.leftAmount)) + PADDING}px)`;
-        }
-        if (isOut.right) {
-            product.style.transform = `translateX(${(Math.round(isOut.rightAmount) + (PADDING * 2)) * -1}px)`;
+        if (window.innerWidth < 768) {
+            target.classList.add('active-mobile');
+            if (overlay) overlay.classList.add('active');
+            document.body.classList.add('shop-the-look-active');
+
+            // Populate mobile popup
+            let mobilePopup = document.querySelector('.shop-the-look-mobile-popup');
+            if (mobilePopup) {
+                mobilePopup.innerHTML = product.outerHTML;
+                mobilePopup.classList.add('active');
+            }
+        } else {
+            // Desktop positioning logic
+            product.style.transform = ''; // Reset any previous transform
+
+            // Use helper method to determine if it is out of bounds
+            let isOut = WAU.Helpers.isOutOfBounds(product);
+
+            let translateX = 0;
+            let translateY = 0;
+
+            if (isOut.left) {
+                translateX = Math.round(Math.abs(isOut.leftAmount)) + PADDING;
+            } else if (isOut.right) {
+                translateX = (Math.round(isOut.rightAmount) + (PADDING * 2)) * -1;
+            }
+
+            // Check if it overflows the container (.stl__image)
+            let container = target.closest('.stl__image');
+            if (container) {
+                let containerRect = container.getBoundingClientRect();
+                let productRect = product.getBoundingClientRect();
+
+                // Check bottom overflow
+                if (productRect.bottom > containerRect.bottom) {
+                    let offBottom = productRect.bottom - containerRect.bottom;
+                    translateY = (offBottom + PADDING) * -1;
+                }
+
+                // Check top overflow (in case it's pushed too far up or hotspot is near top)
+                if (productRect.top + translateY < containerRect.top) {
+                    let offTop = containerRect.top - (productRect.top + translateY);
+                    translateY += offTop + PADDING;
+                }
+            }
+
+            // Apply calculated transforms
+            product.style.transform = `translate(${translateX}px, ${translateY}px)`;
         }
     } else {
         activeHotspot = null;
@@ -57,15 +97,33 @@ const handleProductPopup = event => {
 // Close all hotspots
 const closeAllHotspots = () => {
     const allProducts = document.querySelectorAll('.product-hotspot');
+    const allHotspots = document.querySelectorAll('.hotspot');
+    const overlay = document.querySelector('.shop-the-look-overlay');
+
     allProducts.forEach(product => {
         product.classList.remove('active');
         product.style.transform = '';
     });
+
+    allHotspots.forEach(hotspot => {
+        hotspot.classList.remove('active-mobile');
+    });
+
+    if (overlay) overlay.classList.remove('active');
+
+    const mobilePopup = document.querySelector('.shop-the-look-mobile-popup');
+    if (mobilePopup) {
+        mobilePopup.classList.remove('active');
+        mobilePopup.innerHTML = '';
+    }
+
+    document.body.classList.remove('shop-the-look-active');
 };
 
 // Handle click outside to close hotspots
 const handleOutsideClick = (event) => {
-    if (activeHotspot && !activeHotspot.contains(event.target)) {
+    let overlay = document.querySelector('.shop-the-look-overlay');
+    if (activeHotspot && (!activeHotspot.contains(event.target) || event.target === overlay)) {
         closeAllHotspots();
         activeHotspot = null;
     }

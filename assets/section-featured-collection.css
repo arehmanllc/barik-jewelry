@@ -23,6 +23,7 @@
   align-items: center;
   width: fit-content;
   left: 50%;
+  min-width: 200px;
 }
 .section-featured-collection__wrapper--carousel .flickity-button.previous {
   position: absolute;

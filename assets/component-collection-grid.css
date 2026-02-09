@@ -4,6 +4,7 @@
 
 .collection-loop__img-wrapper {
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .collection-loop__product-count {

@@ -15,7 +15,8 @@
         "template--15986753863850__7773d85e-29d5-49cb-80bc-bf840c5e1664-1667577564f8f77732-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/135877971.png",
+            "image": "shopify://shop_images/Bannrer_1.png",
+            "mobile_image": "shopify://shop_images/Bannrer_mb_1.png",
             "heading": "<p>Jewelry with</p><p>Purpose & Beauty</p>",
             "subheading": "<p>Thoughtfully crafted designs inspired by elegance and meaning.</p>",
             "link": "/collections/all",
@@ -165,7 +166,7 @@
         "featured_collection_UfRNgA": {
           "type": "featured_collection",
           "settings": {
-            "collection": "rings",
+            "collection": "pendant-1",
             "product_image": false
           }
         }
@@ -238,7 +239,7 @@
       "settings": {
         "full_width": true,
         "title": "",
-        "image": "shopify://shop_images/135877971-8192x5465-f59ab60d-9495-49d4-a702-61c9d63a6395-Photoroom-Photoroom.jpg",
+        "image": "shopify://shop_images/ComfyUI_Banner_1.png",
         "section_padding": "both"
       }
     },
@@ -262,7 +263,7 @@
       "name": "Image with text",
       "settings": {
         "full_width": false,
-        "iwt_image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
+        "iwt_image": "shopify://shop_images/Hand_wearing_a_gold_ring_with_a_pear-shaped_diamond-Photoroom_1.png",
         "iwt_layout": "image_right",
         "iwt_heading": "Jewelry with Meaning",
         "iwt_text": "<p>At Barik Jewelry, every piece is thoughtfully crafted to celebrate moments that matter. Rooted in craftsmanship and refined by modern design, our creations are made to be timeless, personal, and enduring.<br/><br/>From carefully chosen stones to polished finishes, each design is created to be worn, cherished, and remembered.</p>",
@@ -278,7 +279,7 @@
       "name": "Image with text",
       "settings": {
         "full_width": false,
-        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_image": "shopify://shop_images/jewelry-designer-works-hand-drawing-sketch_1_1.png",
         "iwt_layout": "image_left",
         "iwt_heading": "Your Design, Our Craft",
         "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
@@ -414,6 +415,7 @@
       ],
       "name": "Editorial columns",
       "settings": {
+        "tstimonials_grid": false,
         "title": "Only at Barik Jewelry",
         "text_align": "left",
         "section_padding": "both"
