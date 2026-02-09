@@ -4,6 +4,7 @@
 
 .collection-loop__img-wrapper {
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .collection-loop__product-count {
@@ -95,7 +96,11 @@ transform: rotate(-45deg);
   font-weight: bold;
   color: #434343;
 }
-
+.collection-loop__info{
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 /* Floating title on image */
 
 .collection-loop__item.collection-title_floating_on_image .collection-loop__info {
