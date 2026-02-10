@@ -34,129 +34,109 @@
 {%- endstyle -%}
 
 <section class="section-{{ section.id }}-padding global__section" data-section-id="{{ section.id }}" data-section-type="carousel">
-  <div class="ugc-main__container">
+  <div class="ugc-main__container page-width">
     {% if section.settings.heading != blank %}
       <div class="grid__wrapper">
         <div class="span-12 auto a-center mb5">
-          <h2 class="ugc-heading">{{ section.settings.heading }}</h2>
+          <h2 class="section-heading">{{ section.settings.heading | escape }}</h2>
         </div>
       </div>
     {% endif %}
 
-    <div class="grid__wrapper">
-      <div class="ugc-videos--blocks js-carousel span-12 auto" data-flickity='{{ carousel_config }}'>
-        {%- for block in section.blocks -%}
-          {%- if block.settings.video != blank or block.settings.image != blank -%}
-            <div class="ugc-video-slide">
-              <div class="ugc-video--block">
-                {%- if block.settings.video != blank -%}
-                  {{
-                    block.settings.video
-                    | video_tag:
-                      image_size: '500x',
-                      autoplay: true,
-                      loop: true,
-                      controls: false,
-                      muted: true,
-                      class: 'ugc-video'
-                  }}
-                  <button class="ugc-mute-toggle" aria-label="Mute toggle">
-                    <span class="icon-muted">
-                      {% render 'snip-icons',
-                        type: 'apollo',
-                        icon: 'volume-mute',
-                        classes: 'ugc-audio-icon',
-                        size: '18px',
-                        fill: 'white',
-                        hover: 'white'
-                      %}
-                    </span>
-                    <span class="icon-unmuted hidden">
-                      {% render 'snip-icons',
-                        type: 'apollo',
-                        icon: 'volume-1',
-                        classes: 'ugc-audio-icon',
-                        size: '18px',
-                        fill: 'white',
-                        hover: 'white'
-                      %}
-                    </span>
-                  </button>
-                {%- elsif block.settings.image != blank -%}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 500 }}"
-                    alt="{{ block.settings.image.alt | escape }}"
-                    loading="lazy"
-                    class="ugc-video"
-                  >
-                {%- endif -%}
-              </div>
+    <div class="ugc-videos--blocks js-carousel" data-flickity='{{ carousel_config }}'>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'ugc-video' -%}
+          <div class="ugc-video-slide" {{ block.shopify_attributes }}>
+            <div class="ugc-video--block">
+              {% if block.settings.video != blank %}
+                {{
+                  block.settings.video
+                  | video_tag:
+                    image_size: '400x',
+                    controls: false,
+                    preload: 'metadata',
+                    class: 'ugc-video'
+                }}
+              {% endif %}
 
-              {% if block.settings.product != blank %}
-                <div class="ugc-product--block">
-                  <a href="{{ block.settings.product.url }}" class="ugc-product-link">
-                    <div class="ugc-product-card-inner">
-                      <div class="ugc-product--image">
-                        <img
-                          src="{{ block.settings.product.featured_image | image_url: width: 100 }}"
-                          alt="{{ block.settings.product.featured_image.alt | escape }}"
-                          width="50"
-                          height="50"
-                          loading="lazy"
-                        >
-                      </div>
-                      <div class="ugc-product-details">
-                        <div class="ugc-product-title">{{ block.settings.product.title | truncate: 20 }}</div>
-                        <div class="ugc-product-price">
-                          {{ block.settings.product.price | money }}
-                        </div>
-                      </div>
+              <button class="ugc-mute-toggle" aria-label="Toggle sound">
+                <svg class="icon icon-muted" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                  <rect width="34" height="34" rx="10" fill="white" fill-opacity="0.06"/>
+                  <path d="M24.8289 15.1943L21.2168 18.8064" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21.2168 15.1943L24.8289 18.8064" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12.1878 14.5924H10.3817C9.72596 14.5924 9.17773 15.1406 9.17773 15.7964V18.2044C9.17773 18.8602 9.72596 19.4084 10.3817 19.4084H12.1878L16.8955 22.7917C17.6724 23.3293 18.7888 22.7632 18.8098 21.8164V12.1843C18.8324 11.2369 17.7829 10.67 17.0038 11.2091L12.1878 14.5924Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
 
-                      {%- liquid
-                        if routes.root_url == '/'
-                          assign product_url = '/products/' | append: block.settings.product.handle | append: '?section_id=quickshop'
-                        else
-                          assign product_url = routes.root_url | append: '/products/' | append: block.settings.product.handle | append: '?section_id=quickshop'
-                        endif
+                <svg class="icon icon-unmuted hidden" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                  <rect width="34" height="34" rx="10" fill="white" fill-opacity="0.06"/>
+                  <path d="M20.1275 14.1061C20.1275 14.1061 21.5088 14.8738 21.5088 16.7199C21.5088 18.3765 20.1657 19.2142 20.1657 19.2142" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M23.0144 13.126C23.0144 13.126 24.9921 14.2252 24.9921 16.8682C24.992 19.2401 23.0691 20.4394 23.0691 20.4394" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11.395 14.6524H9.58902C8.93324 14.6524 8.38501 15.2006 8.38501 15.8565V18.2645C8.38501 18.9202 8.93324 19.4685 9.58902 19.4685H11.395L16.1027 22.8517C16.8797 23.3893 17.9961 22.8233 18.0171 21.8765V12.2444C18.0397 11.297 16.9902 10.7301 16.2111 11.2691L11.395 14.6524Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
 
-                        assign has_model = false
-                        assign has_video = false
-                        for media in block.settings.product.media
-                          if media.media_type == "video" or media.media_type == "external_video"
-                            assign has_video = true
-                            continue
-                          endif
-                          if media.media_type == "model"
-                            assign has_model = true
-                            continue
-                          endif
-                        endfor
-                      -%}
+            {% if block.settings.product != blank %}
+              <div class="ugc-product--block">
+                <a href="{{ block.settings.product.url }}" class="ugc-product-link">
+                  <div class="ugc-product-card-inner">
+                    <div class="ugc-product--image">
+                      <img
+                        src="{{ block.settings.product.featured_image | image_url: width: 100 }}"
+                        alt="{{ block.settings.product.featured_image.alt | escape }}"
+                        width="50"
+                        height="50"
+                        loading="lazy"
+                      >
+                    </div>
 
-                      <div class="ugc-view-btn">
-                        <button class="ugc-quickview-trigger js-quickview-trigger no-js-hidden"
-                          type="button" name="button"
-                          aria-label="Quick view {{ block.settings.product.title | escape }}"
-                          data-product-url="{{ product_url }}"
-                          data-has-model="{{ has_model }}"
-                          data-has-video="{{ has_video }}"
-                          data-product-pickup-availability="true"
-                          data-product-complementary-products="true">
-                          {% render 'snip-icons',
-                            type: 'theme',
-                            icon: 'search',
-                            classes: 'ugc-search-icon',
-                            size: '14px',
-                            fill: 'white',
-                            hover: 'white'
-                          %}
-                        </button>
+                    <div class="ugc-product-details">
+                      <div class="ugc-product-title">{{ block.settings.product.title | truncate: 20 }}</div>
+                      <div class="ugc-product-price">
+                        {{ block.settings.product.price | money }}
                       </div>
                     </div>
-                  </a>
-                </div>
-              {% endif %}
-            </div>
+
+                    {%- liquid
+                      if routes.root_url == '/'
+                        assign product_url = '/products/' | append: block.settings.product.handle | append: '?section_id=quickshop'
+                      else
+                        assign product_url = routes.root_url | append: '/products/' | append: block.settings.product.handle | append: '?section_id=quickshop'
+                      endif
+
+                      assign has_model = false
+                      assign has_video = false
+                      for media in block.settings.product.media
+                        if media.media_type == "video" or media.media_type == "external_video"
+                          assign has_video = true
+                          continue
+                        endif
+                        if media.media_type == "model"
+                          assign has_model = true
+                          continue
+                        endif
+                      endfor
+                    -%}
+
+                    <div class="ugc-view-btn">
+                      <button class="ugc-quickview-trigger js-quickview-trigger no-js-hidden"
+                        type="button" name="button"
+                        aria-label="Quick view {{ block.settings.product.title | escape }}"
+                        data-product-url="{{ product_url }}"
+                        data-has-model="{{ has_model }}"
+                        data-has-video="{{ has_video }}"
+                        data-product-pickup-availability="true"
+                        data-product-complementary-products="true">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+<rect width="34" height="34" rx="10" fill="#242424"/>
+<path d="M16.7147 22.1189C19.6988 22.1189 22.1179 19.6998 22.1179 16.7157C22.1179 13.7316 19.6988 11.3125 16.7147 11.3125C13.7306 11.3125 11.3115 13.7316 11.3115 16.7157C11.3115 19.6998 13.7306 22.1189 16.7147 22.1189Z" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22.6873 22.6878L21.5498 21.5503" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                      </button>
+                    </div>
+                  </div>
+                </a>
+              </div>
             {% endif %}
           </div>
         {%- endif -%}
