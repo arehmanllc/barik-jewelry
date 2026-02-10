@@ -296,8 +296,9 @@
         "16425204605bb47af2-1": {
           "type": "text_block",
           "settings": {
-            "content_type": "icon",
+            "content_type": "image",
             "icon": "credit-card",
+            "image": "shopify://shop_images/Vector.png",
             "link": "",
             "title": "Thoughtful Craftsmanship",
             "subheading": "<p>Carefully made pieces with lasting beauty and refined detail.</p>"
@@ -306,8 +307,9 @@
         "16425204605bb47af2-2": {
           "type": "text_block",
           "settings": {
-            "content_type": "icon",
+            "content_type": "image",
             "icon": "clock",
+            "image": "shopify://shop_images/Vector_2.png",
             "link": "",
             "title": "Timeless Design",
             "subheading": "<p>Classic forms created to remain relevant beyond trends.</p>"
@@ -316,8 +318,9 @@
         "9e893234-1f35-4234-b109-6fb9c7856a3e": {
           "type": "text_block",
           "settings": {
-            "content_type": "icon",
+            "content_type": "image",
             "icon": "return",
+            "image": "shopify://shop_images/Vector_2.png",
             "link": "",
             "title": "Responsible Creation",
             "subheading": "<p>Mindfully sourced materials crafted with care and intention.</p>"
@@ -326,8 +329,9 @@
         "40f2ec0c-4c6f-4492-aa5c-6c17db35147e": {
           "type": "text_block",
           "settings": {
-            "content_type": "icon",
+            "content_type": "image",
             "icon": "heart",
+            "image": "shopify://shop_images/Vector_3.png",
             "link": "",
             "title": "Made to Endure",
             "subheading": "<p>Designed for everyday wear and a lifetime of meaning.</p>"
@@ -482,10 +486,72 @@
         "section_padding": "both"
       }
     },
+    "ugc_F8x7bN": {
+      "type": "UGC",
+      "blocks": {
+        "ugc_video_KhG6xC": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-2-ctw-natural-diamond-pave-disc-charm-pendant"
+          }
+        },
+        "ugc_video_TWKnLk": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-10-ct-natural-diamond-ring"
+          }
+        },
+        "ugc_video_aDeMfL": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-10-ctw-natural-diamond-crescent-moon-necklace"
+          }
+        },
+        "ugc_video_m4xJgq": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-8-ctw-natural-diamond-hinged-hoop-earrings"
+          }
+        },
+        "ugc_video_WAkdmf": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-4-ctw-natural-diamond-circle-necklace"
+          }
+        },
+        "ugc_video_WaRVpp": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "14k-8-mm-ball-earrings"
+          }
+        }
+      },
+      "block_order": [
+        "ugc_video_KhG6xC",
+        "ugc_video_TWKnLk",
+        "ugc_video_aDeMfL",
+        "ugc_video_m4xJgq",
+        "ugc_video_WAkdmf",
+        "ugc_video_WaRVpp"
+      ],
+      "name": "UGC Videos",
+      "settings": {
+        "heading": "Join on Instagram",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "newsletter_ycQpBM": {
       "type": "newsletter",
       "name": "Newsletter",
       "settings": {
+        "newsletter_image": "shopify://shop_images/Gemini_Generated_Image_j9v9bwj9v9bwj9v9_1_1.png",
         "title": "Jewelry with a Story to Tell",
         "subheading": "<p>Receive early access to new designs, special moments, and the art behind our pieces.</p>",
         "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
@@ -493,7 +559,7 @@
         "show_social_icons": false,
         "heading_font_size": 32,
         "subheading_font_size": 18,
-        "color_scheme": "none",
+        "color_scheme": "3",
         "section_padding": "both"
       }
     }
@@ -510,6 +576,7 @@
     "1642520461c9848fcf",
     "editorial_columns_DnYzCD",
     "accordion_tDUUGf",
+    "ugc_F8x7bN",
     "newsletter_ycQpBM"
   ]
 }

@@ -29,7 +29,7 @@
   data-section-type="newsletter"
   data-section-loaded="false"
 >
-  <div class="newsletter__inner-wrapper py7 px2">
+  <div class="newsletter__inner-wrapper">
     <div class="grid__wrapper">
       <article class="span-12 a-center v-center">
         {% render 'snip-headings', align: section.settings.alignment, classes: 'animate--text delay--1' %}
@@ -40,7 +40,7 @@
         {% endif %}
       </article>
     </div>
-    <div class="grid__wrapper edge center-content">
+    <div class="grid__wrapper">
       <article class="span-6 push-3 v-stretch v-center">
         <div class="section-newsletter animate--text delay--3">
           {% form 'customer', id: 'section_newsletter_form', class: 'form' %}
@@ -64,7 +64,7 @@
 
             <div class="form form-vertical input-group password__input-group">
               <input type="hidden" name="contact[tags]" value="newsletter">
-              <label for="Email--{{ section.id }}">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+              {% comment %} <label for="Email--{{ section.id }}">{{ 'general.newsletter_form.newsletter_email' | t }}</label> {% endcomment %}
               <input
                 type="email"
                 name="contact[email]"
@@ -113,7 +113,11 @@
   <style>
      {%- unless section.settings.color_scheme == 'none' -%}
        .newsletter-{{ section.id }} .newsletter__inner-wrapper {
-         background: {{ bg_color }};
+         /* background: {{ bg_color }}; */
+         position: absolute;
+    /* background: transparent; */
+        left: 3%;
+        top: 25%;
        }
        .newsletter-{{ section.id }} h2,
        .newsletter-{{ section.id }} .form label,
@@ -155,10 +159,11 @@
      }
      .newsletter-{{ section.id }} p {
        font-size: {{ section.settings.subheading_font_size }}px;
-       max-width: 60%;
+       /* max-width: 60%; */
        margin: 0 auto !important;
        padding-bottom: 20px !important;
        margin-top: 10px !important;
+       text-align: left;
      }
      .newsletter-{{ section.id }} p a {
        opacity: 0.9;
@@ -201,6 +206,36 @@
       line-height: var(--space-8);
       margin: 0 !important;
     }
+    #newsletter {
+      min-height: 650px;
+    }
+    .section-newsletter input{
+      max-width: 650px;
+      width: 100% !important;
+    }
+    form#section_newsletter_form .form{
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .section-newsletter button[type="submit"]{
+      max-width: 650px;
+      width:100% !important;
+      padding: 0;
+    }
+    #newsletter::before{
+      content:'';
+      position: absolute;
+      width: 100%;
+      background: url('{{ section.settings.newsletter_image |  img_url: 'master' }}');
+      background-repeat: no-repeat;
+      height: 100%;
+      background-size: cover;
+      background-position: center top;
+    }
+    .newsletter__inner-wrapper .grid__wrapper{
+      display: flex;
+    }
   </style>
 </div>
 
@@ -208,8 +243,13 @@
 {
   "name": "Newsletter",
   "tag": "section",
-  "class": "dynamic-section",
+  "class": "dynamic-section newsletter-sec",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "newsletter_image",
+      "label": "Image"
+    },
     {
       "type": "text",
       "id": "title",
