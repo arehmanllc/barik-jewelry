@@ -260,10 +260,10 @@
         "section_padding": "both"
       }
     },
-    "shop_the_look_D8VHLm": {
+    "shop_the_look_PeMTw6": {
       "type": "shop-the-look",
       "blocks": {
-        "product_LwdzxY": {
+        "product_MckkW4": {
           "type": "product",
           "settings": {
             "product": "1-10-ctw-natural-diamond-crescent-moon-necklace",
@@ -272,7 +272,7 @@
             "hotspot_color": "#ffffff"
           }
         },
-        "product_W9VAkJ": {
+        "product_EzTKGe": {
           "type": "product",
           "settings": {
             "product": "1-3ctw-natural-diamond-earrings",
@@ -281,7 +281,7 @@
             "hotspot_color": "#ffffff"
           }
         },
-        "product_CjAByW": {
+        "product_YrUY6X": {
           "type": "product",
           "settings": {
             "product": "1-4-ct-natural-diamond-solitaire-necklace",
@@ -292,14 +292,14 @@
         }
       },
       "block_order": [
-        "product_LwdzxY",
-        "product_W9VAkJ",
-        "product_CjAByW"
+        "product_MckkW4",
+        "product_EzTKGe",
+        "product_YrUY6X"
       ],
       "settings": {
         "full_width": true,
         "title": "",
-        "image": "shopify://shop_images/135877971-8192x5465-f59ab60d-9495-49d4-a702-61c9d63a6395-Photoroom-Photoroom.jpg",
+        "image": "shopify://shop_images/ComfyUI_Banner_1.png",
         "section_padding": "both"
       }
     },
@@ -376,6 +376,83 @@
         "text_align": "left",
         "section_padding": "both"
       }
+    },
+    "ugc_hbmTGQ": {
+      "type": "UGC",
+      "blocks": {
+        "ugc_video_JKzYnK": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-2-ctw-natural-diamond-pave-disc-charm-pendant"
+          }
+        },
+        "ugc_video_gArq9k": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-10-ct-natural-diamond-ring"
+          }
+        },
+        "ugc_video_8e9J3U": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-10-ctw-natural-diamond-crescent-moon-necklace"
+          }
+        },
+        "ugc_video_raykMP": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-8-ctw-natural-diamond-hinged-hoop-earrings"
+          }
+        },
+        "ugc_video_HkWb7U": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "1-4-ctw-natural-diamond-circle-necklace"
+          }
+        },
+        "ugc_video_34FkHt": {
+          "type": "ugc-video",
+          "settings": {
+            "video": "shopify://files/videos/The Chelsea Tank is a timeless wardrobe essential, crafted from our bestselling lightweight, bre.mp4",
+            "product": "14k-8-mm-ball-earrings"
+          }
+        }
+      },
+      "block_order": [
+        "ugc_video_JKzYnK",
+        "ugc_video_gArq9k",
+        "ugc_video_8e9J3U",
+        "ugc_video_raykMP",
+        "ugc_video_HkWb7U",
+        "ugc_video_34FkHt"
+      ],
+      "name": "UGC Videos",
+      "settings": {
+        "heading": "Join on Instagram",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter_YJ6Rkn": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "newsletter_image": "shopify://shop_images/Gemini_Generated_Image_j9v9bwj9v9bwj9v9_1_1.png",
+        "title": "Jewelry with a Story to Tell",
+        "subheading": "<p>Receive early access to new designs, special moments, and the art behind our pieces.</p>",
+        "mail_gdpr_text": "<p>*By completing this form you're signing up to receive our emails and can unsubscribe at any time.</p>",
+        "alignment": "a-left",
+        "show_social_icons": false,
+        "heading_font_size": 32,
+        "subheading_font_size": 18,
+        "color_scheme": "3",
+        "section_padding": "both"
+      }
     }
   },
   "order": [
@@ -383,7 +460,9 @@
     "1642796129844cd818",
     "product-details",
     "product-recommendations",
-    "shop_the_look_D8VHLm",
-    "editorial_columns_EFYt7H"
+    "shop_the_look_PeMTw6",
+    "editorial_columns_EFYt7H",
+    "ugc_hbmTGQ",
+    "newsletter_YJ6Rkn"
   ]
 }
