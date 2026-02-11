@@ -1,15 +1,41 @@
-/* UGC Section Layout */
 .ugc-videos--blocks {
   margin-top: 2rem;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ugc-videos--blocks::-webkit-scrollbar {
+  display: none;
+}
+
+.ugc-videos--blocks:not(.flickity-enabled) {
+  white-space: nowrap;
+  display: block;
+}
+
+.ugc-videos--blocks.flickity-enabled {
+  display: block;
+}
+
+.ugc-videos--blocks.is-hidden {
+  display: block !important;
+  visibility: visible !important;
 }
 
 .ugc-video-slide {
   width: calc(20% - 20px);
   margin-right: 20px;
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
+  vertical-align: top;
+  white-space: normal;
+}
+
+.flickity-enabled .ugc-video-slide {
+  display: flex;
 }
 
 @media screen and (max-width: 1024px) {
