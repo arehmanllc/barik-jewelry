@@ -31,9 +31,39 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Fallback horizontal alignment while loading */
+  [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-videos--blocks {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+  }
+  [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-videos--blocks::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-video-slide {
+    flex: 0 0 calc(20% - 20px);
+    scroll-snap-align: start;
+  }
+  @media screen and (max-width: 1024px) {
+    [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-video-slide {
+      flex: 0 0 calc(33.33% - 15px);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-video-slide {
+      flex: 0 0 calc(50% - 10px);
+    }
+  }
 {%- endstyle -%}
 
-<section class="section-{{ section.id }}-padding global__section" data-section-id="{{ section.id }}" data-section-type="carousel">
+<section class="section-{{ section.id }}-padding global__section"
+  data-section-id="{{ section.id }}"
+  data-section-type="carousel"
+  data-section-loaded="false"
+  data-preload-vendor="{{ 'vendor-flickity.js' | asset_url }}"
+  data-asset-url="{{ 'carousel.js' | asset_url }}">
   <div class="ugc-main__container page-width">
     {% if section.settings.heading != blank %}
       <div class="grid__wrapper">

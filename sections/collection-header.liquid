@@ -199,6 +199,9 @@ data-scale="1.{{ scale }}"
 
 
   {%- style -%}
+  .template-header{
+    padding-bottom: 0;
+  }
     {%- unless section.settings.color_scheme == 'none' -%}
     .section__banner-{{ section.id }} .section__banner-caption.banner-text--over h1,
     .section__banner-{{ section.id }} .section__banner-caption.banner-text--over .rte p,
