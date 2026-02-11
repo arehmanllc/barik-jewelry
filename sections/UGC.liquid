@@ -31,31 +31,6 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  /* Fallback horizontal alignment while loading */
-  [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-videos--blocks {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox */
-  }
-  [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-videos--blocks::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-  [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-video-slide {
-    flex: 0 0 calc(20% - 20px);
-    scroll-snap-align: start;
-  }
-  @media screen and (max-width: 1024px) {
-    [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-video-slide {
-      flex: 0 0 calc(33.33% - 15px);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    [data-section-id="{{ section.id }}"][data-section-loaded="false"] .ugc-video-slide {
-      flex: 0 0 calc(50% - 10px);
-    }
-  }
 {%- endstyle -%}
 
 <section class="section-{{ section.id }}-padding global__section"
@@ -73,7 +48,7 @@
       </div>
     {% endif %}
 
-    <div class="ugc-videos--blocks js-carousel" data-flickity='{{ carousel_config }}'>
+    <div class="ugc-videos--blocks js-carousel is-hidden" data-flickity='{{ carousel_config }}'>
       {%- for block in section.blocks -%}
         {%- if block.type == 'ugc-video' -%}
           <div class="ugc-video-slide" {{ block.shopify_attributes }}>
@@ -251,9 +226,19 @@
       productBlocks.forEach(el => {
         el.style.height = `${maxHeight}px`;
       });
+
+      // Resize Flickity after height changes
+      const carousel = document.querySelector('.ugc-videos--blocks.js-carousel');
+      if (carousel && typeof Flickity !== 'undefined') {
+        const flkty = Flickity.data(carousel);
+        if (flkty) {
+          flkty.resize();
+        }
+      }
     }
 
-    equalizeProductHeights();
+    // Initial equalization with a slight delay to allow scripts to load
+    setTimeout(equalizeProductHeights, 500);
 
     let resizeTimeout;
     window.addEventListener('resize', () => {
