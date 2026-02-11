@@ -18,23 +18,32 @@
           "type": "logo",
           "settings": {
             "footer_logo": "shopify://shop_images/WhatsApp_Image_2025-04-25_at_9.00.33_AM_1_1.png",
-            "column_width": 2
+            "footer_text": "<p>Barik creates timeless, minimal jewelry designed to be worn every day and cherished for years. Each piece is thoughtfully crafted to balance modern elegance with lasting quality.</p>",
+            "column_width": 3
           }
         },
         "footer-1": {
           "type": "menu",
           "settings": {
             "footer_nav": "figma-header-menu",
-            "title": "Shop Online",
-            "column_width": 3
+            "title": "Collections",
+            "column_width": 2
           }
         },
         "footer-2": {
           "type": "menu",
           "settings": {
             "footer_nav": "main-menu",
-            "title": "Support",
-            "column_width": 3
+            "title": "About us",
+            "column_width": 2
+          }
+        },
+        "menu_iMr8fx": {
+          "type": "menu",
+          "settings": {
+            "footer_nav": "main-menu",
+            "title": "Terms & Policies",
+            "column_width": 2
           }
         },
         "social_zyAxiB": {
@@ -48,7 +57,6 @@
           "type": "text",
           "settings": {
             "title": "",
-            "footer_text": "<p>Barik creates timeless, minimal jewelry designed to be worn every day and cherished for years. Each piece is thoughtfully crafted to balance modern elegance with lasting quality.</p>",
             "column_width": 3
           }
         }
@@ -57,6 +65,7 @@
         "logo_EMj4WR",
         "footer-1",
         "footer-2",
+        "menu_iMr8fx",
         "social_zyAxiB",
         "text_kDGY6j"
       ],

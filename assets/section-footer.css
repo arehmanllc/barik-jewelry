@@ -1,3 +1,4 @@
+
 .section-footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
@@ -276,6 +277,10 @@ ul.footer--country_list {
     -moz-transform:translate(-50%,-50%);
     -o-transform:translate(-50%,-50%);
     width: 100%;
+  }
+  .section-footer .span-2.auto{
+    width: 70%;
+    margin-left: auto;
   }
 }
 @media (max-width:967px) {

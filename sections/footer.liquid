@@ -56,6 +56,12 @@
                   <a class="footer-logo--image mb5 lh0 inline-block" href="{{ routes.root_url }}">
                     {{ block.settings.footer_logo | image_url: width: 600 | image_tag: loading: 'lazy' }}
                   </a>
+                  <div class="footer-block__text">
+                  <p class="footer-block__heading h5">{{ block.settings.title | escape }}</p>
+                  <div class="rte">
+                    {{ block.settings.footer_text }}
+                  </div>
+                </div>
                 {% else %}
                   <a class="footer-logo--text h2 mb5 w100 inline-block" href="{{ routes.root_url }}">
                     {{ shop.name }}
@@ -78,9 +84,6 @@
               {% when 'text' %}
                 <div class="footer-block__text">
                   <p class="footer-block__heading h5">{{ block.settings.title | escape }}</p>
-                  <div class="rte">
-                    {{ block.settings.footer_text }}
-                  </div>
                 </div>
             {% endcase %}
           </article>
@@ -542,12 +545,6 @@
           "default": "ABOUT OUR SHOP"
         },
         {
-          "id": "footer_text",
-          "type": "richtext",
-          "label": "Text",
-          "default": "<p>Adding text to your footer helps introduce your business to new customers.</p>"
-        },
-        {
           "type": "range",
           "id": "column_width",
           "min": 1,
@@ -566,6 +563,11 @@
           "type": "image_picker",
           "id": "footer_logo",
           "label": "Logo image"
+        },{
+          "id": "footer_text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Adding text to your footer helps introduce your business to new customers.</p>"
         },
         {
           "type": "range",
