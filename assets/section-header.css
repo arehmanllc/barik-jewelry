@@ -97,8 +97,10 @@ ul.header__navigation li.dropdown ul.submenu li a:hover,
 
 @media (min-width: 768px) {
   .section-header__main-bar .header__logo-wrapper {
-    padding-top: var(--space-4);
-    padding-bottom: var(--space-4);
+    /* padding-top: var(--space-4);
+    padding-bottom: var(--space-4); */
+    padding-top: 11px;
+    padding-bottom: 11px;
   }
 }
 
