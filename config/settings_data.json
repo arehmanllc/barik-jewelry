@@ -54,7 +54,7 @@
     "show_shipping_countdown": false,
     "free_shipping_threshold": "150",
     "cart_upsell_title": "ADD A SPECIAL TOUCH",
-    "section_padding": 50,
+    "section_padding": 85,
     "section_title_align": "left",
     "scroll_animation": "animation--active animation-type--fade",
     "text_animation": "animation-text--active animation-text-type--fadeInRight",
