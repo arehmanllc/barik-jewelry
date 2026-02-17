@@ -131,7 +131,7 @@
       "settings": {
         "autoplay": true,
         "font_heading_family": "f-body",
-        "heading_size": "f-20",
+        "heading_size": "h3",
         "font_weight": "b-400",
         "padding_top": 24,
         "padding_top_mobile": 13,
