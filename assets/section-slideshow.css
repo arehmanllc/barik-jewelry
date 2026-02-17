@@ -99,6 +99,7 @@
 
 .section-slideshow .slideshow__caption p {
   line-height: initial;
+  font-size: 16px;
 }
 .grid__wrapper.slideshow__caption{
   grid-template-columns: unset;
@@ -141,7 +142,8 @@
 }
 .slideshow__caption .btn-border-link span,
 .section-slideshow__button span {
-  font-size: var(--font-size-reset);
+  /* font-size: var(--font-size-reset); */
+  font-size: 15px;
   display: block;
 }
 
