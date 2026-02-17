@@ -181,8 +181,8 @@
       "settings": {
         "title": "Shop by Categories",
         "items_per_row": 4,
-        "circular_images": false,
-        "section_padding": "top"
+        "circular_images": true,
+        "section_padding": "none"
       }
     },
     "f5fdc4e1-da0f-4059-b0b5-7e50a682d115": {
