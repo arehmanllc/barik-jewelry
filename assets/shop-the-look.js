@@ -143,4 +143,12 @@ if (hotspots.length > 0) {
     document.addEventListener('click', handleOutsideClick);
 
     WAU.Quickshop.init();
+
+    // Activate the first hotspot by default on page load
+    if (hotspots[0]) {
+        // Small delay to ensure DOM is fully ready
+        setTimeout(() => {
+            hotspots[0].click();
+        }, 100);
+    }
 };

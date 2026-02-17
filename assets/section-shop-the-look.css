@@ -1,5 +1,18 @@
 /* ---- Shop the look section ---- */
 
+/* Pulse animation for hotspot dots */
+@keyframes hotspot-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
 .shop__thelook .stl__image {
     position: relative;
 }
@@ -30,6 +43,7 @@
 .product-hotspot .product-details p,
 .product-hotspot .product-details .price {
     font-size: var(--font-size);
+    font-size: 12px;
 }
 
 /* Text blocks */
