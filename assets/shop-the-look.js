@@ -144,8 +144,8 @@ if (hotspots.length > 0) {
 
     WAU.Quickshop.init();
 
-    // Activate the first hotspot by default on page load
-    if (hotspots[0]) {
+    // Activate the first hotspot by default on page load (desktop only)
+    if (hotspots[0] && window.innerWidth >= 768) {
         // Small delay to ensure DOM is fully ready
         setTimeout(() => {
             hotspots[0].click();
