@@ -29,6 +29,7 @@
     font-weight: 500;
     letter-spacing: -1.25px;
   line-height: 42px;
+  text-align: center;
 }
 .section-txt-cols .flickity-prev-next-button {
   background: var(--directional-bg);
