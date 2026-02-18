@@ -270,8 +270,8 @@
         "iwt_button": "More About Us",
         "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
         "color_scheme": "1",
-        "iwt_section_height": 500,
-        "section_padding": "both"
+        "iwt_section_height": 600,
+        "section_padding": "bottom"
       }
     },
     "image_with_text_mxbbHd": {
@@ -287,7 +287,7 @@
         "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
         "color_scheme": "1",
         "iwt_section_height": 500,
-        "section_padding": "both"
+        "section_padding": "none"
       }
     },
     "1642520461c9848fcf": {
@@ -348,7 +348,7 @@
         "title": "",
         "icon_size": 45,
         "color_scheme": "2",
-        "section_padding": "both"
+        "section_padding": "top"
       }
     },
     "editorial_columns_DnYzCD": {
@@ -422,7 +422,7 @@
         "tstimonials_grid": false,
         "title": "Only at Barik Jewelry",
         "text_align": "left",
-        "section_padding": "both"
+        "section_padding": "top"
       }
     },
     "accordion_tDUUGf": {
@@ -562,6 +562,14 @@
         "color_scheme": "3",
         "section_padding": "both"
       }
+    },
+    "section_heading_PDyn8F": {
+      "type": "section-heading",
+      "name": "Section heading",
+      "settings": {
+        "title": "",
+        "section_padding": "bottom"
+      }
     }
   },
   "order": [
@@ -577,6 +585,7 @@
     "editorial_columns_DnYzCD",
     "accordion_tDUUGf",
     "ugc_F8x7bN",
-    "newsletter_ycQpBM"
+    "newsletter_ycQpBM",
+    "section_heading_PDyn8F"
   ]
 }
