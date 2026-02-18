@@ -67,6 +67,16 @@
       </div>
     </article>
     <style>
+      .section-image-with-text .info__inner-wrapper h2{
+        font-size: clamp(24px, 4vw, 42px);
+        font-weight: 500;
+        letter-spacing: -1.25px;
+      }
+      .image-with-text-{{ section.id }} .background-image {
+          height: {{ section.settings.iwt_section_height }}px;
+          background-image: url({{ section.settings.iwt_image | image_url: width: 800 }});
+          border-radius: 10px;
+        }
       {%- unless section.settings.color_scheme == 'none' -%}
         #shopify-section-{{ section.id }} {
           background-color: {{ bg_color }};
@@ -108,24 +118,23 @@
         background-position: {{ section.settings.iwt_image.presentation.focal_point }};
         border-radius: 10px;
       }
-      @media (min-width: 1367px) {
+      /* @media (min-width: 1367px) { */
         .image-with-text-{{ section.id }} .background-image {
           background-image: url({{ section.settings.iwt_image | image_url: width: 975 }});
         }
-      }
-      @media (min-width: 769px) and (max-width: 1366px) {
+      /* } */
+      /* @media (min-width: 769px) and (max-width: 1366px) { */
         .image-with-text-{{ section.id }} .background-image {
           height: {{ section.settings.iwt_section_height }}px;
           background-image: url({{ section.settings.iwt_image | image_url: width: 1400 }});
         }
         
       }
-      @media (max-width: 768px) {
-        .image-with-text-{{ section.id }} .background-image {
-          height: {{ section.settings.iwt_section_height }}px;
-          background-image: url({{ section.settings.iwt_image | image_url: width: 800 }});
+      @media (max-width: 768px) { 
+        .section-image-with-text .info__inner-wrapper{
+          text-align: center;
         }
-      }
+       }
       .section-image-with-text h2{
         font-size: clamp(32px, 4vw, 56px);
         font-weight: 500;
