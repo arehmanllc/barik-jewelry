@@ -25,45 +25,45 @@
         "color_scheme": "3"
       }
     },
-    "marquee_zdkD8U": {
+    "marquee_7YLNfp": {
       "type": "marquee",
       "blocks": {
-        "marquee_item_7kgVAx": {
+        "marquee_item_bnUdMH": {
           "type": "marquee_item",
           "settings": {
             "text": "Timeless Elegance",
             "enable_icon": false
           }
         },
-        "marquee_item_XFKb88": {
+        "marquee_item_yfmfUE": {
           "type": "marquee_item",
           "settings": {
             "text": "✧",
             "enable_icon": false
           }
         },
-        "marquee_item_RYRgmG": {
+        "marquee_item_8bj4MB": {
           "type": "marquee_item",
           "settings": {
             "text": "Designed to Last",
             "enable_icon": false
           }
         },
-        "marquee_item_iEdFtX": {
+        "marquee_item_zPxGEA": {
           "type": "marquee_item",
           "settings": {
             "text": "✧",
             "enable_icon": false
           }
         },
-        "marquee_item_aTTyHJ": {
+        "marquee_item_cHqDLr": {
           "type": "marquee_item",
           "settings": {
             "text": "Consciously Made",
             "enable_icon": false
           }
         },
-        "marquee_item_tFDGgJ": {
+        "marquee_item_iX44Lf": {
           "type": "marquee_item",
           "settings": {
             "text": "✧",
@@ -72,18 +72,18 @@
         }
       },
       "block_order": [
-        "marquee_item_7kgVAx",
-        "marquee_item_XFKb88",
-        "marquee_item_RYRgmG",
-        "marquee_item_iEdFtX",
-        "marquee_item_aTTyHJ",
-        "marquee_item_tFDGgJ"
+        "marquee_item_bnUdMH",
+        "marquee_item_yfmfUE",
+        "marquee_item_8bj4MB",
+        "marquee_item_zPxGEA",
+        "marquee_item_cHqDLr",
+        "marquee_item_iX44Lf"
       ],
       "name": "Marquee Section",
       "settings": {
         "autoplay": true,
         "font_heading_family": "f-body",
-        "heading_size": "f-20",
+        "heading_size": "h3",
         "font_weight": "b-400",
         "padding_top": 24,
         "padding_top_mobile": 13,
@@ -114,9 +114,9 @@
         "items_per_page": 20,
         "items_per_row": 3,
         "collection_image": false,
-        "show_count": false,
+        "show_count": true,
         "show_savings": true,
-        "filter_layout": "sidebar"
+        "filter_layout": "drawer"
       }
     },
     "collection_list_idxT7j": {
@@ -146,7 +146,7 @@
         "featured_collection_qBMEQ4": {
           "type": "featured_collection",
           "settings": {
-            "collection": "rings",
+            "collection": "pendant-1",
             "product_image": false
           }
         }
@@ -162,7 +162,7 @@
         "title": "Other Categories",
         "items_per_row": 4,
         "circular_images": false,
-        "section_padding": "top"
+        "section_padding": "bottom"
       }
     },
     "image_with_text_6XG3rC": {
@@ -273,16 +273,25 @@
         "color_scheme": "3",
         "section_padding": "both"
       }
+    },
+    "section_heading_DL4PLi": {
+      "type": "section-heading",
+      "name": "Section heading",
+      "settings": {
+        "title": "",
+        "section_padding": "top"
+      }
     }
   },
   "order": [
     "banner",
-    "marquee_zdkD8U",
+    "marquee_7YLNfp",
     "main",
     "collection_list_idxT7j",
     "image_with_text_6XG3rC",
     "image_with_text_rpr33T",
     "ugc_GVe3Pe",
-    "newsletter_pWPFwe"
+    "newsletter_pWPFwe",
+    "section_heading_DL4PLi"
   ]
 }

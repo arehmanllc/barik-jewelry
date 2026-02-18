@@ -311,8 +311,8 @@
           "settings": {
             "image": "shopify://shop_images/83549171_54f3ef07-9daf-4b6e-b8e1-92925f857c97.jpg",
             "link": "",
-            "title": "Our collections",
-            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+            "title": "",
+            "subheading": "<p>“Every piece feels like it has a story.<br/> I purchased my engagement ring here, and the craftsmanship was breathtaking — you can tell it’s made with passion, not mass production. The jeweler even explained the hand-setting technique that’s been in their family for decades.”</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
           }
         },
         "text_block_p7VgmE": {
@@ -320,8 +320,8 @@
           "settings": {
             "image": "shopify://shop_images/152151246-1000x710-0668bb12-18ca-43c9-9dbb-162ce5395329.jpg",
             "link": "",
-            "title": "Our collections",
-            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
+            "title": "",
+            "subheading": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p><p></p><p></p><p></p><p></p><p></p><p><strong>Sabine S.<br/></strong>Happy Customer</p>"
           }
         },
         "text_block_z4hVYX": {
@@ -374,7 +374,7 @@
         "tstimonials_grid": true,
         "title": "What Our Customers Say",
         "text_align": "left",
-        "section_padding": "both"
+        "section_padding": "none"
       }
     },
     "ugc_hbmTGQ": {
@@ -453,6 +453,14 @@
         "color_scheme": "3",
         "section_padding": "both"
       }
+    },
+    "section_heading_CpYHEr": {
+      "type": "section-heading",
+      "name": "Section heading",
+      "settings": {
+        "title": "",
+        "section_padding": "top"
+      }
     }
   },
   "order": [
@@ -463,6 +471,7 @@
     "shop_the_look_PeMTw6",
     "editorial_columns_EFYt7H",
     "ugc_hbmTGQ",
-    "newsletter_YJ6Rkn"
+    "newsletter_YJ6Rkn",
+    "section_heading_CpYHEr"
   ]
 }
