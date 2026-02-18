@@ -24,7 +24,9 @@
 .section-footer h6 {
   color: var(--footer-text);
 }
-
+.section-footer #social-icons svg{
+  fill: #fff;
+}
 .section-footer a:hover,
 .section-footer .disclosure-list a:hover {
   color: var(--footer-hover) !important;

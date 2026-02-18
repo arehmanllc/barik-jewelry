@@ -23,6 +23,22 @@
         "color_scheme": "2"
       }
     },
+    "rich_text_kUCE4f": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "title": "Get in touch!",
+        "rich_text": "",
+        "heading_size": 60,
+        "text_size": 60,
+        "page": "",
+        "alignment": "a-center",
+        "content_width": 60,
+        "reduce_padding": false,
+        "section_padding": "none",
+        "color_scheme": "1"
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -113,6 +129,7 @@
   },
   "order": [
     "banner",
+    "rich_text_kUCE4f",
     "main",
     "text_with_icons_nxCWaR"
   ]

@@ -41,9 +41,10 @@
 	 color: var(--button-text);
 }
 .section-product-recommendations__section-heading{
-	    font-size: clamp(32px, 4vw, 56px);
+	  font-size: clamp(24px, 4vw, 42px);
     font-weight: 500;
     letter-spacing: -1.25px;
+		text-align: center;
 }
  .product-loop__img-wrapper {
 	 overflow: hidden;
@@ -282,7 +283,7 @@
   }
 }
 .product-listing__quickview-trigger {
-  display: none;
+  display: none !important;
 }
 
 .product-loop__item--as-is .product-loop__img-link:has(.product-loop__video-outer-wrapper) {

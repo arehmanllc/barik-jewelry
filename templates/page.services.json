@@ -11,9 +11,9 @@
   "sections": {
     "banner": {
       "type": "template-header",
-      "disabled": true,
       "settings": {
         "full_width": true,
+        "image": "shopify://shop_images/different-goldsmiths-tools-jewelry-workplace-jeweler-work-jewelry_1.png",
         "scale": 2,
         "banner_height": 400,
         "heading": "",
@@ -93,6 +93,7 @@
     },
     "rich_text_CTrxCq": {
       "type": "rich-text",
+      "disabled": true,
       "custom_css": [
         "div {max-width: 97%;}"
       ],
@@ -111,6 +112,7 @@
     },
     "custom_liquid_yjrmBT": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         ".button_booking {background: #a5874a; padding: 1rem; color: white; margin: auto 2.5rem;}"
       ],
@@ -126,12 +128,12 @@
       "name": "Image with text",
       "settings": {
         "full_width": false,
-        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
-        "iwt_layout": "image_left",
-        "iwt_heading": "Your Design, Our Craft",
-        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
-        "iwt_button": "Create with Us",
-        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "iwt_image": "shopify://shop_images/hands-craftswoman-using-blow-torch_1.png",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Expert Restoration & Repair",
+        "iwt_text": "<p>Our master artisans restore your heirlooms with meticulous skill reviving brilliance, reinforcing craftsmanship, and preserving the story behind every piece.</p>",
+        "iwt_button": "",
+        "iwt_link": "",
         "color_scheme": "1",
         "iwt_section_height": 500,
         "section_padding": "both"
@@ -142,12 +144,12 @@
       "name": "Image with text",
       "settings": {
         "full_width": false,
-        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
-        "iwt_layout": "image_right",
-        "iwt_heading": "Your Design, Our Craft",
-        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
-        "iwt_button": "Create with Us",
-        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "iwt_image": "shopify://shop_images/jewelry-designer-works-hand-drawing-sketch_1.png",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Bespoke Design & Creation",
+        "iwt_text": "<p>Collaborate privately with our Director of Design to bring your dream piece to life. From concept sketches to 3D renderings, your bespoke creation is crafted with the finest materials and attention to detail.</p>",
+        "iwt_button": "",
+        "iwt_link": "",
         "color_scheme": "1",
         "iwt_section_height": 500,
         "section_padding": "both"
@@ -158,12 +160,12 @@
       "name": "Image with text",
       "settings": {
         "full_width": false,
-        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
-        "iwt_layout": "image_left",
-        "iwt_heading": "Your Design, Our Craft",
-        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
-        "iwt_button": "Create with Us",
-        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "iwt_image": "shopify://shop_images/different-goldsmiths-tools-on-the-jewelry-workplac-2024-10-15-06-51-33-utc_1.png",
+        "iwt_layout": "image_right",
+        "iwt_heading": "Signature Cleaning & Polishing",
+        "iwt_text": "<p>Our master artisans restore your heirlooms with meticulous skill reviving brilliance, reinforcing craftsmanship, and preserving the story behind every piece.</p>",
+        "iwt_button": "",
+        "iwt_link": "",
         "color_scheme": "1",
         "iwt_section_height": 500,
         "section_padding": "both"
@@ -174,12 +176,28 @@
       "name": "Image with text",
       "settings": {
         "full_width": false,
-        "iwt_image": "shopify://shop_images/689491_600_P_266668841.jpg",
+        "iwt_image": "shopify://shop_images/132273162-2000x2999-082ed067-5fd9-4080-bba2-edc84c1d4939_1.png",
+        "iwt_layout": "image_left",
+        "iwt_heading": "Refinement Through Laser Soldering",
+        "iwt_text": "<p>Utilizing advanced laser technology, we perform delicate repairs with precision and care ensuring seamless restorations without compromising quality.</p>",
+        "iwt_button": "",
+        "iwt_link": "",
+        "color_scheme": "1",
+        "iwt_section_height": 500,
+        "section_padding": "both"
+      }
+    },
+    "image_with_text_BABVJU": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "full_width": false,
+        "iwt_image": "shopify://shop_images/42374928-2000x1499-2f1d6e49-949e-4a83-b6c1-04492aac0a42_1.png",
         "iwt_layout": "image_right",
-        "iwt_heading": "Your Design, Our Craft",
-        "iwt_text": "<p>Have a design in mind? We bring it to life. Share your idea, inspiration, or reference, and our expert craftsmen will transform it into a beautifully made piece. From concept to final polish, every detail is carefully considered to ensure your jewelry reflects your vision thoughtfully crafted, personal, and made to last.</p>",
-        "iwt_button": "Create with Us",
-        "iwt_link": "shopify://products/1-6-ctw-natural-diamond-vertical-bar-necklace",
+        "iwt_heading": "3D Modeling & Prototyping",
+        "iwt_text": "<p>Visualize your design in real time through CAD and 3D modeling. With wax prototypes and interactive tools, you’ll see and feel your piece before it becomes a reality.</p>",
+        "iwt_button": "",
+        "iwt_link": "",
         "color_scheme": "1",
         "iwt_section_height": 500,
         "section_padding": "both"
@@ -312,6 +330,7 @@
     "image_with_text_mqGEKH",
     "image_with_text_CAWgLH",
     "image_with_text_CGkJbq",
+    "image_with_text_BABVJU",
     "multicolumn_a8FALq",
     "rich_text_H6VnwD"
   ]
